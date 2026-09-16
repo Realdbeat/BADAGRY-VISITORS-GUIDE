@@ -1,0 +1,12 @@
+# Badagry Visitors Guide - robots.txt
+User-agent: *
+Allow: /
+
+# Directives for Image Indexing
+User-agent: Googlebot-Image
+Allow: /
+Allow: /assets/
+Allow: /assets/images/
+
+# XML Sitemap
+Sitemap: https://badagryvisitorsguide.rav.com.ng/sitemap.xml

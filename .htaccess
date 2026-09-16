@@ -1,0 +1,26 @@
+# Badagry Visitors Guide - Clean URL Rewrites
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirect physical index.html to clean root /
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  # Clean Blog Catalog URL: /blog/ or /blog -> blog.php
+  RewriteRule ^blog/?$ blog.php [L,QSA]
+
+  # Clean Blog Post URL: /blog/{slug} -> post.php?slug={slug}
+  RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ post.php?slug=$1 [L,QSA]
+
+  # Clean Admin URL: /admin/? -> admin.php
+  RewriteRule ^admin/?$ admin.php [L,QSA]
+
+  # Direct access to static files and existing directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Hide .php extension for any other scripts
+  RewriteCond %{REQUEST_FILENAME}.php -f
+  RewriteRule ^([^/]+)/?$ $1.php [L,QSA]
+</IfModule>
