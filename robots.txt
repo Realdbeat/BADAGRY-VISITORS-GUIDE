@@ -8,5 +8,6 @@ Allow: /
 Allow: /assets/
 Allow: /assets/images/
 
-# XML Sitemap
+# XML Sitemaps
 Sitemap: https://badagryvisitorsguide.rav.com.ng/sitemap.xml
+Sitemap: https://badagryvisitorsguide.rav.com.ng/image-sitemap.xml

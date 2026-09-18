@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/sitemap-generator.php';
+autoUpdateSitemapsIfModified(60);
 $db = getDB();
 
 $search = trim($_GET['q'] ?? '');
@@ -325,6 +327,20 @@ $totalPosts = count($posts);
           <p class="footer-about-text">
             Official Badagry Visitors Guide. Discover Culture, Heritage &amp; Coastal Experiences across Badagry, Benin Republic &amp; Togo.
           </p>
+          <div class="footer-social-links">
+            <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" aria-label="Instagram"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@vezeltour" target="_blank" rel="noopener" aria-label="TikTok"><i
+                class="fa-brands fa-tiktok"></i></a>
+            <a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener"
+              aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/share/1EnBcsZgqb/" target="_blank" rel="noopener" aria-label="Facebook"><i
+                class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://x.com/badagry_v_guide" target="_blank" rel="noopener" aria-label="X (Twitter)"><i
+                class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/ezekiel-viavonu-105a15111/" target="_blank" rel="noopener" aria-label="LinkedIn"><i
+                class="fa-brands fa-linkedin-in"></i></a>
+          </div>
         </div>
 
         <div class="footer-col">

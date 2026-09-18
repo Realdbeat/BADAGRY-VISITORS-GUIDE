@@ -1,5 +1,8 @@
 <?php
 // router.php - Clean URL Router for PHP built-in server (php -S localhost:8000 router.php)
+require_once __DIR__ . '/sitemap-generator.php';
+// Automatically refresh sitemap.xml and image-sitemap.xml if any image or post was modified
+autoUpdateSitemapsIfModified(30);
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 

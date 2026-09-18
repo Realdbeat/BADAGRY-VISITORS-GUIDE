@@ -1,102 +1,98 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Main Home Page -->
   <url>
     <loc>https://badagryvisitorsguide.rav.com.ng/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-
-    <!-- Tour Client & Experience Images for Google Search Rich Snippets -->
+    <image:image>
+      <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg</image:loc>
+      <image:title>Badagry Slave Memorial and Freedom Statue</image:title>
+      <image:caption>Historic bronze monument commemorating liberation and ancestral resilience during the transatlantic slave trade in Badagry, Lagos State.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg</image:loc>
+      <image:title>Point of No Return Monument on Gberefu Peninsula, Badagry</image:title>
+      <image:caption>Historic embarkation monument standing along the Atlantic coast on Gberefu Island where slave ships departed.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-Badagry.jpg</image:loc>
+      <image:title>First Storey Building in Nigeria (Built 1845)</image:title>
+      <image:caption>Historic CMS mission home in Badagry where Bishop Samuel Ajayi Crowther translated the English Bible into Yoruba language.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg</image:loc>
+      <image:title>Seriki Williams Abass Brazilian Baracoon &amp; Slave Relics Museum</image:title>
+      <image:caption>Preserved 19th-century Brazilian barracoon rooms, original slave trade chains, and cultural artifacts in Badagry.</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Monument-Amazone-Benin-Republic.jpg</image:loc>
-      <image:title>Monument Amazone Benin Republic - Badagry Visitors Guide</image:title>
-      <image:caption>Tour clients visiting the monumental Amazone statue honoring Dahomey warrior women in Cotonou, Benin Republic.</image:caption>
+      <image:title>Monument Amazone Benin Republic</image:title>
+      <image:caption>Statue of the Agoodjie Dahomey warrior woman in Cotonou visited during cross-border heritage expeditions.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Gate-of-No-Return-Ouidah-Benin-Republic.jpg</image:loc>
-      <image:title>Gate of No Return Ouidah Benin Republic</image:title>
-      <image:caption>Clients visiting the iconic Door of No Return monument on the coastal beach of Ouidah.</image:caption>
+      <image:title>Gate of No Return (Porte du Non-Retour) Ouidah</image:title>
+      <image:caption>UNESCO World Heritage memorial monument on the Atlantic shore of Ouidah, Benin Republic.</image:caption>
     </image:image>
-
     <image:image>
-      <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg</image:loc>
-      <image:title>First Storey Building in Nigeria Badagry</image:title>
-      <image:caption>Guided heritage exploration of Nigeria's oldest storey building constructed in 1845 in Badagry.</image:caption>
+      <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Museum.jpg</image:loc>
+      <image:title>Badagry Heritage Museum</image:title>
+      <image:caption>Curated gallery of 19th-century colonial documents, shackles, slave ship manifests, and historical artifacts in Badagry.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Day-Tour.jpg</image:loc>
       <image:title>Badagry Heritage Day Tour Experience</image:title>
-      <image:caption>Historical artifacts, slave relics, and cultural immersion during a Badagry day tour.</image:caption>
+      <image:caption>Tour clients exploring the Badagry slave route, ancient shrines, and local historical museums with native guides.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Crafts-Market-Ouidah-with-Tayo.jpg</image:loc>
-      <image:title>Crafts Market Ouidah with Guide Tayo and Tour Clients</image:title>
-      <image:caption>Tour clients shopping for authentic hand-carved art and bronze crafts in Ouidah with tour guide Tayo.</image:caption>
+      <image:title>Ouidah Artisanal Crafts Market Guided Tour</image:title>
+      <image:caption>Tour travelers browsing authentic bronze castings, wood sculptures, and handwoven textiles with tour guide Tayo.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg</image:loc>
-      <image:title>Point of No Return Trail Gberefu Island Badagry</image:title>
-      <image:caption>Tour group walking the historic slave route path across Gberefu peninsula to the Atlantic coast.</image:caption>
+      <image:title>Point of No Return Trail - Gberefu Island Slave Route</image:title>
+      <image:caption>Historical walking pilgrimage along the trail across Gberefu peninsula leading to the Atlantic Ocean.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Ouidah-Snake-Temple.jpg</image:loc>
-      <image:title>Temple of Pythons Ouidah Benin Republic</image:title>
-      <image:caption>Visitors learning about indigenous spiritual heritage and sacred royal pythons in Ouidah.</image:caption>
+      <image:title>Temple of Pythons (Temple des Pythons) Ouidah</image:title>
+      <image:caption>Sacred royal python cultural sanctuary and Vodun spiritual immersion in historic Ouidah.</image:caption>
     </image:image>
-
-    <image:image>
-      <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Museum.jpg</image:loc>
-      <image:title>Badagry Heritage Museum Tour</image:title>
-      <image:caption>Curated tour group inside the Badagry Heritage Museum exploring slave trade documents and relics.</image:caption>
-    </image:image>
-
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Prince-Lorenzo-Beach-Lome-Togo.jpg</image:loc>
       <image:title>Prince Lorenzo Beach Lome Togo</image:title>
-      <image:caption>Clients enjoying serene golden Atlantic beaches and coastal hospitality in LomÃ©, Togo.</image:caption>
+      <image:caption>Relaxing Atlantic coastline, golden palm-fringed sands, and ocean breeze in Lome, Togo.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/5-Day-Nigeria-Benin-Togo-Tour.jpg</image:loc>
-      <image:title>5-Day Nigeria, Benin Republic and Togo Tour</image:title>
-      <image:caption>Tri-nation travel itinerary across Lagos, Badagry, Cotonou, Ouidah, and LomÃ©.</image:caption>
+      <image:title>5-Day Tri-Nation West Africa Grand Heritage Expedition</image:title>
+      <image:caption>Comprehensive travel route across Badagry, Cotonou, Ouidah, and Lome with seamless border arrangements.</image:caption>
     </image:image>
-
-    <image:image>
-      <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Pendjari-National-Park-Signage.jpg</image:loc>
-      <image:title>Pendjari National Park Wildlife Safari</image:title>
-      <image:caption>Wildlife and nature reserve expeditions in northern Benin Republic.</image:caption>
-    </image:image>
-
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Babs-Dock-3.jpg</image:loc>
       <image:title>Babs Dock Lake Ganvie Benin Republic</image:title>
-      <image:caption>Scenic boat cruise and lakeside relaxation at Bab's Dock.</image:caption>
+      <image:caption>Scenic boat cruise and lakeside relaxation at Babs Dock near Ganvie stilt city in Benin Republic.</image:caption>
     </image:image>
-
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Grand-Marche.jpg</image:loc>
-      <image:title>Grand Marche Fabric and Spice Market</image:title>
-      <image:caption>Cultural market exploration with clients admiring vibrant West African textiles and spices.</image:caption>
+      <image:title>Grand Marche Cultural Fabric and Artisan Market</image:title>
+      <image:caption>Exploration of traditional West African textiles, handmade jewelry, and authentic spices in bustling markets.</image:caption>
     </image:image>
   </url>
 
   <!-- Blog / Travel Journal Catalog -->
   <url>
     <loc>https://badagryvisitorsguide.rav.com.ng/blog/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Blog Post 1: Yellow Card Guide -->
+  <!-- Published Travel Journal Posts -->
   <url>
     <loc>https://badagryvisitorsguide.rav.com.ng/blog/how-to-get-yellow-card-in-nigeria-2026</loc>
     <lastmod>2026-08-22</lastmod>
@@ -107,8 +103,6 @@
       <image:title>How to Get a Yellow Card in Nigeria in 2026</image:title>
     </image:image>
   </url>
-
-  <!-- Blog Post 2: Point of No Return -->
   <url>
     <loc>https://badagryvisitorsguide.rav.com.ng/blog/what-it-feels-like-to-stand-at-point-of-no-return</loc>
     <lastmod>2026-03-27</lastmod>
@@ -119,8 +113,6 @@
       <image:title>What It Feels Like to Stand at the Point of No Return</image:title>
     </image:image>
   </url>
-
-  <!-- Blog Post 3: Central Lagos to Badagry Route Guide -->
   <url>
     <loc>https://badagryvisitorsguide.rav.com.ng/blog/how-to-get-from-central-lagos-to-badagry-2026</loc>
     <lastmod>2026-03-26</lastmod>
@@ -131,8 +123,6 @@
       <image:title>How to Get from Central Lagos to Badagry in 2026</image:title>
     </image:image>
   </url>
-
-  <!-- Blog Post 4: Complete Badagry Travel Guide -->
   <url>
     <loc>https://badagryvisitorsguide.rav.com.ng/blog/complete-badagry-travel-guide-2026</loc>
     <lastmod>2026-03-26</lastmod>
@@ -140,7 +130,7 @@
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Museum-1-420x347.jpg</image:loc>
-      <image:title>Your Complete Badagry Travel Guide for 2026</image:title>
+      <image:title>Badagry Heritage Museum &amp; Complete Badagry Guide</image:title>
     </image:image>
   </url>
 </urlset>
