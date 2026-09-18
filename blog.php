@@ -71,7 +71,7 @@ $totalPosts = count($posts);
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css?v=1" />
 
   <!-- Schema.org Blog structured data -->
   <script type="application/ld+json">
