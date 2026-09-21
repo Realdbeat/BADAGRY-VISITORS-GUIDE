@@ -43,7 +43,13 @@ $totalPosts = count($posts);
   <meta name="description"
     content="Guides, historical perspectives, border crossing advice, and local travel stories across Badagry, Benin Republic, and Togo by indigenous historians." />
   <link rel="canonical" href="https://badagryvisitorsguide.rav.com.ng/blog/" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="google-site-verification" content="google1c708dda37599c2a" />
+
+  <!-- RSS Feed Discovery -->
+  <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed" href="https://badagryvisitorsguide.rav.com.ng/feed.xml" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="blog" />
@@ -73,7 +79,29 @@ $totalPosts = count($posts);
 
   <link rel="stylesheet" href="/style.css?v=1" />
 
-  <!-- Schema.org Blog structured data -->
+  <!-- Schema.org Breadcrumbs structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://badagryvisitorsguide.rav.com.ng/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Journal",
+        "item": "https://badagryvisitorsguide.rav.com.ng/blog/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Blog structured data with Article items -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -85,8 +113,27 @@ $totalPosts = count($posts);
       "@type": "Organization",
       "name": "Badagry Visitors Guide",
       "url": "https://badagryvisitorsguide.rav.com.ng/",
-      "logo": "https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg"
-    }
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg"
+      }
+    },
+    "blogPost": [
+      <?php
+      $postSchemas = [];
+      foreach ($posts as $p) {
+          $postSchemas[] = json_encode([
+              '@type' => 'BlogPosting',
+              'headline' => $p['title'],
+              'description' => $p['excerpt'],
+              'url' => 'https://badagryvisitorsguide.rav.com.ng/blog/' . $p['slug'],
+              'datePublished' => date('c', strtotime($p['published_at'])),
+              'image' => 'https://badagryvisitorsguide.rav.com.ng/' . ltrim($p['featured_image'], '/')
+          ], JSON_UNESCAPED_SLASHES);
+      }
+      echo implode(",\n      ", $postSchemas);
+      ?>
+    ]
   }
   </script>
 </head>

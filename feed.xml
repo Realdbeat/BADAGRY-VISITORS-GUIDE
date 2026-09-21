@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Badagry Visitors Guide - Travel Journal</title>
+    <link>https://badagryvisitorsguide.rav.com.ng/blog/</link>
+    <description>Guides, historical perspectives, border crossing advice, and local travel stories across Badagry, Benin Republic, and Togo by indigenous historians.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Sep 2026 08:41:28 +0100</lastBuildDate>
+    <atom:link href="https://badagryvisitorsguide.rav.com.ng/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg</url>
+      <title>Badagry Visitors Guide - Travel Journal</title>
+      <link>https://badagryvisitorsguide.rav.com.ng/blog/</link>
+    </image>
+    <item>
+      <title>How to Get a Yellow Card in Nigeria in 2026: A Simple Travel Guide</title>
+      <link>https://badagryvisitorsguide.rav.com.ng/blog/how-to-get-yellow-card-in-nigeria-2026</link>
+      <guid isPermaLink="true">https://badagryvisitorsguide.rav.com.ng/blog/how-to-get-yellow-card-in-nigeria-2026</guid>
+      <pubDate>Sat, 22 Aug 2026 10:00:00 +0100</pubDate>
+      <description>A complete walkthrough of the Port Health Services process, online payment portal, vaccination centres, and border clearance verification for cross-border travelers.</description>
+      <category>Border Crossing &amp; Visas</category>
+      <enclosure url="https://badagryvisitorsguide.rav.com.ng/assets/images/eYellow-Card-2-e1787431293225-420x347.jpg" length="102400" type="image/jpeg" />
+    </item>
+    <item>
+      <title>What It Feels Like to Stand at the Point of No Return</title>
+      <link>https://badagryvisitorsguide.rav.com.ng/blog/what-it-feels-like-to-stand-at-point-of-no-return</link>
+      <guid isPermaLink="true">https://badagryvisitorsguide.rav.com.ng/blog/what-it-feels-like-to-stand-at-point-of-no-return</guid>
+      <pubDate>Fri, 27 Mar 2026 14:30:00 +0100</pubDate>
+      <description>Personal reflection on walking the somber path through the Gberefu peninsula toward the Atlantic shore where millions took their last steps on native soil.</description>
+      <category>History &amp; Heritage</category>
+      <enclosure url="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-420x347.jpg" length="102400" type="image/jpeg" />
+    </item>
+    <item>
+      <title>How to Get from Central Lagos to Badagry in 2026</title>
+      <link>https://badagryvisitorsguide.rav.com.ng/blog/how-to-get-from-central-lagos-to-badagry-2026</link>
+      <guid isPermaLink="true">https://badagryvisitorsguide.rav.com.ng/blog/how-to-get-from-central-lagos-to-badagry-2026</guid>
+      <pubDate>Thu, 26 Mar 2026 11:00:00 +0100</pubDate>
+      <description>Comparing road options, the Lagos-Badagry Expressway progress, water transit via CMS jetty, and private escorted transfers for tourists.</description>
+      <category>Travel Logistics</category>
+      <enclosure url="https://badagryvisitorsguide.rav.com.ng/assets/images/Central-Lagos-to-Badagry-Map-420x347.jpg" length="102400" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Your Complete Badagry Travel Guide for 2026</title>
+      <link>https://badagryvisitorsguide.rav.com.ng/blog/complete-badagry-travel-guide-2026</link>
+      <guid isPermaLink="true">https://badagryvisitorsguide.rav.com.ng/blog/complete-badagry-travel-guide-2026</guid>
+      <pubDate>Thu, 26 Mar 2026 09:15:00 +0100</pubDate>
+      <description>Where to stay, authentic local dishes to savor, museum opening hours, photo etiquette, and essential regional tips for first-time visitors.</description>
+      <category>Travel Guides</category>
+      <enclosure url="https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Museum-1-420x347.jpg" length="102400" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>

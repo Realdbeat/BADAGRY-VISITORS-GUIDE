@@ -1,13 +1,36 @@
 # Badagry Visitors Guide - robots.txt
-User-agent: *
-Allow: /
+# https://badagryvisitorsguide.rav.com.ng/
 
-# Directives for Image Indexing
+# Google Web Search Crawler
+User-agent: Googlebot
+Allow: /
+Allow: /blog/
+Allow: /assets/
+Disallow: /admin
+Disallow: /admin/
+Disallow: /database/
+
+# Google Image Search Crawler
 User-agent: Googlebot-Image
 Allow: /
 Allow: /assets/
 Allow: /assets/images/
 Allow: /blog/
+
+# Bing Search Crawler
+User-agent: Bingbot
+Allow: /
+Allow: /blog/
+Disallow: /admin
+Disallow: /admin/
+Disallow: /database/
+
+# All other Search Crawlers
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /database/
 
 # XML Sitemaps
 Sitemap: https://badagryvisitorsguide.rav.com.ng/sitemap.xml

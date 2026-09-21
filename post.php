@@ -59,7 +59,13 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
     <title><?= htmlspecialchars($post['title']) ?> | Badagry Visitors Guide</title>
     <meta name="description" content="<?= htmlspecialchars($post['excerpt']) ?>" />
     <link rel="canonical" href="<?= $pageUrl ?>" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="google-site-verification" content="google1c708dda37599c2a" />
+
+    <!-- RSS Feed Discovery -->
+    <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed" href="https://badagryvisitorsguide.rav.com.ng/feed.xml" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
@@ -69,6 +75,7 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
     <meta property="og:url" content="<?= $pageUrl ?>" />
     <meta property="og:image" content="<?= $imageUrl ?>" />
     <meta property="article:published_time" content="<?= date('c', strtotime($post['published_at'])) ?>" />
+    <meta property="article:modified_time" content="<?= date('c', strtotime($post['published_at'])) ?>" />
     <meta property="article:section" content="<?= htmlspecialchars($post['category']) ?>" />
 
     <!-- Twitter Card -->
@@ -76,6 +83,34 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
     <meta name="twitter:title" content="<?= htmlspecialchars($post['title']) ?>" />
     <meta name="twitter:description" content="<?= htmlspecialchars($post['excerpt']) ?>" />
     <meta name="twitter:image" content="<?= $imageUrl ?>" />
+
+    <!-- Schema.org BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://badagryvisitorsguide.rav.com.ng/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Journal",
+          "item": "https://badagryvisitorsguide.rav.com.ng/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": <?= json_encode($post['title']) ?>,
+          "item": <?= json_encode($pageUrl) ?>
+        }
+      ]
+    }
+    </script>
 
     <!-- Schema.org BlogPosting -->
     <script type="application/ld+json">
@@ -86,6 +121,7 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
       "description": <?= json_encode($post['excerpt']) ?>,
       "image": <?= json_encode($imageUrl) ?>,
       "datePublished": <?= json_encode(date('c', strtotime($post['published_at']))) ?>,
+      "dateModified": <?= json_encode(date('c', strtotime($post['published_at']))) ?>,
       "author": {
         "@type": "Organization",
         "name": <?= json_encode($post['author']) ?>,
@@ -95,7 +131,10 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
         "@type": "Organization",
         "name": "Badagry Visitors Guide",
         "url": "https://badagryvisitorsguide.rav.com.ng/",
-        "logo": "https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg"
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",

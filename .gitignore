@@ -1,5 +1,3 @@
 # Temporary lock and cache files
 database/.sitemap_check.lock
-database/blog.db
-database/blog_*.db
 *.lock

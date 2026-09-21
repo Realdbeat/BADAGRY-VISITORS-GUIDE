@@ -20,6 +20,7 @@ define('SITE_BASE_URL', 'https://badagryvisitorsguide.rav.com.ng');
 define('IMAGES_DIR', __DIR__ . '/assets/images');
 define('SITEMAP_MAIN_FILE', __DIR__ . '/sitemap.xml');
 define('SITEMAP_IMAGE_FILE', __DIR__ . '/image-sitemap.xml');
+define('SITEMAP_FEED_FILE', __DIR__ . '/feed.xml');
 
 /**
  * Curated metadata dictionary for known Badagry & corridor landmarks
@@ -242,7 +243,7 @@ function generateSitemaps(): array {
     // Fetch published blog posts from SQLite
     $posts = [];
     try {
-        $stmt = $db->query("SELECT id, title, slug, excerpt, featured_image, published_at FROM posts WHERE status = 'published' ORDER BY published_at DESC");
+        $stmt = $db->query("SELECT id, title, slug, excerpt, category, featured_image, published_at FROM posts WHERE status = 'published' ORDER BY published_at DESC");
         $posts = $stmt->fetchAll();
     } catch (Exception $e) {
         $posts = [];
@@ -403,9 +404,51 @@ function generateSitemaps(): array {
 
     $imgXml .= "</urlset>\n";
 
-    // Write both files with exclusive locks
+    /* -------------------------------------------------------------
+       3. GENERATE feed.xml (RSS 2.0 Feed for Fast Google Crawling)
+       ------------------------------------------------------------- */
+    $feedXml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    $feedXml .= '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">' . "\n";
+    $feedXml .= "  <channel>\n";
+    $feedXml .= "    <title>Badagry Visitors Guide - Travel Journal</title>\n";
+    $feedXml .= "    <link>" . xmlEscape(SITE_BASE_URL . '/blog/') . "</link>\n";
+    $feedXml .= "    <description>Guides, historical perspectives, border crossing advice, and local travel stories across Badagry, Benin Republic, and Togo by indigenous historians.</description>\n";
+    $feedXml .= "    <language>en-us</language>\n";
+    $feedXml .= "    <lastBuildDate>" . date(DATE_RSS) . "</lastBuildDate>\n";
+    $feedXml .= '    <atom:link href="' . xmlEscape(SITE_BASE_URL . '/feed.xml') . '" rel="self" type="application/rss+xml" />' . "\n";
+    $feedXml .= "    <image>\n";
+    $feedXml .= "      <url>" . xmlEscape(SITE_BASE_URL . '/assets/logo.jpg') . "</url>\n";
+    $feedXml .= "      <title>Badagry Visitors Guide - Travel Journal</title>\n";
+    $feedXml .= "      <link>" . xmlEscape(SITE_BASE_URL . '/blog/') . "</link>\n";
+    $feedXml .= "    </image>\n";
+
+    foreach ($posts as $post) {
+        $postUrl = SITE_BASE_URL . '/blog/' . $post['slug'];
+        $pubDate = !empty($post['published_at']) ? date(DATE_RSS, strtotime($post['published_at'])) : date(DATE_RSS);
+        $featImgUrl = !empty($post['featured_image']) ? SITE_BASE_URL . '/' . ltrim($post['featured_image'], '/') : '';
+
+        $feedXml .= "    <item>\n";
+        $feedXml .= "      <title>" . xmlEscape($post['title']) . "</title>\n";
+        $feedXml .= "      <link>" . xmlEscape($postUrl) . "</link>\n";
+        $feedXml .= '      <guid isPermaLink="true">' . xmlEscape($postUrl) . "</guid>\n";
+        $feedXml .= "      <pubDate>{$pubDate}</pubDate>\n";
+        $feedXml .= "      <description>" . xmlEscape($post['excerpt'] ?? '') . "</description>\n";
+        if (!empty($post['category'])) {
+            $feedXml .= "      <category>" . xmlEscape($post['category']) . "</category>\n";
+        }
+        if (!empty($featImgUrl)) {
+            $feedXml .= '      <enclosure url="' . xmlEscape($featImgUrl) . '" length="102400" type="image/jpeg" />' . "\n";
+        }
+        $feedXml .= "    </item>\n";
+    }
+
+    $feedXml .= "  </channel>\n";
+    $feedXml .= "</rss>\n";
+
+    // Write all three files with exclusive locks
     file_put_contents(SITEMAP_MAIN_FILE, $mainXml, LOCK_EX);
     file_put_contents(SITEMAP_IMAGE_FILE, $imgXml, LOCK_EX);
+    file_put_contents(SITEMAP_FEED_FILE, $feedXml, LOCK_EX);
 
     return [
         'success' => true,
@@ -413,7 +456,8 @@ function generateSitemaps(): array {
         'images_count' => count($images),
         'generated_at' => date('Y-m-d H:i:s'),
         'sitemap_main' => SITEMAP_MAIN_FILE,
-        'sitemap_images' => SITEMAP_IMAGE_FILE
+        'sitemap_images' => SITEMAP_IMAGE_FILE,
+        'sitemap_feed' => SITEMAP_FEED_FILE
     ];
 }
 
