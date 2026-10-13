@@ -299,10 +299,14 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
           </div>
         </header>
 
-        <!-- Featured Hero Image -->
+        <!-- Featured Hero Image / Media -->
         <?php if (!empty($post['featured_image'])): ?>
           <div class="article-hero-img-wrap">
-            <img src="/<?= ltrim(htmlspecialchars($post['featured_image']), '/') ?>" alt="<?= htmlspecialchars($post['title']) ?>" class="article-hero-img" />
+            <?php if (preg_match('/\.(mp4|webm|ogg|mov|m4v)$/i', $post['featured_image'])): ?>
+              <video src="/<?= ltrim(htmlspecialchars($post['featured_image']), '/') ?>" controls playsinline class="article-hero-img" style="width: 100%; max-height: 540px; object-fit: cover; background: #000; border-radius: var(--radius-lg);"></video>
+            <?php else: ?>
+              <img src="/<?= ltrim(htmlspecialchars($post['featured_image']), '/') ?>" alt="<?= htmlspecialchars($post['title']) ?>" class="article-hero-img" />
+            <?php endif; ?>
           </div>
         <?php endif; ?>
 

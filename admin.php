@@ -33,75 +33,239 @@ $isLoggedIn = !empty($_SESSION['admin_logged_in']);
 
 // Actions requiring authentication
 if ($isLoggedIn) {
-    // API: Return JSON list of all images for the Media Library
-    if ($action === 'get_images_json') {
+    // Helper: Normalize $_FILES array for single or multiple uploads
+    function normalizeFilesArray($files): array {
+        $normalized = [];
+        if (empty($files) || !isset($files['name'])) {
+            return $normalized;
+        }
+        if (is_array($files['name'])) {
+            $count = count($files['name']);
+            for ($i = 0; $i < $count; $i++) {
+                if (empty($files['name'][$i])) continue;
+                $normalized[] = [
+                    'name' => $files['name'][$i],
+                    'type' => $files['type'][$i] ?? '',
+                    'tmp_name' => $files['tmp_name'][$i] ?? '',
+                    'error' => $files['error'][$i] ?? UPLOAD_ERR_NO_FILE,
+                    'size' => $files['size'][$i] ?? 0
+                ];
+            }
+        } else {
+            if (!empty($files['name'])) {
+                $normalized[] = [
+                    'name' => $files['name'],
+                    'type' => $files['type'] ?? '',
+                    'tmp_name' => $files['tmp_name'] ?? '',
+                    'error' => $files['error'] ?? UPLOAD_ERR_NO_FILE,
+                    'size' => $files['size'] ?? 0
+                ];
+            }
+        }
+        return $normalized;
+    }
+
+    // Helper: Retrieve all uploaded videos from assets/videos
+    function getAllProjectVideos(): array {
+        $videos = [];
+        $videosDir = __DIR__ . '/assets/videos';
+        $allowed = ['mp4', 'webm', 'ogg', 'mov', 'm4v'];
+        if (is_dir($videosDir)) {
+            $files = scandir($videosDir);
+            foreach ($files as $file) {
+                if ($file === '.' || $file === '..' || $file === '.gitkeep') continue;
+                $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                if (!in_array($ext, $allowed)) continue;
+                $filePath = $videosDir . '/' . $file;
+                $title = humanizeImageFilename($file);
+                $videos[] = [
+                    'type' => 'video',
+                    'filename' => $file,
+                    'ext' => $ext,
+                    'url' => '/assets/videos/' . $file,
+                    'fullUrl' => defined('SITE_BASE_URL') ? SITE_BASE_URL . '/assets/videos/' . $file : '/assets/videos/' . $file,
+                    'relPath' => 'assets/videos/' . $file,
+                    'title' => $title,
+                    'caption' => $title . ' - Video highlight from Badagry.',
+                    'geo' => 'Badagry, Lagos State, Nigeria',
+                    'size' => file_exists($filePath) ? filesize($filePath) : 0,
+                    'mtime' => file_exists($filePath) ? filemtime($filePath) : 0
+                ];
+            }
+        }
+        return $videos;
+    }
+
+    // API: Return JSON list of all images and videos for the Media Library
+    if ($action === 'get_images_json' || $action === 'get_media_json') {
         header('Content-Type: application/json');
         $imgs = getAllProjectImages();
         $list = [];
+        $imgCount = 0;
         foreach ($imgs as $k => $item) {
             $isLogo = ($item['filename'] === 'logo.jpg');
+            $imgCount++;
             $list[] = [
+                'type' => 'image',
                 'filename' => $item['filename'],
+                'ext' => strtolower(pathinfo($item['filename'], PATHINFO_EXTENSION)),
                 'url' => $isLogo ? '/assets/logo.jpg' : '/assets/images/' . $item['filename'],
                 'fullUrl' => $item['url'],
                 'relPath' => $isLogo ? 'assets/logo.jpg' : 'assets/images/' . $item['filename'],
                 'title' => $item['title'],
                 'caption' => $item['caption'],
                 'geo' => $item['geo'],
+                'size' => ($isLogo && file_exists(__DIR__ . '/assets/logo.jpg')) ? filesize(__DIR__ . '/assets/logo.jpg') : (file_exists(__DIR__ . '/assets/images/' . $item['filename']) ? filesize(__DIR__ . '/assets/images/' . $item['filename']) : 0),
                 'mtime' => $item['mtime'] ?? 0
             ];
         }
+
+        $vids = getAllProjectVideos();
+        $vidCount = count($vids);
+        foreach ($vids as $v) {
+            $list[] = $v;
+        }
+
         usort($list, function($a, $b) {
             return ($b['mtime'] ?? 0) <=> ($a['mtime'] ?? 0);
         });
-        echo json_encode(['success' => true, 'images' => $list]);
+
+        echo json_encode([
+            'success' => true,
+            'media' => $list,
+            'images' => $list,
+            'counts' => [
+                'total' => count($list),
+                'images' => $imgCount,
+                'videos' => $vidCount
+            ]
+        ]);
         exit;
     }
 
-    // API: Ajax Upload Image from Media Library (No page reload)
-    if ($action === 'ajax_upload_image' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    // API: Ajax Upload Media (Images & Videos, Single or Multiple)
+    if (($action === 'ajax_upload_image' || $action === 'ajax_upload_media') && $_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Content-Type: application/json');
-        if (empty($_FILES['image_file']['name'])) {
-            echo json_encode(['success' => false, 'error' => 'No image file uploaded.']);
-            exit;
+
+        $filesToProcess = [];
+        $candidateKeys = ['media_files', 'image_files', 'image_file', 'media_file', 'files'];
+        foreach ($candidateKeys as $key) {
+            if (isset($_FILES[$key])) {
+                $filesToProcess = array_merge($filesToProcess, normalizeFilesArray($_FILES[$key]));
+            }
         }
-        $file = $_FILES['image_file'];
-        $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        $allowed = ['jpg', 'jpeg', 'png', 'webp'];
-        if (!in_array($ext, $allowed)) {
-            echo json_encode(['success' => false, 'error' => 'Only JPG, PNG, and WebP images are supported.']);
-            exit;
-        }
-        if ($file['error'] !== UPLOAD_ERR_OK) {
-            echo json_encode(['success' => false, 'error' => 'Upload error code: ' . $file['error']]);
+
+        if (empty($filesToProcess)) {
+            echo json_encode(['success' => false, 'error' => 'No files were uploaded.']);
             exit;
         }
 
-        $baseName = pathinfo($file['name'], PATHINFO_FILENAME);
-        $safeName = preg_replace('/[^A-Za-z0-9_-]+/', '-', $baseName);
-        $finalName = $safeName . '.' . $ext;
-        $targetFile = __DIR__ . '/assets/images/' . $finalName;
+        $allowedImages = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+        $allowedVideos = ['mp4', 'webm', 'ogg', 'mov', 'm4v'];
 
-        if (file_exists($targetFile)) {
-            $finalName = $safeName . '-' . date('Ymd-His') . '.' . $ext;
-            $targetFile = __DIR__ . '/assets/images/' . $finalName;
+        $uploadErrors = [
+            UPLOAD_ERR_INI_SIZE => 'File exceeds upload_max_filesize limit in php.ini.',
+            UPLOAD_ERR_FORM_SIZE => 'File exceeds MAX_FILE_SIZE specified in the form.',
+            UPLOAD_ERR_PARTIAL => 'File was only partially uploaded.',
+            UPLOAD_ERR_NO_FILE => 'No file was uploaded.',
+            UPLOAD_ERR_NO_TMP_DIR => 'Missing temporary upload directory.',
+            UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',
+            UPLOAD_ERR_EXTENSION => 'A PHP extension blocked the upload.'
+        ];
+
+        $uploaded = [];
+        $errors = [];
+        $hasNewImages = false;
+
+        foreach ($filesToProcess as $file) {
+            if ($file['error'] !== UPLOAD_ERR_OK) {
+                $msg = $uploadErrors[$file['error']] ?? ('Upload error code: ' . $file['error']);
+                $errors[] = "'{$file['name']}': {$msg}";
+                continue;
+            }
+
+            $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+            if (in_array($ext, $allowedImages)) {
+                $mediaType = 'image';
+                $targetDir = __DIR__ . '/assets/images';
+                $relPrefix = 'assets/images/';
+            } elseif (in_array($ext, $allowedVideos)) {
+                $mediaType = 'video';
+                $targetDir = __DIR__ . '/assets/videos';
+                $relPrefix = 'assets/videos/';
+            } else {
+                $errors[] = "'{$file['name']}': Unsupported format (.{$ext}). Allowed: JPG, PNG, WebP, GIF, MP4, WebM, OGG, MOV.";
+                continue;
+            }
+
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0755, true);
+            }
+
+            $baseName = pathinfo($file['name'], PATHINFO_FILENAME);
+            $safeName = preg_replace('/[^A-Za-z0-9_-]+/', '-', $baseName);
+            if (empty($safeName) || $safeName === '-') {
+                $safeName = $mediaType . '-' . time();
+            }
+            $finalName = $safeName . '.' . $ext;
+            $targetFile = $targetDir . '/' . $finalName;
+
+            if (file_exists($targetFile)) {
+                $finalName = $safeName . '-' . date('Ymd-His') . '-' . substr(uniqid(), -4) . '.' . $ext;
+                $targetFile = $targetDir . '/' . $finalName;
+            }
+
+            if (move_uploaded_file($file['tmp_name'], $targetFile)) {
+                $title = humanizeImageFilename($finalName);
+                $uploaded[] = [
+                    'filename' => $finalName,
+                    'type' => $mediaType,
+                    'ext' => $ext,
+                    'relPath' => $relPrefix . $finalName,
+                    'url' => '/' . $relPrefix . $finalName,
+                    'title' => $title,
+                    'caption' => $title . ($mediaType === 'video' ? ' - Video highlight from Badagry.' : ' - Authentic Badagry tour experience.'),
+                    'geo' => 'Badagry, Lagos State, Nigeria',
+                    'size' => filesize($targetFile),
+                    'mtime' => filemtime($targetFile)
+                ];
+                if ($mediaType === 'image') {
+                    $hasNewImages = true;
+                }
+            } else {
+                $errors[] = "'{$file['name']}': Failed to save uploaded file to {$relPrefix}.";
+            }
         }
 
-        if (move_uploaded_file($file['tmp_name'], $targetFile)) {
+        $sitemapCount = 0;
+        if ($hasNewImages) {
             $sitemapRes = generateSitemaps();
-            $title = humanizeImageFilename($finalName);
+            $sitemapCount = $sitemapRes['images_count'] ?? 0;
+        }
+
+        if (!empty($uploaded)) {
+            $last = end($uploaded);
             echo json_encode([
                 'success' => true,
-                'filename' => $finalName,
-                'relPath' => 'assets/images/' . $finalName,
-                'url' => '/assets/images/' . $finalName,
-                'title' => $title,
-                'caption' => $title . ' - Authentic Badagry tour experience.',
-                'geo' => 'Badagry, Lagos State, Nigeria',
-                'sitemap_images' => $sitemapRes['images_count']
+                'uploaded' => $uploaded,
+                'errors' => $errors,
+                'total_uploaded' => count($uploaded),
+                'total_errors' => count($errors),
+                // Compatibility fields for single-file handlers:
+                'filename' => $last['filename'],
+                'type' => $last['type'],
+                'relPath' => $last['relPath'],
+                'url' => $last['url'],
+                'title' => $last['title'],
+                'caption' => $last['caption'],
+                'geo' => $last['geo'],
+                'sitemap_images' => $sitemapCount
             ]);
         } else {
-            echo json_encode(['success' => false, 'error' => 'Failed to move uploaded file to assets/images.']);
+            echo json_encode([
+                'success' => false,
+                'error' => !empty($errors) ? implode(' ', $errors) : 'Failed to upload files.'
+            ]);
         }
         exit;
     }
@@ -113,39 +277,82 @@ if ($isLoggedIn) {
         exit;
     }
 
-    // Direct Image Upload Handler
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload_image'])) {
-        if (!empty($_FILES['image_file']['name'])) {
-            $file = $_FILES['image_file'];
-            $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-            $allowed = ['jpg', 'jpeg', 'png', 'webp'];
+    // Direct Media Upload Handler (Supports multiple images & videos)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['upload_image']) || isset($_POST['upload_media']))) {
+        $filesToProcess = [];
+        $candidateKeys = ['media_files', 'image_files', 'image_file', 'media_file'];
+        foreach ($candidateKeys as $key) {
+            if (isset($_FILES[$key])) {
+                $filesToProcess = array_merge($filesToProcess, normalizeFilesArray($_FILES[$key]));
+            }
+        }
 
-            if (!in_array($ext, $allowed)) {
-                $error = 'Invalid image format. Only JPG, JPEG, PNG, and WebP images are allowed.';
-            } elseif ($file['error'] !== UPLOAD_ERR_OK) {
-                $error = 'Upload error (code: ' . $file['error'] . '). Please try again.';
-            } else {
+        if (!empty($filesToProcess)) {
+            $allowedImages = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+            $allowedVideos = ['mp4', 'webm', 'ogg', 'mov', 'm4v'];
+            $imgSuccess = 0;
+            $vidSuccess = 0;
+            $errList = [];
+
+            foreach ($filesToProcess as $file) {
+                if ($file['error'] !== UPLOAD_ERR_OK) {
+                    $errList[] = "'{$file['name']}': Upload error code " . $file['error'];
+                    continue;
+                }
+                $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+                if (in_array($ext, $allowedImages)) {
+                    $mediaType = 'image';
+                    $targetDir = __DIR__ . '/assets/images';
+                    $relPrefix = 'assets/images/';
+                } elseif (in_array($ext, $allowedVideos)) {
+                    $mediaType = 'video';
+                    $targetDir = __DIR__ . '/assets/videos';
+                    $relPrefix = 'assets/videos/';
+                } else {
+                    $errList[] = "'{$file['name']}': Unsupported format (.{$ext})";
+                    continue;
+                }
+
+                if (!is_dir($targetDir)) mkdir($targetDir, 0755, true);
+
                 $baseName = pathinfo($file['name'], PATHINFO_FILENAME);
                 $safeName = preg_replace('/[^A-Za-z0-9_-]+/', '-', $baseName);
+                if (empty($safeName) || $safeName === '-') $safeName = $mediaType . '-' . time();
                 $finalName = $safeName . '.' . $ext;
-                $targetFile = __DIR__ . '/assets/images/' . $finalName;
+                $targetFile = $targetDir . '/' . $finalName;
 
                 if (file_exists($targetFile)) {
-                    $finalName = $safeName . '-' . date('Ymd-His') . '.' . $ext;
-                    $targetFile = __DIR__ . '/assets/images/' . $finalName;
+                    $finalName = $safeName . '-' . date('Ymd-His') . '-' . substr(uniqid(), -4) . '.' . $ext;
+                    $targetFile = $targetDir . '/' . $finalName;
                 }
 
                 if (move_uploaded_file($file['tmp_name'], $targetFile)) {
-                    // Automatically update sitemaps with the new image
-                    $sitemapRes = generateSitemaps();
-                    $relPath = 'assets/images/' . $finalName;
-                    $success = "Image '{$finalName}' uploaded successfully! Sitemaps automatically updated ({$sitemapRes['images_count']} total images indexed). Path: <code>{$relPath}</code>";
+                    if ($mediaType === 'image') $imgSuccess++;
+                    else $vidSuccess++;
                 } else {
-                    $error = 'Failed to save uploaded image to assets/images.';
+                    $errList[] = "'{$file['name']}': Failed to save uploaded file.";
                 }
             }
+
+            if ($imgSuccess > 0) {
+                $sitemapRes = generateSitemaps();
+                $sitemapInfo = " ({$sitemapRes['images_count']} total images indexed in sitemap)";
+            } else {
+                $sitemapInfo = "";
+            }
+
+            $totalUploaded = $imgSuccess + $vidSuccess;
+            if ($totalUploaded > 0) {
+                $parts = [];
+                if ($imgSuccess > 0) $parts[] = "{$imgSuccess} image" . ($imgSuccess > 1 ? 's' : '');
+                if ($vidSuccess > 0) $parts[] = "{$vidSuccess} video" . ($vidSuccess > 1 ? 's' : '');
+                $success = "Successfully uploaded " . implode(' and ', $parts) . "!{$sitemapInfo}";
+            }
+            if (!empty($errList)) {
+                $error = "Some files could not be uploaded: " . implode('; ', $errList);
+            }
         } else {
-            $error = 'Please select an image file to upload.';
+            $error = 'Please select at least one image or video to upload.';
         }
     }
 
@@ -361,12 +568,12 @@ if ($isLoggedIn) {
         <div class="admin-alert alert-error"><?= htmlspecialchars($error) ?></div>
       <?php endif; ?>
 
-      <!-- Sitemap Status & Quick Image Uploader Widget -->
+      <!-- Sitemap Status & Quick Media Uploader Widget -->
       <?php if ($action === 'list'): ?>
         <div class="admin-card" style="margin-bottom: 24px; padding: 20px 24px;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
             <div>
-              <h4 style="margin: 0 0 6px 0; font-size: 1.1rem;"><i class="fa-solid fa-sitemap" style="color: var(--primary);"></i> Automated Sitemap &amp; Image Sitemap Sync</h4>
+              <h4 style="margin: 0 0 6px 0; font-size: 1.1rem;"><i class="fa-solid fa-sitemap" style="color: var(--primary);"></i> Automated Sitemap &amp; Media Sync</h4>
               <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">
                 Sitemaps update automatically whenever posts or images are added.
                 <a href="/sitemap.xml" target="_blank" style="margin-left: 8px; color: var(--primary); font-weight: 600;"><i class="fa-solid fa-arrow-up-right-from-square"></i> sitemap.xml</a>
@@ -375,11 +582,11 @@ if ($isLoggedIn) {
               </p>
             </div>
             <form method="POST" action="/admin" enctype="multipart/form-data" style="display: flex; gap: 10px; align-items: center;">
-              <input type="hidden" name="upload_image" value="1" />
-              <label for="adminImageUpload" class="btn btn-outline-dark" style="cursor: pointer; margin: 0; display: inline-flex; align-items: center; gap: 8px;">
-                <i class="fa-solid fa-cloud-arrow-up"></i> Upload New Image
+              <input type="hidden" name="upload_media" value="1" />
+              <label for="adminImageUpload" class="btn btn-outline-dark" style="cursor: pointer; margin: 0; display: inline-flex; align-items: center; gap: 8px;" title="Upload multiple images and videos">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Upload Media (Photos &amp; Videos)
               </label>
-              <input type="file" id="adminImageUpload" name="image_file" accept=".jpg,.jpeg,.png,.webp" style="display: none;" onchange="this.form.submit()" />
+              <input type="file" id="adminImageUpload" name="media_files[]" accept=".jpg,.jpeg,.png,.webp,.gif,.mp4,.webm,.ogg,.mov,.m4v" multiple style="display: none;" onchange="this.form.submit()" />
             </form>
           </div>
         </div>
@@ -417,19 +624,23 @@ if ($isLoggedIn) {
 
             <div class="form-row">
               <div class="form-group" style="flex: 2;">
-                <label>Featured Image</label>
-                <input type="hidden" id="postImage" name="featured_image"
-                  value="<?= $editPost ? htmlspecialchars($editPost['featured_image']) : 'assets/images/Badagry-Heritage-Museum-1-420x347.jpg' ?>" />
+                <label>Featured Image / Media</label>
+                <?php
+                  $featVal = $editPost ? htmlspecialchars($editPost['featured_image']) : 'assets/images/Badagry-Heritage-Museum-1-420x347.jpg';
+                  $isFeatVideo = preg_match('/\.(mp4|webm|ogg|mov|m4v)$/i', $featVal);
+                ?>
+                <input type="hidden" id="postImage" name="featured_image" value="<?= $featVal ?>" />
                 <div class="featured-image-picker">
                   <div class="featured-thumb-wrap" id="featuredThumbWrap">
-                    <img id="featuredThumbImg" src="/<?= ltrim(htmlspecialchars($editPost['featured_image'] ?? 'assets/images/Badagry-Heritage-Museum-1-420x347.jpg'), '/') ?>" alt="Featured preview" />
+                    <img id="featuredThumbImg" src="/<?= ltrim($featVal, '/') ?>" alt="Featured preview" style="<?= $isFeatVideo ? 'display: none;' : '' ?>" />
+                    <video id="featuredThumbVideo" src="/<?= ltrim($featVal, '/') ?>" style="<?= $isFeatVideo ? '' : 'display: none;' ?> width: 100%; height: 100%; object-fit: cover;" muted playsinline></video>
                   </div>
                   <div class="featured-picker-actions">
                     <button type="button" class="btn btn-sm btn-primary" id="openFeaturedMediaBtn">
                       <i class="fa-solid fa-photo-film"></i> Select from Library / Upload
                     </button>
                     <span id="featuredImgPathText" style="font-size: 0.8rem; color: var(--text-muted); word-break: break-all;">
-                      <?= htmlspecialchars($editPost['featured_image'] ?? 'assets/images/Badagry-Heritage-Museum-1-420x347.jpg') ?>
+                      <?= $featVal ?>
                     </span>
                   </div>
                 </div>
@@ -451,7 +662,7 @@ if ($isLoggedIn) {
               <label for="postContent">Article Body (Supports HTML tags) *</label>
               <div class="editor-toolbar">
                 <button type="button" class="btn-tool btn-tool-primary" id="insertContentMediaBtn">
-                  <i class="fa-solid fa-images"></i> Insert Image from Library
+                  <i class="fa-solid fa-photo-film"></i> Insert Media (Photo / Video)
                 </button>
                 <button type="button" class="btn-tool" onclick="insertTag('h2')" title="Insert Subheading">H2</button>
                 <button type="button" class="btn-tool" onclick="insertTag('h3')" title="Insert Sub-subheading">H3</button>
@@ -460,7 +671,7 @@ if ($isLoggedIn) {
                 <button type="button" class="btn-tool" onclick="insertTag('callout')" title="Highlighted callout box"><i class="fa-solid fa-quote-left"></i> Callout</button>
               </div>
               <textarea id="postContent" name="content" class="form-textarea has-toolbar" rows="14" required
-                placeholder="Write your article content here. Click 'Insert Image from Library' above to insert images anywhere in the text..."><?= $editPost ? htmlspecialchars($editPost['content']) : '' ?></textarea>
+                placeholder="Write your article content here. Click 'Insert Media' above to insert photos or videos anywhere in the text..."><?= $editPost ? htmlspecialchars($editPost['content']) : '' ?></textarea>
             </div>
 
             <div class="form-row">
@@ -592,54 +803,68 @@ if ($isLoggedIn) {
 
       <div class="media-modal-tabs">
         <button type="button" class="media-tab-btn active" id="tabBtnBrowse" data-tab="browse">
-          <i class="fa-solid fa-images"></i> <span id="mediaTotalCount">Existing (0)</span>
+          <i class="fa-solid fa-photo-film"></i> <span id="mediaTotalCount">Library (0)</span>
         </button>
         <button type="button" class="media-tab-btn" id="tabBtnUpload" data-tab="upload">
-          <i class="fa-solid fa-cloud-arrow-up"></i> Upload New
+          <i class="fa-solid fa-cloud-arrow-up"></i> Upload Media (Multiple)
         </button>
       </div>
 
       <div class="media-modal-body">
-        <!-- Tab 1: Browse Existing Images -->
+        <!-- Tab 1: Browse Existing Media (Images & Videos) -->
         <div class="media-tab-content active" id="tabContentBrowse">
           <div class="media-browse-pane">
             <div class="media-grid-wrap">
               <div class="media-grid-filter">
                 <i class="fa-solid fa-magnifying-glass" style="color: #94a3b8;"></i>
-                <input type="text" id="mediaSearchInput" class="media-search-input" placeholder="Search photos by name (e.g. slave, museum, building, beach)..." />
+                <input type="text" id="mediaSearchInput" class="media-search-input" placeholder="Search photos and videos by name..." />
+                <div class="media-type-filters" id="mediaTypeFilters">
+                  <button type="button" class="media-filter-btn active" data-filter="all" id="filterBtnAll">All</button>
+                  <button type="button" class="media-filter-btn" data-filter="image" id="filterBtnImages"><i class="fa-solid fa-image"></i> Photos</button>
+                  <button type="button" class="media-filter-btn" data-filter="video" id="filterBtnVideos"><i class="fa-solid fa-video"></i> Videos</button>
+                </div>
                 <button type="button" class="btn btn-sm btn-outline-dark" id="refreshMediaListBtn" title="Refresh library">
                   <i class="fa-solid fa-arrows-rotate"></i>
                 </button>
               </div>
               <div class="media-grid" id="mediaGrid">
-                <!-- Image items populated via JS -->
+                <!-- Media items populated via JS -->
               </div>
             </div>
 
             <div class="media-details-sidebar" id="mediaSidebar">
-              <h4 style="margin: 0 0 12px 0; font-size: 1rem;">Selected Image</h4>
+              <h4 style="margin: 0 0 12px 0; font-size: 1rem;">Selected Media</h4>
               <img id="mediaSidebarPreview" src="" alt="" class="media-preview-big" style="display: none;" />
+              <video id="mediaSidebarVideoPreview" controls playsinline class="media-preview-big" style="display: none; background: #000;"></video>
               
               <div id="mediaSidebarEmptyNotice" style="color: var(--text-muted); font-size: 0.9rem; text-align: center; padding: 36px 0;">
                 <i class="fa-regular fa-image" style="font-size: 2.5rem; display: block; margin-bottom: 8px; color: #cbd5e1;"></i>
-                Select an image from the grid or upload a new photo.
+                Select an image or video from the grid, or upload new files.
               </div>
 
               <div id="mediaSidebarDetails" style="display: none;">
                 <div class="media-meta-text">
-                  <strong id="mediaSidebarFilename" style="color: var(--dark);"></strong><br />
-                  <span id="mediaSidebarPath" style="font-size: 0.78rem; color: #64748b;"></span>
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
+                    <strong id="mediaSidebarFilename" style="color: var(--dark); word-break: break-all;"></strong>
+                    <span id="mediaSidebarTypeBadge" class="media-type-badge"></span>
+                  </div>
+                  <span id="mediaSidebarPath" style="font-size: 0.78rem; color: #64748b; word-break: break-all; display: block;"></span>
+                  <div id="mediaSidebarMetaExtra" style="font-size: 0.75rem; color: #94a3b8; margin-top: 4px;"></div>
+                </div>
+
+                <div id="mediaFeaturedWarning" style="display: none; padding: 10px 12px; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 6px; font-size: 0.8rem; color: #92400e; margin-bottom: 12px; line-height: 1.4;">
+                  <i class="fa-solid fa-circle-info"></i> Featured article cards typically use photos. To embed this video inside the body text, switch to <strong>Insert Media into Article</strong>.
                 </div>
 
                 <!-- Fields for Content Insertion Mode -->
                 <div id="mediaContentOptions" style="display: none;">
                   <div class="form-group" style="margin-bottom: 12px;">
-                    <label style="font-size: 0.85rem; margin-bottom: 4px; font-weight: 600;">Caption (Displayed under photo)</label>
-                    <input type="text" id="mediaInputCaption" class="form-input" style="padding: 8px 10px; font-size: 0.88rem;" placeholder="e.g. Historic slave chains at the museum" />
+                    <label id="mediaCaptionLabel" style="font-size: 0.85rem; margin-bottom: 4px; font-weight: 600;">Caption (Displayed under media)</label>
+                    <input type="text" id="mediaInputCaption" class="form-input" style="padding: 8px 10px; font-size: 0.88rem;" placeholder="e.g. Authentic Badagry guided experience" />
                   </div>
-                  <div class="form-group" style="margin-bottom: 12px;">
+                  <div class="form-group" id="mediaAltGroup" style="margin-bottom: 12px;">
                     <label style="font-size: 0.85rem; margin-bottom: 4px; font-weight: 600;">Alt Description (SEO)</label>
-                    <input type="text" id="mediaInputAlt" class="form-input" style="padding: 8px 10px; font-size: 0.88rem;" placeholder="Describe what is visible in image" />
+                    <input type="text" id="mediaInputAlt" class="form-input" style="padding: 8px 10px; font-size: 0.88rem;" placeholder="Describe what is visible" />
                   </div>
                   <div class="form-group" style="margin-bottom: 12px;">
                     <label style="font-size: 0.85rem; margin-bottom: 4px; font-weight: 600;">Display Layout</label>
@@ -656,16 +881,21 @@ if ($isLoggedIn) {
           </div>
         </div>
 
-        <!-- Tab 2: Upload New Image -->
+        <!-- Tab 2: Upload New Media (Images & Videos) -->
         <div class="media-tab-content" id="tabContentUpload">
           <div class="media-upload-pane">
             <div class="media-dropzone" id="mediaDropzone">
               <i class="fa-solid fa-cloud-arrow-up"></i>
-              <h3 style="margin: 0 0 8px 0; font-size: 1.25rem;">Drag &amp; Drop Photo Here</h3>
-              <p style="margin: 0 0 16px 0; color: var(--text-muted); font-size: 0.95rem;">or click to select from your device (JPG, PNG, WebP)</p>
-              <input type="file" id="mediaFileInput" accept=".jpg,.jpeg,.png,.webp" style="display: none;" />
+              <h3 style="margin: 0 0 8px 0; font-size: 1.25rem;">Drag &amp; Drop Images &amp; Videos Here</h3>
+              <p style="margin: 0 0 16px 0; color: var(--text-muted); font-size: 0.95rem;">
+                Upload multiple files at once<br />
+                <span style="font-size: 0.85rem; color: #64748b;">
+                  Photos: <strong>JPG, PNG, WebP, GIF</strong> &bull; Videos: <strong>MP4, WebM, OGG, MOV</strong>
+                </span>
+              </p>
+              <input type="file" id="mediaFileInput" accept=".jpg,.jpeg,.png,.webp,.gif,.mp4,.webm,.ogg,.mov,.m4v" multiple style="display: none;" />
               <button type="button" class="btn btn-primary" onclick="document.getElementById('mediaFileInput').click()">
-                <i class="fa-solid fa-folder-open"></i> Browse Photos
+                <i class="fa-solid fa-folder-open"></i> Browse Files (Choose Multiple)
               </button>
             </div>
             <div class="upload-status-box" id="uploadStatusBox"></div>
@@ -676,7 +906,7 @@ if ($isLoggedIn) {
       <div class="media-modal-footer">
         <button type="button" class="btn btn-outline-dark" id="mediaCancelBtn">Cancel</button>
         <button type="button" class="btn btn-primary" id="mediaConfirmActionBtn" disabled>
-          <span id="mediaConfirmActionText">Select Image</span>
+          <span id="mediaConfirmActionText">Select Media</span>
         </button>
       </div>
     </div>
@@ -686,8 +916,9 @@ if ($isLoggedIn) {
   <script>
     (function() {
       let currentModalMode = 'featured'; // 'featured' or 'content'
-      let allLoadedImages = [];
-      let selectedImage = null;
+      let allLoadedMedia = [];
+      let selectedMedia = null;
+      let currentTypeFilter = 'all'; // 'all', 'image', or 'video'
 
       const modalOverlay = document.getElementById('mediaModalOverlay');
       const modalHeading = document.getElementById('mediaModalHeading');
@@ -700,12 +931,24 @@ if ($isLoggedIn) {
       const totalCountSpan = document.getElementById('mediaTotalCount');
       const refreshBtn = document.getElementById('refreshMediaListBtn');
 
+      const filterBtns = document.querySelectorAll('.media-filter-btn');
+      const filterBtnAll = document.getElementById('filterBtnAll');
+      const filterBtnImages = document.getElementById('filterBtnImages');
+      const filterBtnVideos = document.getElementById('filterBtnVideos');
+
       const sidebarPreview = document.getElementById('mediaSidebarPreview');
+      const sidebarVideoPreview = document.getElementById('mediaSidebarVideoPreview');
       const sidebarEmptyNotice = document.getElementById('mediaSidebarEmptyNotice');
       const sidebarDetails = document.getElementById('mediaSidebarDetails');
       const sidebarFilename = document.getElementById('mediaSidebarFilename');
       const sidebarPath = document.getElementById('mediaSidebarPath');
+      const sidebarTypeBadge = document.getElementById('mediaSidebarTypeBadge');
+      const sidebarMetaExtra = document.getElementById('mediaSidebarMetaExtra');
+      const featuredWarning = document.getElementById('mediaFeaturedWarning');
+
       const contentOptions = document.getElementById('mediaContentOptions');
+      const captionLabel = document.getElementById('mediaCaptionLabel');
+      const altGroup = document.getElementById('mediaAltGroup');
       const inputCaption = document.getElementById('mediaInputCaption');
       const inputAlt = document.getElementById('mediaInputAlt');
       const inputAlign = document.getElementById('mediaInputAlign');
@@ -722,6 +965,14 @@ if ($isLoggedIn) {
       const openFeaturedBtn = document.getElementById('openFeaturedMediaBtn');
       const insertContentBtn = document.getElementById('insertContentMediaBtn');
 
+      function formatBytes(bytes) {
+        if (!bytes || bytes <= 0) return '';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+      }
+
       function openModal(mode) {
         currentModalMode = mode;
         modalOverlay.classList.remove('modal-mode-featured', 'modal-mode-content');
@@ -730,22 +981,22 @@ if ($isLoggedIn) {
         const sidebar = document.getElementById('mediaSidebar');
         if (sidebar) sidebar.classList.remove('is-active');
 
-        selectedImage = null;
+        selectedMedia = null;
         confirmBtn.disabled = true;
 
         if (mode === 'featured') {
-          modalHeading.textContent = 'Choose Featured Image';
-          confirmText.textContent = 'Set as Featured Image';
+          modalHeading.textContent = 'Choose Featured Image / Media';
+          confirmText.textContent = 'Set as Featured';
           contentOptions.style.display = 'none';
         } else {
-          modalHeading.textContent = 'Insert Image into Article';
+          modalHeading.textContent = 'Insert Media into Article';
           confirmText.textContent = 'Insert into Article';
           contentOptions.style.display = 'block';
         }
 
         modalOverlay.classList.add('active');
         switchTab('browse');
-        if (allLoadedImages.length === 0) {
+        if (allLoadedMedia.length === 0) {
           fetchImages();
         }
       }
@@ -754,6 +1005,10 @@ if ($isLoggedIn) {
         modalOverlay.classList.remove('active');
         const sidebar = document.getElementById('mediaSidebar');
         if (sidebar) sidebar.classList.remove('is-active');
+        if (sidebarVideoPreview) {
+          sidebarVideoPreview.pause();
+          sidebarVideoPreview.src = '';
+        }
       }
 
       function switchTab(tabName) {
@@ -786,27 +1041,46 @@ if ($isLoggedIn) {
         if (e.target === modalOverlay) closeModal();
       });
 
-      // Fetch images via JSON API
+      // Filter pills
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTypeFilter = btn.dataset.filter || 'all';
+          applyFilters();
+        });
+      });
+
+      // Fetch media items via JSON API
       function fetchImages(selectFilenameOnDone) {
-        mediaGrid.innerHTML = '<div style="padding: 24px; color: #64748b; font-size: 0.95rem; grid-column: 1/-1; text-align: center;"><i class="fa-solid fa-spinner fa-spin"></i> Loading library images...</div>';
+        mediaGrid.innerHTML = '<div style="padding: 24px; color: #64748b; font-size: 0.95rem; grid-column: 1/-1; text-align: center;"><i class="fa-solid fa-spinner fa-spin"></i> Loading media library...</div>';
         fetch('/admin?action=get_images_json')
           .then(res => res.json())
           .then(data => {
-            if (data.success && data.images) {
-              allLoadedImages = data.images;
-              totalCountSpan.textContent = "Existing (" + allLoadedImages.length + ")";
-              renderGrid(allLoadedImages);
+            if (data.success && (data.media || data.images)) {
+              allLoadedMedia = data.media || data.images;
+              const imgCount = data.counts ? data.counts.images : allLoadedMedia.filter(m => m.type === 'image').length;
+              const vidCount = data.counts ? data.counts.videos : allLoadedMedia.filter(m => m.type === 'video').length;
+              const totalCount = allLoadedMedia.length;
+
+              totalCountSpan.textContent = `Library (${totalCount})`;
+              if (filterBtnAll) filterBtnAll.textContent = `All (${totalCount})`;
+              if (filterBtnImages) filterBtnImages.innerHTML = `<i class="fa-solid fa-image"></i> Photos (${imgCount})`;
+              if (filterBtnVideos) filterBtnVideos.innerHTML = `<i class="fa-solid fa-video"></i> Videos (${vidCount})`;
+
+              applyFilters();
+
               if (selectFilenameOnDone) {
-                const found = allLoadedImages.find(img => img.filename === selectFilenameOnDone);
-                if (found) selectImage(found);
+                const found = allLoadedMedia.find(m => m.filename === selectFilenameOnDone);
+                if (found) selectMedia(found);
               }
             } else {
-              mediaGrid.innerHTML = '<div style="color: #ef4444; padding: 20px; grid-column: 1/-1; text-align: center;">Failed to load library images.</div>';
+              mediaGrid.innerHTML = '<div style="color: #ef4444; padding: 20px; grid-column: 1/-1; text-align: center;">Failed to load media library.</div>';
             }
           })
           .catch(err => {
             console.error(err);
-            mediaGrid.innerHTML = '<div style="color: #ef4444; padding: 20px; grid-column: 1/-1; text-align: center;">Network error loading image library.</div>';
+            mediaGrid.innerHTML = '<div style="color: #ef4444; padding: 20px; grid-column: 1/-1; text-align: center;">Network error loading media library.</div>';
           });
       }
 
@@ -814,107 +1088,257 @@ if ($isLoggedIn) {
         refreshBtn.addEventListener('click', () => fetchImages());
       }
 
+      function applyFilters() {
+        const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        let filtered = allLoadedMedia;
+
+        if (currentTypeFilter === 'image') {
+          filtered = filtered.filter(item => item.type === 'image');
+        } else if (currentTypeFilter === 'video') {
+          filtered = filtered.filter(item => item.type === 'video');
+        }
+
+        if (q) {
+          filtered = filtered.filter(item =>
+            item.filename.toLowerCase().includes(q) ||
+            (item.title && item.title.toLowerCase().includes(q))
+          );
+        }
+
+        renderGrid(filtered);
+      }
+
       // Render grid cards
-      function renderGrid(images) {
-        if (images.length === 0) {
-          mediaGrid.innerHTML = '<div style="padding: 30px; color: #64748b; font-size: 0.95rem; grid-column: 1/-1; text-align: center;">No matching images found. Click "Upload New" above to add photos.</div>';
+      function renderGrid(items) {
+        if (!items || items.length === 0) {
+          mediaGrid.innerHTML = '<div style="padding: 30px; color: #64748b; font-size: 0.95rem; grid-column: 1/-1; text-align: center;">No matching media found. Click "Upload Media" above to upload photos or videos.</div>';
           return;
         }
 
         mediaGrid.innerHTML = '';
-        images.forEach(img => {
-          const item = document.createElement('div');
-          item.className = 'media-item' + (selectedImage && selectedImage.filename === img.filename ? ' selected' : '');
-          item.dataset.filename = img.filename;
-          item.title = img.filename;
-          const cleanName = escapeHtml(img.filename);
-          item.innerHTML = `
-            <img src="${img.url}" alt="${cleanName}" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/' + encodeURIComponent('${img.filename}');" />
-            <span class="select-check"><i class="fa-solid fa-check"></i></span>
-            <span class="media-item-name">${cleanName}</span>
-          `;
+        items.forEach(item => {
+          const el = document.createElement('div');
+          const isVid = (item.type === 'video');
+          el.className = 'media-item' + (isVid ? ' is-video' : '') + (selectedMedia && selectedMedia.filename === item.filename ? ' selected' : '');
+          el.dataset.filename = item.filename;
+          el.dataset.type = item.type;
+          el.title = item.filename + (isVid ? ' (Video)' : ' (Photo)');
+          const cleanName = escapeHtml(item.filename);
 
-          item.addEventListener('click', () => selectImage(img));
-          item.addEventListener('dblclick', () => {
-            selectImage(img);
+          if (isVid) {
+            const extTag = escapeHtml((item.ext || item.filename.split('.').pop() || 'mp4').toUpperCase());
+            el.innerHTML = `
+              <div class="media-video-thumb">
+                <video src="${item.url}#t=0.5" preload="metadata" muted playsinline></video>
+                <div class="media-video-overlay">
+                  <i class="fa-solid fa-play"></i>
+                  <span class="media-video-tag">${extTag}</span>
+                </div>
+              </div>
+              <span class="select-check"><i class="fa-solid fa-check"></i></span>
+              <span class="media-item-name">${cleanName}</span>
+            `;
+          } else {
+            el.innerHTML = `
+              <img src="${item.url}" alt="${cleanName}" loading="lazy" onerror="this.onerror=null;this.src='/assets/images/' + encodeURIComponent('${item.filename}');" />
+              <span class="select-check"><i class="fa-solid fa-check"></i></span>
+              <span class="media-item-name">${cleanName}</span>
+            `;
+          }
+
+          el.addEventListener('click', () => selectMedia(item));
+          el.addEventListener('dblclick', () => {
+            selectMedia(item);
             confirmBtn.click();
           });
-          mediaGrid.appendChild(item);
+          mediaGrid.appendChild(el);
         });
       }
 
-      function selectImage(img) {
-        selectedImage = img;
+      function selectMedia(item) {
+        selectedMedia = item;
         confirmBtn.disabled = false;
 
         document.querySelectorAll('.media-item').forEach(el => {
-          el.classList.toggle('selected', el.dataset.filename === img.filename);
+          el.classList.toggle('selected', el.dataset.filename === item.filename);
         });
 
         const sidebar = document.getElementById('mediaSidebar');
         if (sidebar) sidebar.classList.add('is-active');
 
         sidebarEmptyNotice.style.display = 'none';
-        sidebarPreview.style.display = 'block';
         sidebarDetails.style.display = 'block';
 
-        sidebarPreview.src = img.url;
-        sidebarFilename.textContent = img.filename;
-        sidebarPath.textContent = 'assets/images/' + img.filename;
+        const isVid = (item.type === 'video');
+        const ext = (item.ext || item.filename.split('.').pop() || '').toUpperCase();
 
-        if (inputAlt) inputAlt.value = img.title || '';
-        if (inputCaption) inputCaption.value = img.title || '';
+        if (isVid) {
+          sidebarPreview.style.display = 'none';
+          sidebarPreview.src = '';
+          if (sidebarVideoPreview) {
+            sidebarVideoPreview.style.display = 'block';
+            sidebarVideoPreview.src = item.url;
+            sidebarVideoPreview.load();
+          }
+          if (sidebarTypeBadge) {
+            sidebarTypeBadge.textContent = 'VIDEO (' + ext + ')';
+            sidebarTypeBadge.className = 'media-type-badge badge-video';
+          }
+          if (captionLabel) captionLabel.textContent = 'Caption (Displayed under video)';
+          if (altGroup) altGroup.style.display = 'none';
+
+          if (currentModalMode === 'featured') {
+            if (featuredWarning) featuredWarning.style.display = 'block';
+            confirmText.textContent = 'Set as Featured Video';
+          } else {
+            if (featuredWarning) featuredWarning.style.display = 'none';
+            confirmText.innerHTML = '<i class="fa-solid fa-film"></i> Insert Video into Article';
+          }
+        } else {
+          if (sidebarVideoPreview) {
+            sidebarVideoPreview.pause();
+            sidebarVideoPreview.style.display = 'none';
+            sidebarVideoPreview.src = '';
+          }
+          sidebarPreview.style.display = 'block';
+          sidebarPreview.src = item.url;
+          if (sidebarTypeBadge) {
+            sidebarTypeBadge.textContent = 'IMAGE (' + ext + ')';
+            sidebarTypeBadge.className = 'media-type-badge badge-image';
+          }
+          if (captionLabel) captionLabel.textContent = 'Caption (Displayed under photo)';
+          if (altGroup) altGroup.style.display = 'block';
+          if (featuredWarning) featuredWarning.style.display = 'none';
+
+          if (currentModalMode === 'featured') {
+            confirmText.textContent = 'Set as Featured Image';
+          } else {
+            confirmText.innerHTML = '<i class="fa-solid fa-image"></i> Insert Image into Article';
+          }
+        }
+
+        sidebarFilename.textContent = item.filename;
+        sidebarPath.textContent = item.relPath || item.url;
+
+        if (sidebarMetaExtra) {
+          const parts = [];
+          if (item.size) parts.push('Size: ' + formatBytes(item.size));
+          if (item.geo) parts.push(item.geo);
+          sidebarMetaExtra.textContent = parts.join(' • ');
+        }
+
+        if (inputAlt) inputAlt.value = item.title || '';
+        if (inputCaption) inputCaption.value = item.title || '';
       }
 
       // Search filter
       if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          const q = e.target.value.toLowerCase().trim();
-          if (!q) {
-            renderGrid(allLoadedImages);
-            return;
-          }
-          const filtered = allLoadedImages.filter(img => 
-            img.filename.toLowerCase().includes(q) || 
-            (img.title && img.title.toLowerCase().includes(q))
-          );
-          renderGrid(filtered);
-        });
+        searchInput.addEventListener('input', () => applyFilters());
       }
 
-      // Handle File Upload via AJAX
-      function handleFileUpload(file) {
-        if (!file) return;
-        const formData = new FormData();
-        formData.append('image_file', file);
+      // Handle Multiple Files Upload via AJAX
+      function handleMultipleFileUploads(files) {
+        if (!files || files.length === 0) return;
+        const fileArray = Array.from(files);
+        const total = fileArray.length;
 
-        uploadStatusBox.innerHTML = '<span style="color: var(--primary);"><i class="fa-solid fa-spinner fa-spin"></i> Uploading photo and synchronizing sitemaps...</span>';
+        uploadStatusBox.innerHTML = `
+          <div class="upload-batch-container">
+            <div class="upload-batch-header" id="uploadBatchHeader">
+              <i class="fa-solid fa-spinner fa-spin" style="color: var(--primary);"></i> Uploading ${total} file${total > 1 ? 's' : ''}...
+            </div>
+            <div class="upload-batch-list" id="uploadBatchList"></div>
+          </div>
+        `;
 
-        fetch('/admin?action=ajax_upload_image', {
-          method: 'POST',
-          body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            uploadStatusBox.innerHTML = '<span style="color: #166534;"><i class="fa-solid fa-circle-check"></i> Uploaded: ' + escapeHtml(data.filename) + '! Sitemaps updated (' + data.sitemap_images + ' total images indexed).</span>';
-            // Refresh library and auto-select this image
-            switchTab('browse');
-            fetchImages(data.filename);
-          } else {
-            uploadStatusBox.innerHTML = '<span style="color: #991b1b;"><i class="fa-solid fa-circle-exclamation"></i> ' + escapeHtml(data.error || 'Upload failed.') + '</span>';
+        const batchList = document.getElementById('uploadBatchList');
+        const batchHeader = document.getElementById('uploadBatchHeader');
+        let completed = 0;
+        let successfulUploads = [];
+        let errors = [];
+
+        // Upload files sequentially for smooth progress reporting and avoiding PHP post limit issues
+        async function processFiles() {
+          for (let i = 0; i < fileArray.length; i++) {
+            const file = fileArray[i];
+            const isVid = /\.(mp4|webm|ogg|mov|m4v)$/i.test(file.name);
+            const icon = isVid ? 'fa-film' : 'fa-image';
+
+            const itemRow = document.createElement('div');
+            itemRow.className = 'upload-batch-item';
+            itemRow.innerHTML = `
+              <span class="batch-item-icon"><i class="fa-solid ${icon}"></i></span>
+              <span class="batch-item-name" title="${escapeHtml(file.name)}">${escapeHtml(file.name)} (${formatBytes(file.size)})</span>
+              <span class="batch-item-status" id="batchItemStatus_${i}"><i class="fa-solid fa-spinner fa-spin" style="color: var(--primary);"></i></span>
+            `;
+            batchList.appendChild(itemRow);
+
+            const statusEl = document.getElementById(`batchItemStatus_${i}`);
+            const formData = new FormData();
+            formData.append('media_files[]', file);
+
+            try {
+              const res = await fetch('/admin?action=ajax_upload_image', {
+                method: 'POST',
+                body: formData
+              });
+              const data = await res.json();
+              if (data.success) {
+                statusEl.innerHTML = '<span style="color: #166534;"><i class="fa-solid fa-circle-check"></i> Done</span>';
+                if (data.uploaded && data.uploaded.length) {
+                  successfulUploads.push(...data.uploaded);
+                } else if (data.filename) {
+                  successfulUploads.push(data);
+                }
+              } else {
+                const msg = data.error || 'Failed';
+                errors.push(`${file.name}: ${msg}`);
+                statusEl.innerHTML = `<span style="color: #991b1b;" title="${escapeHtml(msg)}"><i class="fa-solid fa-circle-exclamation"></i> Error</span>`;
+              }
+            } catch (err) {
+              errors.push(`${file.name}: Network error`);
+              statusEl.innerHTML = '<span style="color: #991b1b;"><i class="fa-solid fa-circle-exclamation"></i> Failed</span>';
+            }
+            completed++;
           }
-        })
-        .catch(err => {
-          console.error(err);
-          uploadStatusBox.innerHTML = '<span style="color: #991b1b;"><i class="fa-solid fa-circle-exclamation"></i> Upload request failed.</span>';
-        });
+
+          // Complete reporting
+          if (successfulUploads.length > 0) {
+            const imgCount = successfulUploads.filter(u => u.type === 'image').length;
+            const vidCount = successfulUploads.filter(u => u.type === 'video').length;
+            const parts = [];
+            if (imgCount > 0) parts.push(`${imgCount} image${imgCount > 1 ? 's' : ''}`);
+            if (vidCount > 0) parts.push(`${vidCount} video${vidCount > 1 ? 's' : ''}`);
+
+            batchHeader.innerHTML = `
+              <div style="color: #166534; font-weight: 600;">
+                <i class="fa-solid fa-circle-check"></i> Uploaded ${parts.join(' and ')} successfully!
+                ${errors.length > 0 ? ` <span style="color: #991b1b; font-size: 0.85rem;">(${errors.length} failed)</span>` : ''}
+              </div>
+            `;
+
+            // Auto-switch to Browse tab and select newest uploaded media
+            const latest = successfulUploads[successfulUploads.length - 1];
+            setTimeout(() => {
+              switchTab('browse');
+              fetchImages(latest ? latest.filename : null);
+            }, 1000);
+          } else {
+            batchHeader.innerHTML = `
+              <div style="color: #991b1b; font-weight: 600;">
+                <i class="fa-solid fa-circle-exclamation"></i> Upload failed. Please check file format and file size limits.
+              </div>
+            `;
+          }
+        }
+
+        processFiles();
       }
 
       if (fileInput) {
         fileInput.addEventListener('change', (e) => {
-          if (e.target.files && e.target.files[0]) {
-            handleFileUpload(e.target.files[0]);
+          if (e.target.files && e.target.files.length > 0) {
+            handleMultipleFileUploads(e.target.files);
           }
         });
       }
@@ -934,26 +1358,43 @@ if ($isLoggedIn) {
           });
         });
         dropzone.addEventListener('drop', (e) => {
-          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
-            handleFileUpload(e.dataTransfer.files[0]);
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            handleMultipleFileUploads(e.dataTransfer.files);
           }
         });
       }
 
       // Confirm Action Button
       confirmBtn.addEventListener('click', () => {
-        if (!selectedImage) return;
+        if (!selectedMedia) return;
 
         if (currentModalMode === 'featured') {
-          // Set Featured Image
+          // Set Featured Media
           const postImageInput = document.getElementById('postImage');
           const thumbImg = document.getElementById('featuredThumbImg');
+          const thumbVideo = document.getElementById('featuredThumbVideo');
           const pathText = document.getElementById('featuredImgPathText');
 
-          const relPath = 'assets/images/' + selectedImage.filename;
+          const relPath = selectedMedia.relPath || ('assets/' + (selectedMedia.type === 'video' ? 'videos/' : 'images/') + selectedMedia.filename);
           if (postImageInput) postImageInput.value = relPath;
-          if (thumbImg) thumbImg.src = selectedImage.url;
           if (pathText) pathText.textContent = relPath;
+
+          if (selectedMedia.type === 'video') {
+            if (thumbImg) thumbImg.style.display = 'none';
+            if (thumbVideo) {
+              thumbVideo.style.display = 'block';
+              thumbVideo.src = selectedMedia.url;
+            }
+          } else {
+            if (thumbVideo) {
+              thumbVideo.pause();
+              thumbVideo.style.display = 'none';
+            }
+            if (thumbImg) {
+              thumbImg.style.display = 'block';
+              thumbImg.src = selectedMedia.url;
+            }
+          }
 
           closeModal();
         } else {
@@ -961,15 +1402,25 @@ if ($isLoggedIn) {
           const contentTextarea = document.getElementById('postContent');
           if (!contentTextarea) return;
 
-          const altText = (inputAlt && inputAlt.value.trim()) || selectedImage.title || '';
           const captionText = (inputCaption && inputCaption.value.trim()) || '';
           const align = (inputAlign && inputAlign.value) || 'center';
 
           let snippet = '';
-          if (captionText) {
-            snippet = `\n<figure class="img-${align}">\n  <img src="/assets/images/${selectedImage.filename}" alt="${escapeHtml(altText)}" loading="lazy" />\n  <figcaption>${escapeHtml(captionText)}</figcaption>\n</figure>\n`;
+          if (selectedMedia.type === 'video') {
+            const ext = selectedMedia.ext || selectedMedia.filename.split('.').pop().toLowerCase();
+            const sourceMime = (ext === 'mov') ? 'video/quicktime' : 'video/' + ext;
+            if (captionText) {
+              snippet = `\n<figure class="video-container video-${align}">\n  <video controls preload="metadata" playsinline>\n    <source src="${selectedMedia.url}" type="${sourceMime}">\n    Your browser does not support HTML5 video.\n  </video>\n  <figcaption>${escapeHtml(captionText)}</figcaption>\n</figure>\n`;
+            } else {
+              snippet = `\n<figure class="video-container video-${align}">\n  <video controls preload="metadata" playsinline>\n    <source src="${selectedMedia.url}" type="${sourceMime}">\n    Your browser does not support HTML5 video.\n  </video>\n</figure>\n`;
+            }
           } else {
-            snippet = `\n<figure class="img-${align}">\n  <img src="/assets/images/${selectedImage.filename}" alt="${escapeHtml(altText)}" loading="lazy" />\n</figure>\n`;
+            const altText = (inputAlt && inputAlt.value.trim()) || selectedMedia.title || '';
+            if (captionText) {
+              snippet = `\n<figure class="img-${align}">\n  <img src="${selectedMedia.url}" alt="${escapeHtml(altText)}" loading="lazy" />\n  <figcaption>${escapeHtml(captionText)}</figcaption>\n</figure>\n`;
+            } else {
+              snippet = `\n<figure class="img-${align}">\n  <img src="${selectedMedia.url}" alt="${escapeHtml(altText)}" loading="lazy" />\n</figure>\n`;
+            }
           }
 
           insertTextAtCursor(contentTextarea, snippet);

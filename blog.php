@@ -311,8 +311,12 @@ $totalPosts = count($posts);
             <article class="blog-card">
               <div class="blog-card-img-wrap">
                 <a href="/blog/<?= urlencode($post['slug']) ?>">
-                  <img src="/<?= ltrim(htmlspecialchars($post['featured_image'] ?: 'assets/images/Point-of-No-Return-420x347.jpg'), '/') ?>"
-                    alt="<?= htmlspecialchars($post['title']) ?>" loading="lazy" />
+                  <?php if (preg_match('/\.(mp4|webm|ogg|mov|m4v)$/i', $post['featured_image'] ?? '')): ?>
+                    <video src="/<?= ltrim(htmlspecialchars($post['featured_image']), '/') ?>#t=0.5" muted playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                  <?php else: ?>
+                    <img src="/<?= ltrim(htmlspecialchars($post['featured_image'] ?: 'assets/images/Point-of-No-Return-420x347.jpg'), '/') ?>"
+                      alt="<?= htmlspecialchars($post['title']) ?>" loading="lazy" />
+                  <?php endif; ?>
                 </a>
                 <span class="blog-card-badge"><?= htmlspecialchars($post['category']) ?></span>
               </div>
