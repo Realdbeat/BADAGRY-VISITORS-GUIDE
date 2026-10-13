@@ -223,6 +223,41 @@ function getAllProjectImages(): array {
     return $images;
 }
 
+if (!function_exists('getAllProjectVideos')) {
+    /**
+     * Scans assets/videos and returns all valid video records with metadata
+     */
+    function getAllProjectVideos(): array {
+        $videos = [];
+        $videosDir = __DIR__ . '/assets/videos';
+        $allowed = ['mp4', 'webm', 'ogg', 'mov', 'm4v'];
+        if (is_dir($videosDir)) {
+            $files = scandir($videosDir);
+            foreach ($files as $file) {
+                if ($file === '.' || $file === '..' || $file === '.gitkeep') continue;
+                $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                if (!in_array($ext, $allowed)) continue;
+                $filePath = $videosDir . '/' . $file;
+                $title = humanizeImageFilename($file);
+                $videos[$file] = [
+                    'type' => 'video',
+                    'filename' => $file,
+                    'ext' => $ext,
+                    'url' => '/assets/videos/' . $file,
+                    'fullUrl' => defined('SITE_BASE_URL') ? SITE_BASE_URL . '/assets/videos/' . $file : '/assets/videos/' . $file,
+                    'relPath' => 'assets/videos/' . $file,
+                    'title' => $title,
+                    'caption' => $title . ' - Authentic video highlight from Badagry Visitors Guide.',
+                    'geo' => 'Badagry, Lagos State, Nigeria',
+                    'size' => file_exists($filePath) ? filesize($filePath) : 0,
+                    'mtime' => file_exists($filePath) ? filemtime($filePath) : 0
+                ];
+            }
+        }
+        return $videos;
+    }
+}
+
 /**
  * Escapes strings specifically for XML 1.0 specifications
  */
@@ -301,6 +336,15 @@ function generateSitemaps(): array {
     $mainXml .= "    <loc>" . xmlEscape(SITE_BASE_URL . '/blog/') . "</loc>\n";
     $mainXml .= "    <lastmod>{$now}</lastmod>\n";
     $mainXml .= "    <changefreq>daily</changefreq>\n";
+    $mainXml .= "    <priority>0.9</priority>\n";
+    $mainXml .= "  </url>\n\n";
+
+    // Photo & Video Gallery Catalog
+    $mainXml .= "  <!-- Photo & Video Gallery Catalog -->\n";
+    $mainXml .= "  <url>\n";
+    $mainXml .= "    <loc>" . xmlEscape(SITE_BASE_URL . '/gallery/') . "</loc>\n";
+    $mainXml .= "    <lastmod>{$now}</lastmod>\n";
+    $mainXml .= "    <changefreq>weekly</changefreq>\n";
     $mainXml .= "    <priority>0.9</priority>\n";
     $mainXml .= "  </url>\n\n";
 

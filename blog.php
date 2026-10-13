@@ -159,6 +159,7 @@ $totalPosts = count($posts);
         <li><a href="/#categories" class="mobile-nav-link">Services</a></li>
         <li><a href="/#tours" class="mobile-nav-link">Tours</a></li>
         <li><a href="/#corridor" class="mobile-nav-link">Destinations</a></li>
+        <li><a href="/gallery/" class="mobile-nav-link">Gallery</a></li>
         <li><a href="/blog/" class="mobile-nav-link active">Journal</a></li>
         <li><a href="/admin" class="mobile-nav-link"><i class="fa-solid fa-lock"></i> Author Login</a></li>
         <li><a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener"
@@ -217,6 +218,7 @@ $totalPosts = count($posts);
           <li class="nav-item"><a href="/#categories" class="nav-link">Services</a></li>
           <li class="nav-item"><a href="/#tours" class="nav-link">Tours</a></li>
           <li class="nav-item"><a href="/#corridor" class="nav-link">Destinations</a></li>
+          <li class="nav-item"><a href="/gallery/" class="nav-link">Gallery</a></li>
           <li class="nav-item"><a href="/blog/" class="nav-link active">Journal</a></li>
           <li class="nav-item"><a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank"
               rel="noopener" class="nav-link">Contact</a></li>
@@ -400,6 +402,7 @@ $totalPosts = count($posts);
             <li><a href="/">Home</a></li>
             <li><a href="/#about">About Us</a></li>
             <li><a href="/#tours">Our Tours</a></li>
+            <li><a href="/gallery/">Photo Gallery</a></li>
             <li><a href="/blog/">Our Journal</a></li>
             <li><a href="/admin">Author Login</a></li>
           </ul>

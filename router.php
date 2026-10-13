@@ -25,6 +25,12 @@ if ($trimmedUri === 'blog') {
     exit;
 }
 
+// Photo & Video Gallery: /gallery or /gallery/
+if ($trimmedUri === 'gallery') {
+    require __DIR__ . '/gallery.php';
+    exit;
+}
+
 // Single Blog Post: /blog/{slug}
 if (preg_match('#^blog/([a-zA-Z0-9_-]+)$#', $trimmedUri, $matches)) {
     $_GET['slug'] = $matches[1];
