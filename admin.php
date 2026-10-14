@@ -475,7 +475,7 @@ if ($isLoggedIn) {
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css?v=2" />
 </head>
 
 <body class="admin-body">
@@ -551,6 +551,10 @@ if ($isLoggedIn) {
             <a href="/admin?action=update_sitemaps" class="btn btn-outline-dark" title="Regenerate both sitemap.xml and image-sitemap.xml"><i class="fa-solid fa-arrows-rotate"></i> Update Sitemaps</a>
             <a href="/admin?action=new" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Write New Article</a>
           <?php else: ?>
+            <button type="button" class="btn btn-outline-dark" id="previewArticleBtnTop" title="Preview article appearance with live formatting"><i class="fa-solid fa-eye"></i> Preview Article</button>
+            <?php if ($editPost && !empty($editPost['slug'])): ?>
+              <a href="/blog/<?= htmlspecialchars($editPost['slug']) ?>" target="_blank" class="btn btn-outline-dark" title="View published article on live site"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Live</a>
+            <?php endif; ?>
             <a href="/admin" class="btn btn-outline-dark"><i class="fa-solid fa-list"></i> Back to All Articles</a>
           <?php endif; ?>
         </div>
@@ -688,8 +692,12 @@ if ($isLoggedIn) {
               </div>
             </div>
 
-            <div class="admin-form-actions">
+            <div class="admin-form-actions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
               <button type="submit" class="btn btn-primary"><?= $action === 'edit' ? 'Update Article' : 'Publish Article' ?> <i class="fa-solid fa-check"></i></button>
+              <button type="button" class="btn btn-outline-dark" id="previewArticleBtnBottom" title="Preview article appearance with live formatting"><i class="fa-solid fa-eye"></i> Preview Article</button>
+              <?php if ($editPost && !empty($editPost['slug'])): ?>
+                <a href="/blog/<?= htmlspecialchars($editPost['slug']) ?>" target="_blank" class="btn btn-outline-dark" title="View published article on live site"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Live</a>
+              <?php endif; ?>
               <a href="/admin" class="btn btn-outline-dark">Cancel</a>
             </div>
           </form>
@@ -794,6 +802,88 @@ if ($isLoggedIn) {
   </main>
 
   <?php if ($isLoggedIn): ?>
+  <!-- Live Article Preview Modal -->
+  <div class="article-preview-modal-overlay" id="articlePreviewOverlay" role="dialog" aria-modal="true" aria-label="Live Article Preview">
+    <div class="article-preview-modal-container">
+      <div class="article-preview-modal-header">
+        <div class="preview-header-left">
+          <span class="preview-badge"><i class="fa-solid fa-eye"></i> Live Article Preview</span>
+          <span class="preview-status-pill" id="previewStatusPill">Draft Mode</span>
+        </div>
+        <div class="preview-header-actions">
+          <div class="preview-device-switch">
+            <button type="button" class="device-btn active" data-device="desktop" title="Desktop View"><i class="fa-solid fa-desktop"></i></button>
+            <button type="button" class="device-btn" data-device="tablet" title="Tablet View"><i class="fa-solid fa-tablet-screen-button"></i></button>
+            <button type="button" class="device-btn" data-device="mobile" title="Mobile View"><i class="fa-solid fa-mobile-screen-button"></i></button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-white" id="previewOpenNewTabBtn" title="Open full-page preview in a new browser tab">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in New Tab
+          </button>
+          <button type="button" class="preview-modal-close" id="articlePreviewCloseBtn" aria-label="Close preview">&times;</button>
+        </div>
+      </div>
+
+      <div class="article-preview-viewport-wrap" id="previewViewportWrap">
+        <div class="article-preview-frame-container" id="previewFrameContainer">
+          <!-- Live Rendered Article -->
+          <div class="preview-article-body-wrapper">
+            <div class="blog-breadcrumb-bar" style="margin-bottom: 20px; padding: 0;">
+              <nav class="breadcrumb-nav">
+                <a href="/" onclick="return false;">Home</a>
+                <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
+                <a href="/blog/" onclick="return false;">Travel Journal</a>
+                <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
+                <span class="current" id="previewBreadcrumbTitle">Article Title</span>
+              </nav>
+            </div>
+
+            <article class="article-detail-section" style="padding: 0;">
+              <div class="article-container" style="max-width: 100%; padding: 0;">
+                <header class="article-header">
+                  <div class="article-category-badge" id="previewCategory">Travel Guides</div>
+                  <h1 class="article-title" id="previewTitle">Article Title</h1>
+
+                  <div class="article-meta-row">
+                    <div class="article-author">
+                      <img src="/assets/logo.jpg" alt="Badagry Visitors Guide" class="author-avatar" />
+                      <div>
+                        <span class="author-name">Badagry Visitors Guide</span>
+                        <span class="author-role">Local Historians &amp; Travel Specialists</span>
+                      </div>
+                    </div>
+                    <div class="article-dates">
+                      <span><i class="fa-regular fa-calendar"></i> <?= date('F d, Y') ?></span>
+                      <span><i class="fa-regular fa-clock"></i> <span id="previewReadTime">6 min read</span></span>
+                      <span><i class="fa-regular fa-eye"></i> Preview Mode</span>
+                    </div>
+                  </div>
+                </header>
+
+                <div class="article-hero-img-wrap" id="previewHeroWrap">
+                  <img src="" alt="" id="previewHeroImg" class="article-hero-img" style="display: none; width: 100%; max-height: 480px; object-fit: cover;" />
+                  <video src="" controls class="article-hero-img" id="previewHeroVideo" style="display: none; width: 100%; max-height: 480px; object-fit: cover; background: #000; border-radius: var(--radius-lg);"></video>
+                </div>
+
+                <div class="article-body" id="previewContent">
+                  <!-- Live Content Populated here -->
+                </div>
+
+                <div class="article-cta-box" style="margin-top: 40px;">
+                  <div class="cta-box-icon"><i class="fa-solid fa-compass"></i></div>
+                  <div class="cta-box-text">
+                    <h3>Want to visit these historical landmarks with an indigenous guide?</h3>
+                    <p>We personalize day trips and multi-day tours across Badagry, Benin Republic, and Togo around your schedule and budget.</p>
+                  </div>
+                  <a href="#" class="btn btn-primary" onclick="return false;">Plan Your Tour</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Interactive Media Library Modal -->
   <div class="media-modal-overlay" id="mediaModalOverlay">
     <div class="media-modal">
@@ -1439,6 +1529,231 @@ if ($isLoggedIn) {
           .replace(/</g, '&lt;')
           .replace(/>/g, '&gt;')
           .replace(/"/g, '&quot;');
+      }
+    })();
+
+    /* ========================================================
+       Article Live Preview Controller
+    ======================================================== */
+    (function initArticlePreview() {
+      const btnPreviewTop = document.getElementById('previewArticleBtnTop');
+      const btnPreviewBottom = document.getElementById('previewArticleBtnBottom');
+      const modalOverlay = document.getElementById('articlePreviewOverlay');
+      const closeBtn = document.getElementById('articlePreviewCloseBtn');
+      const openNewTabBtn = document.getElementById('previewOpenNewTabBtn');
+      const deviceBtns = document.querySelectorAll('.device-btn');
+      const frameContainer = document.getElementById('previewFrameContainer');
+
+      const elTitle = document.getElementById('postTitle');
+      const elCategory = document.getElementById('postCategory');
+      const elReadTime = document.getElementById('postReadTime');
+      const elImage = document.getElementById('postImage');
+      const elContent = document.getElementById('postContent');
+      const elStatus = document.getElementById('postStatus');
+
+      const previewTitle = document.getElementById('previewTitle');
+      const previewBreadcrumb = document.getElementById('previewBreadcrumbTitle');
+      const previewCategory = document.getElementById('previewCategory');
+      const previewReadTime = document.getElementById('previewReadTime');
+      const previewHeroWrap = document.getElementById('previewHeroWrap');
+      const previewHeroImg = document.getElementById('previewHeroImg');
+      const previewHeroVideo = document.getElementById('previewHeroVideo');
+      const previewContent = document.getElementById('previewContent');
+      const previewStatusPill = document.getElementById('previewStatusPill');
+
+      function openPreview() {
+        if (!modalOverlay) return;
+
+        const titleVal = (elTitle && elTitle.value.trim()) || 'Untitled Article (Preview)';
+        const catVal = (elCategory && elCategory.value.trim()) || 'Travel Guides';
+        const readVal = (elReadTime && elReadTime.value.trim()) || '5 min read';
+        const imgVal = (elImage && elImage.value.trim()) || '';
+        const contentVal = (elContent && elContent.value.trim()) || '';
+        const statusVal = (elStatus && elStatus.value) || 'draft';
+
+        if (previewTitle) previewTitle.textContent = titleVal;
+        if (previewBreadcrumb) previewBreadcrumb.textContent = titleVal;
+        if (previewCategory) previewCategory.textContent = catVal;
+        if (previewReadTime) previewReadTime.textContent = readVal;
+        if (previewStatusPill) previewStatusPill.textContent = (statusVal === 'published' ? 'Published Mode' : 'Draft Mode');
+
+        // Hero media
+        const isVideo = /\.(mp4|webm|ogg|mov|m4v)$/i.test(imgVal);
+        if (imgVal) {
+          const mediaSrc = '/' + imgVal.replace(/^\/+/, '');
+          if (previewHeroWrap) previewHeroWrap.style.display = 'block';
+          if (isVideo) {
+            if (previewHeroImg) previewHeroImg.style.display = 'none';
+            if (previewHeroVideo) {
+              previewHeroVideo.src = mediaSrc;
+              previewHeroVideo.style.display = 'block';
+            }
+          } else {
+            if (previewHeroVideo) previewHeroVideo.style.display = 'none';
+            if (previewHeroImg) {
+              previewHeroImg.src = mediaSrc;
+              previewHeroImg.alt = titleVal;
+              previewHeroImg.style.display = 'block';
+            }
+          }
+        } else {
+          if (previewHeroWrap) previewHeroWrap.style.display = 'none';
+        }
+
+        // Body content
+        if (previewContent) {
+          if (contentVal) {
+            previewContent.innerHTML = contentVal;
+          } else {
+            previewContent.innerHTML = '<div style="padding: 30px; text-align: center; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 12px; color: #64748b;"><i class="fa-regular fa-file-lines" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i><em>No article body content entered yet. Start writing in the editor or insert media to see the preview.</em></div>';
+          }
+        }
+
+        modalOverlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closePreview() {
+        if (!modalOverlay) return;
+        modalOverlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      if (btnPreviewTop) btnPreviewTop.addEventListener('click', openPreview);
+      if (btnPreviewBottom) btnPreviewBottom.addEventListener('click', openPreview);
+      if (closeBtn) closeBtn.addEventListener('click', closePreview);
+
+      if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+          if (e.target === modalOverlay) closePreview();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('is-open')) {
+          closePreview();
+        }
+      });
+
+      // Viewport Switcher (Desktop, Tablet, Mobile)
+      deviceBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          deviceBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const dev = btn.dataset.device;
+          if (frameContainer) {
+            frameContainer.classList.remove('mode-tablet', 'mode-mobile');
+            if (dev === 'tablet') frameContainer.classList.add('mode-tablet');
+            if (dev === 'mobile') frameContainer.classList.add('mode-mobile');
+          }
+        });
+      });
+
+      // Open standalone preview in new browser tab
+      if (openNewTabBtn) {
+        openNewTabBtn.addEventListener('click', () => {
+          const titleVal = (elTitle && elTitle.value.trim()) || 'Untitled Article (Preview)';
+          const catVal = (elCategory && elCategory.value.trim()) || 'Travel Guides';
+          const readVal = (elReadTime && elReadTime.value.trim()) || '5 min read';
+          const imgVal = (elImage && elImage.value.trim()) || '';
+          const contentVal = (elContent && elContent.value.trim()) || '<p><em>No content written yet</em></p>';
+          const isVideo = /\.(mp4|webm|ogg|mov|m4v)$/i.test(imgVal);
+          const mediaSrc = imgVal ? '/' + imgVal.replace(/^\/+/, '') : '';
+
+          let heroHtml = '';
+          if (imgVal) {
+            if (isVideo) {
+              heroHtml = `<div class="article-hero-img-wrap"><video src="${mediaSrc}" controls class="article-hero-img" style="width: 100%; max-height: 520px; object-fit: cover; background: #000; border-radius: var(--radius-lg);"></video></div>`;
+            } else {
+              heroHtml = `<div class="article-hero-img-wrap"><img src="${mediaSrc}" alt="${escapeHtml(titleVal)}" class="article-hero-img" /></div>`;
+            }
+          }
+
+          function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+          }
+
+          const standaloneHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview: ${escapeHtml(titleVal)} | Badagry Visitors Guide</title>
+  <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .preview-watermark-bar {
+      background: #0f172a;
+      color: #86efac;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-watermark-bar">
+    <i class="fa-solid fa-eye"></i> Live Draft Preview &mdash; Badagry Visitors Guide
+    <button onclick="window.close()" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 4px 14px; border-radius: 20px; cursor: pointer; margin-left: 10px; font-size: 0.78rem;">Close Window</button>
+  </div>
+  <div class="blog-breadcrumb-bar">
+    <div class="site-container">
+      <nav class="breadcrumb-nav">
+        <a href="/">Home</a>
+        <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
+        <a href="/blog/">Travel Journal</a>
+        <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
+        <span class="current">${escapeHtml(titleVal)}</span>
+      </nav>
+    </div>
+  </div>
+  <article class="article-detail-section section-padding">
+    <div class="site-container article-container">
+      <header class="article-header">
+        <div class="article-category-badge">${escapeHtml(catVal)}</div>
+        <h1 class="article-title">${escapeHtml(titleVal)}</h1>
+        <div class="article-meta-row">
+          <div class="article-author">
+            <img src="/assets/logo.jpg" alt="Author" class="author-avatar">
+            <div>
+              <span class="author-name">Badagry Visitors Guide</span>
+              <span class="author-role">Local Historians &amp; Travel Specialists</span>
+            </div>
+          </div>
+          <div class="article-dates">
+            <span><i class="fa-regular fa-calendar"></i> Today</span>
+            <span><i class="fa-regular fa-clock"></i> ${escapeHtml(readVal)}</span>
+            <span><i class="fa-regular fa-eye"></i> Preview Mode</span>
+          </div>
+        </div>
+      </header>
+      ${heroHtml}
+      <div class="article-body">
+        ${contentVal}
+      </div>
+    </div>
+  </article>
+</body>
+</html>`;
+
+          const blob = new Blob([standaloneHtml], { type: 'text/html' });
+          const blobUrl = URL.createObjectURL(blob);
+          window.open(blobUrl, '_blank');
+        });
       }
     })();
 
