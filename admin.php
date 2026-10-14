@@ -34,66 +34,70 @@ $isLoggedIn = !empty($_SESSION['admin_logged_in']);
 // Actions requiring authentication
 if ($isLoggedIn) {
     // Helper: Normalize $_FILES array for single or multiple uploads
-    function normalizeFilesArray($files): array {
-        $normalized = [];
-        if (empty($files) || !isset($files['name'])) {
+    if (!function_exists('normalizeFilesArray')) {
+        function normalizeFilesArray($files): array {
+            $normalized = [];
+            if (empty($files) || !isset($files['name'])) {
+                return $normalized;
+            }
+            if (is_array($files['name'])) {
+                $count = count($files['name']);
+                for ($i = 0; $i < $count; $i++) {
+                    if (empty($files['name'][$i])) continue;
+                    $normalized[] = [
+                        'name' => $files['name'][$i],
+                        'type' => $files['type'][$i] ?? '',
+                        'tmp_name' => $files['tmp_name'][$i] ?? '',
+                        'error' => $files['error'][$i] ?? UPLOAD_ERR_NO_FILE,
+                        'size' => $files['size'][$i] ?? 0
+                    ];
+                }
+            } else {
+                if (!empty($files['name'])) {
+                    $normalized[] = [
+                        'name' => $files['name'],
+                        'type' => $files['type'] ?? '',
+                        'tmp_name' => $files['tmp_name'] ?? '',
+                        'error' => $files['error'] ?? UPLOAD_ERR_NO_FILE,
+                        'size' => $files['size'] ?? 0
+                    ];
+                }
+            }
             return $normalized;
         }
-        if (is_array($files['name'])) {
-            $count = count($files['name']);
-            for ($i = 0; $i < $count; $i++) {
-                if (empty($files['name'][$i])) continue;
-                $normalized[] = [
-                    'name' => $files['name'][$i],
-                    'type' => $files['type'][$i] ?? '',
-                    'tmp_name' => $files['tmp_name'][$i] ?? '',
-                    'error' => $files['error'][$i] ?? UPLOAD_ERR_NO_FILE,
-                    'size' => $files['size'][$i] ?? 0
-                ];
-            }
-        } else {
-            if (!empty($files['name'])) {
-                $normalized[] = [
-                    'name' => $files['name'],
-                    'type' => $files['type'] ?? '',
-                    'tmp_name' => $files['tmp_name'] ?? '',
-                    'error' => $files['error'] ?? UPLOAD_ERR_NO_FILE,
-                    'size' => $files['size'] ?? 0
-                ];
-            }
-        }
-        return $normalized;
     }
 
     // Helper: Retrieve all uploaded videos from assets/videos
-    function getAllProjectVideos(): array {
-        $videos = [];
-        $videosDir = __DIR__ . '/assets/videos';
-        $allowed = ['mp4', 'webm', 'ogg', 'mov', 'm4v'];
-        if (is_dir($videosDir)) {
-            $files = scandir($videosDir);
-            foreach ($files as $file) {
-                if ($file === '.' || $file === '..' || $file === '.gitkeep') continue;
-                $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-                if (!in_array($ext, $allowed)) continue;
-                $filePath = $videosDir . '/' . $file;
-                $title = humanizeImageFilename($file);
-                $videos[] = [
-                    'type' => 'video',
-                    'filename' => $file,
-                    'ext' => $ext,
-                    'url' => '/assets/videos/' . $file,
-                    'fullUrl' => defined('SITE_BASE_URL') ? SITE_BASE_URL . '/assets/videos/' . $file : '/assets/videos/' . $file,
-                    'relPath' => 'assets/videos/' . $file,
-                    'title' => $title,
-                    'caption' => $title . ' - Video highlight from Badagry.',
-                    'geo' => 'Badagry, Lagos State, Nigeria',
-                    'size' => file_exists($filePath) ? filesize($filePath) : 0,
-                    'mtime' => file_exists($filePath) ? filemtime($filePath) : 0
-                ];
+    if (!function_exists('getAllProjectVideos')) {
+        function getAllProjectVideos(): array {
+            $videos = [];
+            $videosDir = __DIR__ . '/assets/videos';
+            $allowed = ['mp4', 'webm', 'ogg', 'mov', 'm4v'];
+            if (is_dir($videosDir)) {
+                $files = scandir($videosDir);
+                foreach ($files as $file) {
+                    if ($file === '.' || $file === '..' || $file === '.gitkeep') continue;
+                    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                    if (!in_array($ext, $allowed)) continue;
+                    $filePath = $videosDir . '/' . $file;
+                    $title = function_exists('humanizeImageFilename') ? humanizeImageFilename($file) : $file;
+                    $videos[] = [
+                        'type' => 'video',
+                        'filename' => $file,
+                        'ext' => $ext,
+                        'url' => '/assets/videos/' . $file,
+                        'fullUrl' => defined('SITE_BASE_URL') ? SITE_BASE_URL . '/assets/videos/' . $file : '/assets/videos/' . $file,
+                        'relPath' => 'assets/videos/' . $file,
+                        'title' => $title,
+                        'caption' => $title . ' - Video highlight from Badagry.',
+                        'geo' => 'Badagry, Lagos State, Nigeria',
+                        'size' => file_exists($filePath) ? filesize($filePath) : 0,
+                        'mtime' => file_exists($filePath) ? filemtime($filePath) : 0
+                    ];
+                }
             }
+            return $videos;
         }
-        return $videos;
     }
 
     // API: Return JSON list of all images and videos for the Media Library
