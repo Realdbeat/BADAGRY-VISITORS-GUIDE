@@ -814,6 +814,11 @@ textarea {
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
+
+#postContent {
+  height: 100vh;
+}
+
 .form-select:focus,
 .form-input:focus,
 .form-textarea:focus {
@@ -3106,6 +3111,7 @@ textarea {
 }
 
 @media (max-width: 640px) {
+
   .article-body figure.video-left,
   .article-body figure.video-right {
     float: none;
@@ -5058,6 +5064,7 @@ textarea {
     padding: 36px 24px;
     text-align: center;
   }
+
   .cta-buttons {
     width: 100%;
   }
@@ -5270,10 +5277,12 @@ textarea {
     flex-direction: column;
     height: 94vh;
   }
+
   .lightbox-media-stage {
     flex: 1 1 50%;
     max-height: 50vh;
   }
+
   .lightbox-meta-panel {
     flex: 1 1 50%;
     max-width: 100%;
@@ -5281,12 +5290,15 @@ textarea {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 20px;
   }
+
   .lightbox-prev-btn {
     left: 8px;
   }
+
   .lightbox-next-btn {
     right: 8px;
   }
+
   .lightbox-close-btn {
     top: 8px;
     right: 8px;
