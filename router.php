@@ -60,11 +60,11 @@ http_response_code(404);
   <title>404 - Page Not Found | Badagry Visitors Guide</title>
   <link rel="stylesheet" href="/style.css">
 </head>
-<body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:'Inter',sans-serif;text-align:center;background:#f8fafc;">
+<body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:'Plus Jakarta Sans',sans-serif;text-align:center;background:#FAF8F5;">
   <div>
-    <h1 style="font-size:3rem;margin-bottom:12px;color:#1e293b;">404</h1>
-    <p style="font-size:1.2rem;color:#64748b;margin-bottom:24px;">The page you are looking for does not exist.</p>
-    <a href="/blog/" class="btn btn-primary" style="display:inline-block;padding:12px 24px;background:#238843;color:#fff;text-decoration:none;border-radius:8px;">Go to Travel Journal</a>
+    <h1 style="font-size:3rem;margin-bottom:12px;color:#0F172A;">404</h1>
+    <p style="font-size:1.2rem;color:#526071;margin-bottom:24px;">The page you are looking for does not exist.</p>
+    <a href="/blog/" class="btn btn-primary" style="display:inline-block;padding:12px 24px;background:#0D5C3A;color:#fff;text-decoration:none;border-radius:10px;font-weight:600;">Go to Travel Journal</a>
   </div>
 </body>
 </html>

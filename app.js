@@ -1,6 +1,6 @@
 /**
- * visitBadagry Replica - Interactive Logic
- * Handles Hero Carousel, Search/Filter, Lightbox, Modals, WhatsApp Chat, Scroll Progress
+ * Badagry Visitors Guide - Interactive Application Core
+ * Handles Dynamic Hero Experience, Filter Engine, Interactive Gallery & Custom Tour Modals
  */
 
 document.addEventListener('DOMContentLoaded', () => {

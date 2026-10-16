@@ -67,17 +67,17 @@ $totalPosts = count($posts);
 
   <link rel="icon" type="image/jpeg" href="/assets/logo.jpg" />
 
-  <!-- Google Fonts: Jost & Inter -->
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="/style.css?v=1" />
+  <link rel="stylesheet" href="/style.css?v=3.00" />
 
   <!-- Schema.org Breadcrumbs structured data -->
   <script type="application/ld+json">
