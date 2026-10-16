@@ -345,7 +345,7 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
           <div class="cta-box-icon"><i class="fa-solid fa-compass"></i></div>
           <div class="cta-box-text">
             <h3>Want to visit these historical landmarks with an indigenous guide?</h3>
-            <p>We personalize day trips and multi-day tours across Badagry, Benin Republic, and Togo around your schedule and budget.</p>
+            <p>We personalize day trips, educational excursions, and coastal weekend getaways across ancient Badagry around your schedule and budget.</p>
           </div>
           <a href="http://wa.me/+2347056989224?text=<?= urlencode('Hello, I read the article "' . $post['title'] . '" and would like to plan a tour.') ?>"
             target="_blank" rel="noopener" class="btn btn-primary">
@@ -398,7 +398,7 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
             </div>
           </a>
           <p class="footer-about-text">
-            Official Badagry Visitors Guide. Discover Culture, Heritage &amp; Coastal Experiences across Badagry, Benin Republic &amp; Togo.
+            Official Badagry Visitors Guide. Discover Culture, Heritage &amp; Coastal Experiences across historic Badagry, Lagos State, Nigeria.
           </p>
           <div class="footer-social-links">
             <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" aria-label="Instagram"><i

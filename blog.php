@@ -39,9 +39,9 @@ $totalPosts = count($posts);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>West Africa Travel Journal &amp; Blog | Badagry Visitors Guide</title>
+  <title>Badagry Travel Journal &amp; Blog | Badagry Visitors Guide</title>
   <meta name="description"
-    content="Guides, historical perspectives, border crossing advice, and local travel stories across Badagry, Benin Republic, and Togo by indigenous historians." />
+    content="Guides, historical perspectives, visitor advice, and local travel stories across ancient Badagry, Lagos State, Nigeria by indigenous historians." />
   <link rel="canonical" href="https://badagryvisitorsguide.rav.com.ng/blog/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -54,15 +54,15 @@ $totalPosts = count($posts);
   <!-- Open Graph -->
   <meta property="og:type" content="blog" />
   <meta property="og:site_name" content="Badagry Visitors Guide" />
-  <meta property="og:title" content="West Africa Travel Journal &amp; Blog | Badagry Visitors Guide" />
-  <meta property="og:description" content="Authentic historical accounts, travel guides, and insider tips for Badagry, Benin Republic, and Togo." />
+  <meta property="og:title" content="Badagry Travel Journal &amp; Blog | Badagry Visitors Guide" />
+  <meta property="og:description" content="Authentic historical accounts, travel guides, and insider tips for visiting Badagry, Lagos State, Nigeria." />
   <meta property="og:url" content="https://badagryvisitorsguide.rav.com.ng/blog/" />
   <meta property="og:image" content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-420x347.jpg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="West Africa Travel Journal &amp; Blog | Badagry Visitors Guide" />
-  <meta name="twitter:description" content="Authentic historical accounts, travel guides, and insider tips for Badagry, Benin Republic, and Togo." />
+  <meta name="twitter:title" content="Badagry Travel Journal &amp; Blog | Badagry Visitors Guide" />
+  <meta name="twitter:description" content="Authentic historical accounts, travel guides, and insider tips for visiting Badagry, Lagos State, Nigeria." />
   <meta name="twitter:image" content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-420x347.jpg" />
 
   <link rel="icon" type="image/jpeg" href="/assets/logo.jpg" />
@@ -106,8 +106,8 @@ $totalPosts = count($posts);
   {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "West Africa Travel Journal",
-    "description": "Guides, border tips, and heritage reflections on Badagry, Benin Republic, and Togo.",
+    "name": "Badagry Travel Journal",
+    "description": "Guides, visitor tips, and heritage reflections on ancient Badagry, Lagos State, Nigeria.",
     "url": "https://badagryvisitorsguide.rav.com.ng/blog/",
     "publisher": {
       "@type": "Organization",
@@ -241,10 +241,10 @@ $totalPosts = count($posts);
   <!-- Blog Page Hero Banner -->
   <section class="blog-hero-section">
     <div class="site-container text-center">
-      <span class="hero-badge animate-up">West Africa Travel Journal</span>
+      <span class="hero-badge animate-up">Badagry Travel Journal</span>
       <h1 class="blog-page-title animate-up delay-1">Stories, Guides &amp; Cultural Heritage</h1>
       <p class="blog-page-lead animate-up delay-2">
-        Insider tips, border crossing walkthroughs, and poignant historical accounts curated by our local guides across Badagry, Benin Republic, and Togo.
+        Insider tips, travel walkthroughs, and poignant historical accounts curated by our local guides across ancient Badagry, Lagos State.
       </p>
 
       <!-- Search and Filter Box -->
@@ -252,7 +252,7 @@ $totalPosts = count($posts);
         <form action="/blog/" method="GET" class="blog-search-form">
           <div class="blog-search-input-wrap">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" name="q" placeholder="Search articles (e.g. Yellow card, Point of No Return, hotels...)"
+            <input type="text" name="q" placeholder="Search articles (e.g. First Storey Building, Point of No Return, hotels...)"
               value="<?= htmlspecialchars($search) ?>" class="blog-search-input" />
             <?php if ($search !== ''): ?>
               <a href="/blog/<?= $category !== '' ? '?category=' . urlencode($category) : '' ?>" class="blog-search-clear" title="Clear search">&times;</a>
@@ -353,8 +353,8 @@ $totalPosts = count($posts);
       <div class="cta-banner-card">
         <div class="cta-banner-content">
           <span class="sub-title text-light">Experience It In Person</span>
-          <h2>Ready to Explore Badagry &amp; West Africa?</h2>
-          <p>From day trips to 5-day cross-border journeys across Nigeria, Benin Republic, and Togo. We build tours around your budget.</p>
+          <h2>Ready to Explore Ancient Badagry?</h2>
+          <p>From day heritage excursions to weekend coastal getaways across Badagry. We build tours around your budget.</p>
           <div class="cta-banner-buttons">
             <a href="/#tours" class="btn btn-primary">Browse Tours <i class="fa-solid fa-compass"></i></a>
             <a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener"
@@ -378,7 +378,7 @@ $totalPosts = count($posts);
             </div>
           </a>
           <p class="footer-about-text">
-            Official Badagry Visitors Guide. Discover Culture, Heritage &amp; Coastal Experiences across Badagry, Benin Republic &amp; Togo.
+            Official Badagry Visitors Guide. Discover Culture, Heritage &amp; Coastal Experiences across historic Badagry, Lagos State, Nigeria.
           </p>
           <div class="footer-social-links">
             <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" aria-label="Instagram"><i

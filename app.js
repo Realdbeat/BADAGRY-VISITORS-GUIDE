@@ -129,8 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardPrice = parseInt(card.dataset.price, 10);
         const cardCorridor = card.dataset.corridor;
 
-        let matchDuration = (durationVal === 'all' || durationVal === cardDuration);
-        let matchDestination = (destinationVal === 'all' || cardCorridor.includes(destinationVal));
+        let matchDestination = (destinationVal === 'all' || cardCorridor.includes(destinationVal) || card.dataset.category === destinationVal);
         
         let matchBudget = true;
         if (budgetVal === 'budget') {

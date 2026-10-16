@@ -7,8 +7,13 @@ autoUpdateSitemapsIfModified(60);
 $allRawImages = getAllProjectImages();
 $allRawVideos = getAllProjectVideos();
 
-// Exclude avatar portraits, thumbnails, system assets from the public scenery gallery
-$excludedPatterns = ['-420x347', 'logo.jpg', 'Chukwuemeka-Eze', 'Claire-Dubois', 'James-Sutton', 'Kemi-Adeyemi', 'Nkechi-Okafor-Williams', 'Yetunde-Fashola', 'eYellow-Card'];
+// Exclude avatar portraits, thumbnails, system assets, and non-Badagry media
+$excludedPatterns = [
+    '-420x347', 'logo.jpg', 'Chukwuemeka-Eze', 'Claire-Dubois', 'James-Sutton',
+    'Kemi-Adeyemi', 'Nkechi-Okafor-Williams', 'Yetunde-Fashola', 'eYellow-Card',
+    'benin', 'togo', 'ouidah', 'cotonou', 'porto-novo', 'lome', 'amazone', 'ganvie',
+    'pendjari', 'babs-dock', 'prince-lorenzo', 'grand-marche'
+];
 
 function isExcludedGalleryItem(string $filename, array $excluded): bool {
     foreach ($excluded as $pat) {
@@ -19,38 +24,32 @@ function isExcludedGalleryItem(string $filename, array $excluded): bool {
     return false;
 }
 
-// Categorization helper
+// Categorization helper (Badagry-Exclusive Experiences)
 function getMediaCategory(string $filename, string $title, string $geo): array {
     $fn = strtolower($filename);
     $t = strtolower($title);
     $g = strtolower($geo);
     $combined = $fn . ' ' . $t . ' ' . $g;
 
-    // Default
-    $catSlug = 'badagry';
-    $catName = 'Badagry Heritage';
-    $country = 'Nigeria';
-    $countryFlag = '🇳🇬';
+    $catSlug = 'landmarks';
+    $catName = 'Historical Landmarks';
+    $country = 'Badagry, Lagos';
+    $countryFlag = '🏛️';
 
-    if (strpos($combined, 'togo') !== false || strpos($combined, 'lome') !== false || strpos($combined, 'lorenzo') !== false) {
-        $catSlug = 'togo';
-        $catName = 'Togo & Coast';
-        $country = 'Togo';
-        $countryFlag = '🇹🇬';
-    } elseif (strpos($combined, 'benin') !== false || strpos($combined, 'ouidah') !== false || strpos($combined, 'cotonou') !== false || strpos($combined, 'porto-novo') !== false || strpos($combined, 'ganvie') !== false || strpos($combined, 'pendjari') !== false || strpos($combined, 'amazone') !== false || strpos($combined, 'dock') !== false) {
-        $catSlug = 'benin';
-        $catName = 'Benin Republic';
-        $country = 'Benin Republic';
-        $countryFlag = '🇧🇯';
-    } elseif (strpos($combined, 'group') !== false || strpos($combined, 'team') !== false || strpos($combined, 'school') !== false || strpos($combined, 'client') !== false || strpos($combined, 'tayo') !== false || strpos($combined, 'diaspora') !== false || strpos($combined, 'corporate') !== false) {
+    if (strpos($combined, 'slave') !== false || strpos($combined, 'return') !== false || strpos($combined, 'memorial') !== false || strpos($combined, 'route') !== false) {
+        $catSlug = 'slave-route';
+        $catName = 'Slave Route & Memorials';
+        $country = 'Badagry, Lagos';
+        $countryFlag = '🔗';
+    } elseif (strpos($combined, 'group') !== false || strpos($combined, 'team') !== false || strpos($combined, 'school') !== false || strpos($combined, 'client') !== false || strpos($combined, 'private') !== false || strpos($combined, 'corporate') !== false) {
         $catSlug = 'tours';
-        $catName = 'Tour Groups & People';
-        $country = 'West Africa';
-        $countryFlag = '🌍';
-    } elseif (strpos($combined, 'beach') !== false || strpos($combined, 'creek') !== false || strpos($combined, 'leisure') !== false) {
+        $catName = 'Tour Groups & Excursions';
+        $country = 'Badagry, Lagos';
+        $countryFlag = '👥';
+    } elseif (strpos($combined, 'beach') !== false || strpos($combined, 'creek') !== false || strpos($combined, 'leisure') !== false || strpos($combined, 'weekend') !== false || strpos($combined, 'palms') !== false) {
         $catSlug = 'leisure';
-        $catName = 'Beaches & Nature';
-        $country = 'Coastal Corridor';
+        $catName = 'Creeks & Marina';
+        $country = 'Badagry, Lagos';
         $countryFlag = '🌴';
     }
 
@@ -71,7 +70,7 @@ foreach ($allRawImages as $filename => $img) {
         'filename' => $filename,
         'title' => $img['title'],
         'caption' => $img['caption'],
-        'geo' => $img['geo'],
+        'geo' => 'Badagry, Lagos, Nigeria',
         'url' => '/assets/images/' . $filename,
         'fullUrl' => $img['url'],
         'category_slug' => $catSlug,
@@ -90,12 +89,12 @@ foreach ($allRawVideos as $filename => $vid) {
         'filename' => $filename,
         'title' => $vid['title'],
         'caption' => $vid['caption'],
-        'geo' => 'West Africa Tour Highlight',
+        'geo' => 'Badagry Tour Highlight',
         'url' => $vid['url'],
         'fullUrl' => $vid['fullUrl'],
         'category_slug' => 'videos',
         'category_name' => 'Video Highlights',
-        'country' => 'Corridor Video',
+        'country' => 'Badagry Video',
         'country_flag' => '🎬',
         'mtime' => file_exists(__DIR__ . '/assets/videos/' . $filename) ? filemtime(__DIR__ . '/assets/videos/' . $filename) : time()
     ];
@@ -109,11 +108,10 @@ usort($galleryItems, function($a, $b) {
 // Category counts
 $counts = [
     'all' => count($galleryItems),
-    'badagry' => 0,
-    'benin' => 0,
-    'togo' => 0,
-    'tours' => 0,
+    'landmarks' => 0,
+    'slave-route' => 0,
     'leisure' => 0,
+    'tours' => 0,
     'videos' => 0
 ];
 foreach ($galleryItems as $item) {
@@ -131,9 +129,9 @@ foreach ($galleryItems as $item) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Photo &amp; Video Gallery | Badagry, Benin Republic &amp; Togo Tours</title>
+  <title>Photo &amp; Video Gallery | Badagry Heritage &amp; Cultural Tours</title>
   <meta name="description"
-    content="Browse high-resolution photographs and tour videos of Badagry slave trade landmarks, Ouidah Gate of No Return, Cotonou Amazone statue, Lome beaches, and real guided tour experiences." />
+    content="Browse high-resolution photographs and tour videos of Badagry slave trade landmarks, First Storey Building, Point of No Return, Seriki Williams Abass Barracoon, and real guided tour experiences." />
   <link rel="canonical" href="https://badagryvisitorsguide.rav.com.ng/gallery/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -143,15 +141,15 @@ foreach ($galleryItems as $item) {
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Badagry Visitors Guide" />
-  <meta property="og:title" content="Photo &amp; Video Gallery | Badagry, Benin Republic &amp; Togo Tours" />
-  <meta property="og:description" content="Real places, real people. Explore 50+ authentic photographs and videos from our guided heritage and coastal corridor tours." />
+  <meta property="og:title" content="Photo &amp; Video Gallery | Badagry Heritage &amp; Cultural Tours" />
+  <meta property="og:description" content="Real places, real people. Explore 50+ authentic photographs and videos from our guided Badagry heritage and coastal tours." />
   <meta property="og:url" content="https://badagryvisitorsguide.rav.com.ng/gallery/" />
   <meta property="og:image" content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Photo &amp; Video Gallery | Badagry Visitors Guide" />
-  <meta name="twitter:description" content="Discover authentic heritage monuments, cultural markets, and beach landscapes across Nigeria, Benin, and Togo." />
+  <meta name="twitter:description" content="Discover authentic heritage monuments, slave route memorials, and creek boat tours across Badagry, Lagos State, Nigeria." />
   <meta name="twitter:image" content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
 
   <link rel="icon" type="image/jpeg" href="/assets/logo.jpg" />
@@ -195,8 +193,8 @@ foreach ($galleryItems as $item) {
   {
     "@context": "https://schema.org",
     "@type": "ImageGallery",
-    "name": "Badagry & West African Corridor Heritage Tour Gallery",
-    "description": "Authentic photography and tour documentation from Badagry, Benin Republic, and Togo.",
+    "name": "Badagry Heritage Tour Photo & Video Gallery",
+    "description": "Authentic photography and tour documentation from Badagry, Lagos State, Nigeria.",
     "url": "https://badagryvisitorsguide.rav.com.ng/gallery/",
     "publisher": {
       "@type": "Organization",
@@ -338,9 +336,9 @@ foreach ($galleryItems as $item) {
       <div class="gallery-badge">
         <i class="fa-solid fa-camera-retro"></i> Curated Visual Showcase
       </div>
-      <h1 class="gallery-hero-title">Picture &amp; Video Gallery</h1>
+      <h1 class="gallery-hero-title">Badagry Photo &amp; Video Gallery</h1>
       <p class="gallery-hero-subtitle">
-        Real places, real people, sacred monuments, and unforgettable journeys across Badagry, Benin Republic, and Togo.
+        Real places, real people, sacred monuments, and unforgettable journeys across Badagry, Lagos State, Nigeria.
       </p>
 
       <!-- Key Stats Bar -->
@@ -350,12 +348,12 @@ foreach ($galleryItems as $item) {
           <span><strong><?= count($galleryItems) ?>+</strong> Authentic Media</span>
         </div>
         <div class="stat-pill">
-          <i class="fa-solid fa-earth-africa"></i>
-          <span><strong>3</strong> West African Nations</span>
+          <i class="fa-solid fa-landmark"></i>
+          <span><strong>10+</strong> Historical Sites</span>
         </div>
         <div class="stat-pill">
-          <i class="fa-solid fa-landmark"></i>
-          <span><strong>15+</strong> Heritage Sites</span>
+          <i class="fa-solid fa-water"></i>
+          <span><strong>Scenic</strong> Creeks &amp; Marina</span>
         </div>
         <div class="stat-pill">
           <i class="fa-solid fa-users"></i>
@@ -376,20 +374,17 @@ foreach ($galleryItems as $item) {
           <button class="filter-tab-btn active" data-filter="all">
             <i class="fa-solid fa-border-all"></i> All Media <span class="tab-badge"><?= $counts['all'] ?></span>
           </button>
-          <button class="filter-tab-btn" data-filter="badagry">
-            🇳🇬 Badagry Heritage <span class="tab-badge"><?= $counts['badagry'] ?></span>
+          <button class="filter-tab-btn" data-filter="landmarks">
+            🏛️ Historical Landmarks <span class="tab-badge"><?= $counts['landmarks'] ?></span>
           </button>
-          <button class="filter-tab-btn" data-filter="benin">
-            🇧🇯 Benin Republic <span class="tab-badge"><?= $counts['benin'] ?></span>
+          <button class="filter-tab-btn" data-filter="slave-route">
+            🔗 Slave Route &amp; Memorials <span class="tab-badge"><?= $counts['slave-route'] ?></span>
           </button>
-          <button class="filter-tab-btn" data-filter="togo">
-            🇹🇬 Togo &amp; Coast <span class="tab-badge"><?= $counts['togo'] ?></span>
+          <button class="filter-tab-btn" data-filter="leisure">
+            🌴 Creeks &amp; Marina <span class="tab-badge"><?= $counts['leisure'] ?></span>
           </button>
           <button class="filter-tab-btn" data-filter="tours">
             👥 Tour Groups <span class="tab-badge"><?= $counts['tours'] ?></span>
-          </button>
-          <button class="filter-tab-btn" data-filter="leisure">
-            🌴 Beaches &amp; Nature <span class="tab-badge"><?= $counts['leisure'] ?></span>
           </button>
           <?php if ($counts['videos'] > 0): ?>
           <button class="filter-tab-btn" data-filter="videos">
@@ -497,9 +492,9 @@ foreach ($galleryItems as $item) {
       <div class="gallery-cta-box">
         <div class="cta-text">
           <span class="sub-title text-accent">Inspired By What You See?</span>
-          <h2 class="cta-title">Experience These Historical Landmarks In Person</h2>
+          <h2 class="cta-title">Experience These Badagry Historical Landmarks In Person</h2>
           <p class="cta-desc">
-            From the Point of No Return in Badagry to the vibrant Temple of Pythons in Ouidah and the golden shores of Lome — let our native historians guide your journey with customized itineraries and seamless borders.
+            From the 1845 First Storey Building to the solemn Point of No Return across Gberefu Island — let our native historians guide your journey with customized itineraries and authentic local care.
           </p>
         </div>
         <div class="cta-buttons">
@@ -583,7 +578,7 @@ foreach ($galleryItems as $item) {
             </div>
           </a>
           <p class="footer-desc">
-            Authentic, affordable heritage and coastal adventures connecting Badagry, Benin Republic, and Togo. Led by native historians.
+            Authentic, affordable heritage and coastal adventures across Badagry, Lagos State, Nigeria. Led by native historians.
           </p>
           <div class="footer-social-links">
             <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -638,15 +633,15 @@ foreach ($galleryItems as $item) {
           </div>
         </div>
 
-        <!-- Col 4: Corridor Highlights -->
+        <!-- Col 4: Landmark Highlights -->
         <div class="footer-col">
-          <h3 class="footer-title">Tour Destinations</h3>
+          <h3 class="footer-title">Badagry Landmarks</h3>
           <ul class="footer-menu">
-            <li><a href="/#corridor">Badagry Heritage Corridor (NG)</a></li>
-            <li><a href="/#corridor">Porto-Novo &amp; Ganvie Stilt City (BJ)</a></li>
-            <li><a href="/#corridor">Ouidah Vodun &amp; Slave Route (BJ)</a></li>
-            <li><a href="/#corridor">Cotonou City &amp; Amazone Plaza (BJ)</a></li>
-            <li><a href="/#corridor">Lome Coast &amp; Lake Togo (TG)</a></li>
+            <li><a href="/#landmarks">Point of No Return &amp; Gberefu Island</a></li>
+            <li><a href="/#landmarks">First Storey Building in Nigeria (1845)</a></li>
+            <li><a href="/#landmarks">Seriki Williams Abass Barracoon</a></li>
+            <li><a href="/#landmarks">Badagry Heritage Museum &amp; Relics</a></li>
+            <li><a href="/#landmarks">Whispering Palms &amp; Badagry Creek</a></li>
           </ul>
         </div>
       </div>

@@ -872,7 +872,7 @@ if ($isLoggedIn) {
                   <div class="cta-box-icon"><i class="fa-solid fa-compass"></i></div>
                   <div class="cta-box-text">
                     <h3>Want to visit these historical landmarks with an indigenous guide?</h3>
-                    <p>We personalize day trips and multi-day tours across Badagry, Benin Republic, and Togo around your schedule and budget.</p>
+                    <p>We personalize day trips, educational excursions, and coastal weekend getaways across ancient Badagry around your schedule and budget.</p>
                   </div>
                   <a href="#" class="btn btn-primary" onclick="return false;">Plan Your Tour</a>
                 </div>

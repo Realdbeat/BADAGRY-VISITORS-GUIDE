@@ -55,30 +55,30 @@ function seedInitialPosts(PDO $pdo): void {
         [
             'title' => 'How to Get a Yellow Card in Nigeria in 2026: A Simple Travel Guide',
             'slug' => 'how-to-get-yellow-card-in-nigeria-2026',
-            'excerpt' => 'A complete walkthrough of the Port Health Services process, online payment portal, vaccination centres, and border clearance verification for cross-border travelers.',
-            'category' => 'Border Crossing & Visas',
+            'excerpt' => 'A complete walkthrough of the Port Health Services process, online payment portal, vaccination centres, and clearance verification for international and coastal travelers.',
+            'category' => 'Travel Health & Guidelines',
             'read_time' => '9 min read',
             'published_at' => '2026-08-22 10:00:00',
             'featured_image' => 'assets/images/eYellow-Card-2-e1787431293225-420x347.jpg',
             'content' => '<h2>Understanding the Nigerian e-Yellow Card Requirement</h2>
-<p>If you plan to cross the land border from Nigeria into Benin Republic or travel onward to Togo and Ghana, having a valid <strong>e-Yellow Card (International Certificate of Vaccination or Prophylaxis)</strong> is an essential legal requirement. The yellow fever vaccine protects travelers from viral hemorrhagic illness and is scrutinized by Port Health officials at both Seme Border and international airports.</p>
+<p>If you or your international tour guests are traveling to Nigeria or visiting coastal heritage corridors like Badagry, having a valid <strong>e-Yellow Card (International Certificate of Vaccination or Prophylaxis)</strong> is an essential health document. The yellow fever vaccine protects travelers from viral illness and is verified by Port Health officials at ports of entry, airports, and border entry stations.</p>
 
 <h3>Step-by-Step Application Process</h3>
 <ol>
     <li><strong>Register on the Official Portal:</strong> Visit the official Federal Ministry of Health Port Health Services portal. Fill in your passport information accurately.</li>
     <li><strong>Generate Remita RRR:</strong> Make the statutory payment (approximately ₦2,000 to ₦2,500) online via debit card or bank branch.</li>
     <li><strong>Visit a Port Health Centre:</strong> In Lagos, key centers include the Port Health Office near Muritala Muhammed International Airport, Ikeja, and the Port Health Post near Marina/Apapa.</li>
-    <li><strong>Receive the Yellow Fever Vaccine:</strong> The vaccine takes 10 days to become biologically active and legally valid for international border clearance.</li>
+    <li><strong>Receive the Yellow Fever Vaccine:</strong> The vaccine takes 10 days to become biologically active and legally valid for international health verification.</li>
     <li><strong>Biometric Card Issuance:</strong> Ensure the unique QR code on the back of your yellow card scans accurately using a smartphone camera.</li>
 </ol>
 
 <div class="blog-callout">
-    <h4><i class="fa-solid fa-circle-exclamation"></i> Essential Border Tip</h4>
-    <p>Do not wait until the day of travel! Seme Border immigration officers enforce the 10-day post-inoculation validity strictly. Book your vaccination at least two weeks before your tour date.</p>
+    <h4><i class="fa-solid fa-circle-exclamation"></i> Essential Traveler Tip</h4>
+    <p>Do not wait until the day of travel! Health authorities enforce the 10-day post-inoculation validity strictly. Book your vaccination at least two weeks before your tour date.</p>
 </div>
 
-<h3>What to Expect at Seme Border</h3>
-<p>When traveling on our guided cross-border tours to Cotonou or Ouidah, our tour leads assist clients with immigration queues. Having your original passport, stamped yellow card, and travel manifest ready ensures swift clearance in under 15 minutes.</p>'
+<h3>Touring Badagry with Confidence</h3>
+<p>When participating in our guided Badagry heritage tours, having your identification and vaccination credentials handy ensures a smooth, worry-free excursion across all state and national transit checkpoints.</p>'
         ],
         [
             'title' => 'What It Feels Like to Stand at the Point of No Return',
@@ -114,7 +114,7 @@ function seedInitialPosts(PDO $pdo): void {
             'published_at' => '2026-03-26 11:00:00',
             'featured_image' => 'assets/images/Central-Lagos-to-Badagry-Map-420x347.jpg',
             'content' => '<h2>Navigating to Lagos State\'s Most Historic Coastal City</h2>
-<p>Badagry sits approximately 65 kilometers west of Lagos Island, right along the historic Gulf of Guinea corridor leading to the Republic of Benin. Over the years, road works and public transport options have evolved dramatically. Here is everything you need to know about traveling to Badagry comfortably in 2026.</p>
+<p>Badagry sits approximately 65 kilometers west of Lagos Island, right along the historic Gulf of Guinea corridor stretching along the Atlantic coast of Lagos State. Over the years, road works and public transport options have evolved dramatically. Here is everything you need to know about traveling to Badagry comfortably in 2026.</p>
 
 <h3>Option 1: Private Tour Escort / Chartered Vehicle (Recommended)</h3>
 <p>For visitors, families, and international travelers, booking an escorted tour vehicle through <strong>Badagry Visitors Guide</strong> is the safest, most comfortable choice. Vehicles depart central pickup points (Victoria Island, Ikeja, or Lekki) between 7:00 AM and 7:30 AM to beat early traffic, arriving in Badagry in approximately 90 minutes.</p>

@@ -7,7 +7,7 @@
       "name": "Badagry Visitors Guide",
       "alternateName": [
         "Badagry Visitors Guide",
-        "Badagry Tour Guide Service"
+        "Badagry Heritage & Cultural Tours"
       ],
       "url": "https://badagryvisitorsguide.rav.com.ng/",
       "logo": {
@@ -20,21 +20,21 @@
         "height": "500"
       },
       "image": [
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Monument-Amazone-Benin-Republic.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Gate-of-No-Return-Ouidah-Benin-Republic.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
         "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Day-Tour.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Crafts-Market-Ouidah-with-Tayo.jpg",
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg",
         "https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Ouidah-Snake-Temple.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Prince-Lorenzo-Beach-Lome-Togo.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/5-Day-Nigeria-Benin-Togo-Tour.jpg"
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Museum.jpg",
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg",
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Beach-Creek-Leisure-Day.jpg",
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Beach-Weekend.jpg"
       ],
-      "description": "Authentic heritage and coastal tour operator providing personalized budget-friendly journeys across Badagry, Benin Republic, and Togo led by indigenous historians.",
+      "description": "Authentic heritage and coastal tour operator providing personalized budget-friendly journeys across Badagry, Lagos State, Nigeria led by indigenous historians.",
       "telephone": "+2347056989224",
       "email": "info@badagryvisitorsguide.com",
-      "priceRange": "$$",
-      "currenciesAccepted": "USD, NGN, XOF",
+      "priceRange": "$",
+      "currenciesAccepted": "USD, NGN",
       "paymentAccepted": "Cash, Credit Card, Bank Transfer",
       "address": {
         "@type": "PostalAddress",
@@ -102,7 +102,7 @@
             "name": "Marcus Lindqvist"
           },
           "datePublished": "2026-02-18",
-          "reviewBody": "I joined the 5-day tri-nation expedition across Nigeria, Benin Republic, and Togo during my holiday. Crossing borders in West Africa can feel daunting, but the team handled immigration protocols flawlessly. From Ouidah's sacred sites to Lome's palm beaches, every single day was unforgettable.",
+          "reviewBody": "Taking the 3-day Badagry Heritage immersion tour was an extraordinary educational experience. Walking the solemn slave route across Gberefu Island to the Point of No Return and examining the preserved relics in the Brazilian Barracoons gave me profound historical insight. Flawless organization from pickup to drop-off.",
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": "5",
@@ -130,7 +130,7 @@
             "name": "Sophie Laurent"
           },
           "datePublished": "2026-03-01",
-          "reviewBody": "Our coastal getaway to Ouidah and Grand-Popo was beyond expectations. The blend of Afro-Brazilian architecture in Porto-Novo, peaceful lagoon boat rides, and authentic Fon cuisine made this the highlight of our West African travels. Outstanding communication from start to finish.",
+          "reviewBody": "Our weekend getaway to Badagry exceeded every expectation! The peaceful Badagry creek boat cruise, the 1845 First Storey Building tour, and relaxing along the coastal waterfront made this the highlight of our visit to Nigeria. Outstanding local guides and warm hospitality throughout.",
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": "5",
@@ -158,7 +158,7 @@
             "name": "Osas Ighodaro-Cole"
           },
           "datePublished": "2026-03-08",
-          "reviewBody": "I travelled from Benin City specifically to connect with the coastal slave routes and relics. Our guide's storytelling brought the 19th-century barracoons and heritage artifacts alive with incredible historical depth. Professional, safe, and worth every kilometer travelled.",
+          "reviewBody": "I travelled from Abuja specifically to connect with Badagry's coastal slave routes and relics. Our guide's storytelling brought the 19th-century barracoons and heritage artifacts alive with incredible historical depth. Professional, safe, and worth every kilometer travelled.",
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": "5",
@@ -172,7 +172,7 @@
       "@id": "https://badagryvisitorsguide.rav.com.ng/#website",
       "url": "https://badagryvisitorsguide.rav.com.ng/",
       "name": "Badagry Visitors Guide",
-      "description": "Discover West Africa's most powerful heritage and coastal experiences across Badagry, Benin Republic, and Togo.",
+      "description": "Discover Badagry's most powerful heritage, slave route landmarks, and coastal experiences in Lagos State, Nigeria.",
       "publisher": {
         "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency"
       },
@@ -181,58 +181,18 @@
     {
       "@type": "ImageGallery",
       "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-gallery",
-      "name": "Past Tour Moments & Client Experiences - Badagry, Benin Republic & Togo",
-      "description": "Authentic photography captured during guided heritage, cultural, and coastal tours for clients across Nigeria, Benin Republic, and Togo.",
+      "name": "Past Tour Moments & Client Experiences - Badagry Heritage Tours",
+      "description": "Authentic photography captured during guided heritage, cultural, and coastal tours for clients across Badagry, Lagos State, Nigeria.",
       "url": "https://badagryvisitorsguide.rav.com.ng/#gallery",
       "associatedMedia": [
-        {
-          "@type": "ImageObject",
-          "name": "Crafts Market Ouidah with Guide Tayo and Tour Clients",
-          "caption": "Tour clients exploring the artisanal crafts and bronze sculptures market in Ouidah, Benin Republic with indigenous tour guide Tayo.",
-          "description": "Real clients interacting with local sculptors and artisans during a cross-border weekend tour to Benin Republic.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Crafts-Market-Ouidah-with-Tayo.jpg",
-          "representativeOfPage": true,
-          "contentLocation": "Ouidah, Benin Republic"
-        },
         {
           "@type": "ImageObject",
           "name": "Badagry Heritage Museum & Slave Relics Tour",
           "caption": "Visitors and tour clients viewing historical slave trade records and artifacts at the Badagry Heritage Museum.",
           "description": "Educational heritage tour session inside the Badagry Heritage Museum established in 1863.",
           "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Museum.jpg",
+          "representativeOfPage": true,
           "contentLocation": "Badagry, Lagos, Nigeria"
-        },
-        {
-          "@type": "ImageObject",
-          "name": "Temple of Pythons Tour in Ouidah",
-          "caption": "Clients encountering sacred royal pythons and Vodun heritage sanctuary in Ouidah, Benin Republic.",
-          "description": "Guided cultural immersion in the historical Python Temple of Ouidah led by local custodians.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Ouidah-Snake-Temple.jpg",
-          "contentLocation": "Ouidah, Benin Republic"
-        },
-        {
-          "@type": "ImageObject",
-          "name": "Point of No Return Trail, Gberefu Peninsula",
-          "caption": "Tour group walking the solemn Point of No Return trail on Gberefu Island toward the Atlantic Ocean.",
-          "description": "Historical pilgrimage retracing the 1473 slave route steps to the Atlantic coast in Badagry.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg",
-          "contentLocation": "Gberefu Island, Badagry, Nigeria"
-        },
-        {
-          "@type": "ImageObject",
-          "name": "Monument Amazone, Cotonou, Benin Republic",
-          "caption": "Monument Amazone honoring Dahomey female warriors, visited during the Cotonou city tour.",
-          "description": "Majestic bronze statue of the Agoodjie warrior woman in central Cotonou, Benin Republic.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Monument-Amazone-Benin-Republic.jpg",
-          "contentLocation": "Cotonou, Benin Republic"
-        },
-        {
-          "@type": "ImageObject",
-          "name": "Door of No Return Monument, Ouidah",
-          "caption": "The monumental archway of the Door of No Return on the Atlantic coast of Ouidah, Benin Republic.",
-          "description": "Historic UNESCO memorial honoring millions of enslaved Africans shipped across the Atlantic.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Gate-of-No-Return-Ouidah-Benin-Republic.jpg",
-          "contentLocation": "Ouidah, Benin Republic"
         },
         {
           "@type": "ImageObject",
@@ -244,11 +204,51 @@
         },
         {
           "@type": "ImageObject",
-          "name": "Prince Lorenzo Beach, Lomé, Togo",
-          "caption": "Tour clients relaxing along the palm-fringed coast of Lomé during the multi-day tri-nation tour.",
-          "description": "Golden sand beaches and Atlantic ocean relaxation during the Togo coastal tour.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Prince-Lorenzo-Beach-Lome-Togo.jpg",
-          "contentLocation": "Lomé, Togo"
+          "name": "Seriki Williams Abass Brazilian Barracoon",
+          "caption": "Tour clients examining preserved 19th-century slave cells and iron relic chains in Badagry.",
+          "description": "Historical 1840 Brazilian-style barracoon with 40 slave rooms built by Chief Seriki Williams Abass.",
+          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
+          "contentLocation": "Badagry, Lagos, Nigeria"
+        },
+        {
+          "@type": "ImageObject",
+          "name": "Point of No Return Trail, Gberefu Peninsula",
+          "caption": "Tour group walking the solemn Point of No Return trail on Gberefu Island toward the Atlantic Ocean.",
+          "description": "Historical pilgrimage retracing the 1473 slave route steps to the Atlantic coast in Badagry.",
+          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg",
+          "contentLocation": "Gberefu Island, Badagry, Nigeria"
+        },
+        {
+          "@type": "ImageObject",
+          "name": "Point of No Return Atlantic Memorial Monument",
+          "caption": "The solemn Atlantic Ocean memorial monument at the Point of No Return on Gberefu Island.",
+          "description": "Historical landmark marking where enslaved Africans departed across the Atlantic Ocean.",
+          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg",
+          "contentLocation": "Badagry, Lagos, Nigeria"
+        },
+        {
+          "@type": "ImageObject",
+          "name": "Badagry Slave Memorial Statue & Heritage Quarter",
+          "caption": "Badagry Slave Memorial Statue standing as an enduring tribute in the historic heritage quarter.",
+          "description": "Artistic memorial commemorating freedom and honoring the resilience of African ancestors.",
+          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg",
+          "contentLocation": "Badagry, Lagos, Nigeria"
+        },
+        {
+          "@type": "ImageObject",
+          "name": "Badagry Beach & Creek Leisure Day Tour",
+          "caption": "Tour clients taking a scenic boat ride across the calm Badagry creek toward the coastal peninsula.",
+          "description": "Relaxing coastal boat cruise and waterfront eco-tourism experience in Badagry.",
+          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Beach-Creek-Leisure-Day.jpg",
+          "contentLocation": "Badagry, Lagos, Nigeria"
+        },
+        {
+          "@type": "ImageObject",
+          "name": "Badagry Heritage Weekend Experience",
+          "caption": "Tour clients enjoying an immersive weekend exploring Badagry's coastal charm and historic monuments.",
+          "description": "Weekend cultural retreat exploring royal palaces, artisan markets, and colonial landmarks in Badagry.",
+          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Beach-Weekend.jpg",
+          "contentLocation": "Badagry, Lagos, Nigeria"
         }
       ]
     },
@@ -284,7 +284,7 @@
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "First Storey Building in Nigeria"
+            "name": "First Storey Building in Nigeria (1845)"
           },
           {
             "@type": "ListItem",
@@ -306,25 +306,26 @@
     },
     {
       "@type": "TouristTrip",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-tri-nation",
-      "name": "5-Day Nigeria, Benin & Togo Tour",
-      "description": "The master West African circuit: Badagry historical shrines, Cotonou, Ouidah Vodun temples, Lake Togoville, and Lomé's serene coastline.",
+      "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-badagry-immersion",
+      "name": "3-Day Badagry Heritage & Coastal Immersion Tour",
+      "description": "Comprehensive 3-day Badagry pilgrimage: First Storey Building, Seriki Abass Barracoons, Gberefu Island Point of No Return, Badagry Creek boat cruise, and coastal beach relaxation.",
       "touristType": [
         "International Tourist",
         "Diaspora",
-        "Adventure Seeker"
+        "Heritage Pilgrim",
+        "Weekend Traveler"
       ],
       "image": [
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/5-Day-Nigeria-Benin-Togo-Tour.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Monument-Amazone-Benin-Republic.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Prince-Lorenzo-Beach-Lome-Togo.jpg"
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Beach-Weekend.jpg",
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Beach-Creek-Leisure-Day.jpg"
       ],
       "provider": {
         "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency"
       },
       "offers": {
         "@type": "Offer",
-        "price": "980",
+        "price": "350",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
         "url": "https://badagryvisitorsguide.rav.com.ng/#tours"
@@ -333,15 +334,15 @@
     {
       "@type": "TouristTrip",
       "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-diaspora",
-      "name": "Diaspora: 5-Day Homecoming Tour",
-      "description": "Emotional pilgrimage for descendants connecting with ancestral roots, traditional Yoruba/Fon naming ceremonies, and healing cultural dialogues.",
+      "name": "Badagry Diaspora Roots & Homecoming Tour",
+      "description": "Emotional pilgrimage for descendants connecting with ancestral roots, traditional Yoruba welcome rites, Badagry heritage quarter visits, and healing dialogues at the Point of No Return.",
       "touristType": [
         "African Diaspora",
         "Heritage Pilgrim",
         "Genealogy Traveler"
       ],
       "image": [
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Gate-of-No-Return-Ouidah-Benin-Republic.jpg",
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg",
         "https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg"
       ],
       "provider": {
@@ -349,7 +350,7 @@
       },
       "offers": {
         "@type": "Offer",
-        "price": "1100",
+        "price": "550",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
         "url": "https://badagryvisitorsguide.rav.com.ng/#tours"
@@ -389,14 +390,16 @@
     },
     {
       "@type": "TouristAttraction",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#attraction-door-no-return-ouidah",
-      "name": "Gate of No Return (Porte du Non-Retour) Ouidah",
-      "description": "UNESCO memorial monument on the beach of Ouidah, Benin Republic commemorating victims of the slave trade.",
-      "image": "https://badagryvisitorsguide.rav.com.ng/assets/images/Gate-of-No-Return-Ouidah-Benin-Republic.jpg",
+      "@id": "https://badagryvisitorsguide.rav.com.ng/#attraction-barracoon",
+      "name": "Seriki Williams Abass Brazilian Barracoon",
+      "description": "Historical 1840 Brazilian-style slave barracks containing 40 preserved slave cells and historical iron relic chains in Badagry.",
+      "image": "https://badagryvisitorsguide.rav.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Ouidah",
-        "addressCountry": "BJ"
+        "streetAddress": "Marina Badagry",
+        "addressLocality": "Badagry",
+        "addressRegion": "Lagos",
+        "addressCountry": "NG"
       }
     },
     {

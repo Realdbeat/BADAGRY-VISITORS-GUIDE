@@ -62,80 +62,30 @@ function getKnownImageMetadata(): array {
             'caption' => 'Historical walking pilgrimage along the trail across Gberefu peninsula leading to the Atlantic Ocean.',
             'geo' => 'Gberefu Island, Badagry, Nigeria'
         ],
-        'Monument-Amazone-Benin-Republic.jpg' => [
-            'title' => 'Monument Amazone Benin Republic',
-            'caption' => 'Statue of the Agoodjie Dahomey warrior woman in Cotonou visited during cross-border heritage expeditions.',
-            'geo' => 'Cotonou, Littoral, Benin Republic'
-        ],
-        'Gate-of-No-Return-Ouidah-Benin-Republic.jpg' => [
-            'title' => 'Gate of No Return (Porte du Non-Retour) Ouidah',
-            'caption' => 'UNESCO World Heritage memorial monument on the Atlantic shore of Ouidah, Benin Republic.',
-            'geo' => 'Ouidah, Atlantique, Benin Republic'
-        ],
-        'Crafts-Market-Ouidah-with-Tayo.jpg' => [
-            'title' => 'Ouidah Artisanal Crafts Market Guided Tour',
-            'caption' => 'Tour travelers browsing authentic bronze castings, wood sculptures, and handwoven textiles with tour guide Tayo.',
-            'geo' => 'Ouidah, Benin Republic'
-        ],
-        'Ouidah-Snake-Temple.jpg' => [
-            'title' => 'Temple of Pythons (Temple des Pythons) Ouidah',
-            'caption' => 'Sacred royal python cultural sanctuary and Vodun spiritual immersion in historic Ouidah.',
-            'geo' => 'Ouidah, Benin Republic'
-        ],
-        'Prince-Lorenzo-Beach-Lome-Togo.jpg' => [
-            'title' => 'Prince Lorenzo Beach Lome Togo',
-            'caption' => 'Relaxing Atlantic coastline, golden palm-fringed sands, and ocean breeze in Lome, Togo.',
-            'geo' => 'Lome, Maritime, Togo'
-        ],
-        '5-Day-Nigeria-Benin-Togo-Tour.jpg' => [
-            'title' => '5-Day Tri-Nation West Africa Grand Heritage Expedition',
-            'caption' => 'Comprehensive travel route across Badagry, Cotonou, Ouidah, and Lome with seamless border arrangements.',
-            'geo' => 'West Africa Coastal Corridor'
-        ],
         'Badagry-Beach-Creek-Leisure-Day.jpg' => [
             'title' => 'Badagry Beach & Creek Leisure Day Tour',
             'caption' => 'Waterfront creek boat rides, fresh coconut tasting, and beachside relaxation along Badagry coast.',
             'geo' => 'Badagry, Lagos, Nigeria'
-        ],
-        'Badagry-Benin-4-Days-Heritage-Tour.jpg' => [
-            'title' => 'Badagry & Benin Republic 4-Day Heritage Journey',
-            'caption' => 'Four-day cultural journey linking Badagry slave relics with Dahomey kingdom historical sites in Benin Republic.',
-            'geo' => 'Nigeria & Benin Republic'
-        ],
-        'Badagry-Cotonou-Lome-Weekend-Tour.jpg' => [
-            'title' => 'Badagry, Cotonou & Lome Weekend Tour',
-            'caption' => 'Exciting weekend getaway discovering top heritage landmarks and coastal cuisine across three West African countries.',
-            'geo' => 'West Africa Coastal Corridor'
         ],
         'Corporate-Team-Heritage-Weekend.jpg' => [
             'title' => 'Corporate Team Heritage Weekend in Badagry',
             'caption' => 'Company retreats and executive team bonding experiences centered around cultural learning and relaxation.',
             'geo' => 'Badagry, Lagos, Nigeria'
         ],
-        'Diaspora-5-Day-Heritage-Homecoming-Tour.jpg' => [
-            'title' => 'Diaspora 5-Day Heritage Homecoming Tour',
-            'caption' => 'Meaningful pilgrimage for African diaspora travelers tracing ancestral roots through Badagry and Ouidah.',
-            'geo' => 'Badagry & Benin Republic'
+        'Private-Group-Badagry-Heritage-Day-Tour.jpg' => [
+            'title' => 'Private Group Badagry Heritage Day Tour',
+            'caption' => 'Exclusive group excursion exploring the historic monuments, barracoons, and cultural sites of Badagry.',
+            'geo' => 'Badagry, Lagos, Nigeria'
         ],
-        'Babs-Dock-3.jpg' => [
-            'title' => 'Babs Dock Lake Ganvie Benin Republic',
-            'caption' => 'Scenic boat cruise and lakeside relaxation at Babs Dock near Ganvie stilt city in Benin Republic.',
-            'geo' => 'Lake Nokoue, Benin Republic'
+        'Badagry-Heritage-Beach-Weekend.jpg' => [
+            'title' => 'Badagry Heritage & Beach Weekend Getaway',
+            'caption' => 'Weekend getaway combining historical discovery with relaxing beach resorts and boat rides along Badagry marina.',
+            'geo' => 'Badagry, Lagos, Nigeria'
         ],
-        'Grand-Marche.jpg' => [
-            'title' => 'Grand Marche Cultural Fabric and Artisan Market',
-            'caption' => 'Exploration of traditional West African textiles, handmade jewelry, and authentic spices in bustling markets.',
-            'geo' => 'Cotonou, Benin Republic'
-        ],
-        'Pendjari-National-Park-Signage.jpg' => [
-            'title' => 'Pendjari National Park Wildlife Safari',
-            'caption' => 'Wildlife and nature reserve expeditions in the northern savannas of Benin Republic.',
-            'geo' => 'Pendjari, Atakora, Benin Republic'
-        ],
-        'Porto-Novo.jpg' => [
-            'title' => 'Porto-Novo Historical Capital Tour',
-            'caption' => 'Afro-Brazilian architecture and ancient royal palaces in Porto-Novo, official capital of Benin Republic.',
-            'geo' => 'Porto-Novo, Oueme, Benin Republic'
+        'Badagry-for-Schools-and-Student-Groups.jpg' => [
+            'title' => 'Badagry Educational Excursions for Schools',
+            'caption' => 'Curriculum-aligned historical educational tours for students, schools, and youth organizations.',
+            'geo' => 'Badagry, Lagos, Nigeria'
         ],
         'Heritage-Tours-Badagry-Slave-Trade.jpg' => [
             'title' => 'Heritage Tours Badagry Slave Trade',
@@ -184,6 +134,7 @@ function humanizeImageFilename(string $filename): string {
 function getAllProjectImages(): array {
     $images = [];
     $known = getKnownImageMetadata();
+    $excludedPatterns = ['benin', 'togo', 'ouidah', 'cotonou', 'porto-novo', 'lome', 'amazone', 'ganvie', 'pendjari', 'marche', 'babs-dock', 'cross-border', 'west-africa', 'school-group-trips-to-badagry-benin'];
 
     if (is_dir(IMAGES_DIR)) {
         $files = scandir(IMAGES_DIR);
@@ -191,6 +142,13 @@ function getAllProjectImages(): array {
             if ($file === '.' || $file === '..') continue;
             $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
             if (!in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) continue;
+
+            $fileLower = strtolower($file);
+            foreach ($excludedPatterns as $pattern) {
+                if (strpos($fileLower, $pattern) !== false) {
+                    continue 2;
+                }
+            }
 
             $meta = $known[$file] ?? null;
             $title = $meta['title'] ?? humanizeImageFilename($file);
@@ -233,10 +191,18 @@ if (!function_exists('getAllProjectVideos')) {
         $allowed = ['mp4', 'webm', 'ogg', 'mov', 'm4v'];
         if (is_dir($videosDir)) {
             $files = scandir($videosDir);
+            $excludedPatterns = ['benin', 'togo', 'ouidah', 'cotonou', 'porto-novo', 'lome'];
             foreach ($files as $file) {
                 if ($file === '.' || $file === '..' || $file === '.gitkeep') continue;
                 $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
                 if (!in_array($ext, $allowed)) continue;
+
+                $fileLower = strtolower($file);
+                foreach ($excludedPatterns as $pattern) {
+                    if (strpos($fileLower, $pattern) !== false) {
+                        continue 2;
+                    }
+                }
                 $filePath = $videosDir . '/' . $file;
                 $title = humanizeImageFilename($file);
                 $videos[$file] = [
@@ -305,17 +271,14 @@ function generateSitemaps(): array {
         'Point-of-No-Return-Monument-Badagry.jpg',
         'First-Storey-Building-Badagry.jpg',
         'Seriki-Williams-Abass-Baracoon.jpg',
-        'Monument-Amazone-Benin-Republic.jpg',
-        'Gate-of-No-Return-Ouidah-Benin-Republic.jpg',
         'Badagry-Heritage-Museum.jpg',
         'Badagry-Heritage-Day-Tour.jpg',
-        'Crafts-Market-Ouidah-with-Tayo.jpg',
         'Route-to-Unknown-Destination.jpg',
-        'Ouidah-Snake-Temple.jpg',
-        'Prince-Lorenzo-Beach-Lome-Togo.jpg',
-        '5-Day-Nigeria-Benin-Togo-Tour.jpg',
-        'Babs-Dock-3.jpg',
-        'Grand-Marche.jpg'
+        'Badagry-Beach-Creek-Leisure-Day.jpg',
+        'Corporate-Team-Heritage-Weekend.jpg',
+        'Private-Group-Badagry-Heritage-Day-Tour.jpg',
+        'Badagry-Heritage-Beach-Weekend.jpg',
+        'Heritage-Tours-Badagry-Slave-Trade.jpg'
     ];
 
     foreach ($priorityHomeImages as $imgName) {
@@ -456,7 +419,7 @@ function generateSitemaps(): array {
     $feedXml .= "  <channel>\n";
     $feedXml .= "    <title>Badagry Visitors Guide - Travel Journal</title>\n";
     $feedXml .= "    <link>" . xmlEscape(SITE_BASE_URL . '/blog/') . "</link>\n";
-    $feedXml .= "    <description>Guides, historical perspectives, border crossing advice, and local travel stories across Badagry, Benin Republic, and Togo by indigenous historians.</description>\n";
+    $feedXml .= "    <description>Guides, historical perspectives, visitor advice, and local travel stories across ancient Badagry, Lagos State, Nigeria by indigenous historians.</description>\n";
     $feedXml .= "    <language>en-us</language>\n";
     $feedXml .= "    <lastBuildDate>" . date(DATE_RSS) . "</lastBuildDate>\n";
     $feedXml .= '    <atom:link href="' . xmlEscape(SITE_BASE_URL . '/feed.xml') . '" rel="self" type="application/rss+xml" />' . "\n";
