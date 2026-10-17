@@ -7,6 +7,7 @@
 :root {
   --primary: #0D5C3A;
   --primary-hover: #08432A;
+  --primary-dark: #06321F;
   --primary-light: #EBF7F1;
   --primary-glow: rgba(13, 92, 58, 0.25);
   --secondary: #C85A32;
@@ -2798,7 +2799,6 @@ textarea {
 /* CTA Banner */
 .blog-cta-banner {
   padding: 40px 0 80px;
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
 }
 
 .cta-banner-card {
