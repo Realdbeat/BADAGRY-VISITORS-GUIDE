@@ -2798,6 +2798,7 @@ textarea {
 /* CTA Banner */
 .blog-cta-banner {
   padding: 40px 0 80px;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
 }
 
 .cta-banner-card {
