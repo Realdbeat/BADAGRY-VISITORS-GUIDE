@@ -3,9 +3,12 @@
   RewriteEngine On
   RewriteBase /
 
-  # 1. Canonical Redirect: Physical index.html -> clean root /
-  RewriteCond %{THE_REQUEST} \s/index\.html[?\s] [NC]
-  RewriteRule ^index\.html$ / [R=301,L]
+  # Directory default index
+  DirectoryIndex index.php index.html
+
+  # 1. Canonical Redirect: Physical index.html or index.php -> clean root /
+  RewriteCond %{THE_REQUEST} \s/index\.(html|php)[?\s] [NC]
+  RewriteRule ^index\.(html|php)$ / [R=301,L]
 
   # 2. Canonical Redirect: Direct access to /blog.php -> clean /blog/
   RewriteCond %{THE_REQUEST} \s/blog\.php[?\s] [NC]

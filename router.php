@@ -14,8 +14,8 @@ if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
 $trimmedUri = trim($uri, '/');
 
 // Root / Home
-if ($trimmedUri === '' || $trimmedUri === 'index' || $trimmedUri === 'index.html') {
-    require __DIR__ . '/index.html';
+if ($trimmedUri === '' || $trimmedUri === 'index' || $trimmedUri === 'index.html' || $trimmedUri === 'index.php') {
+    require __DIR__ . '/index.php';
     exit;
 }
 

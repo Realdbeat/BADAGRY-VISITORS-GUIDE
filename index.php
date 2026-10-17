@@ -1,3 +1,16 @@
+<?php
+require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/sitemap-generator.php';
+autoUpdateSitemapsIfModified(60);
+
+try {
+    $db = getDB();
+    $stmt = $db->query("SELECT * FROM posts WHERE status = 'published' ORDER BY published_at DESC LIMIT 4");
+    $topPosts = $stmt ? $stmt->fetchAll() : [];
+} catch (Throwable $e) {
+    $topPosts = [];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1655,99 +1668,46 @@
       </div>
 
       <div class="journal-grid">
-        <!-- Article 1 -->
-        <article class="journal-card">
-          <div class="journal-img-wrap">
-            <a href="/blog/how-to-get-yellow-card-in-nigeria-2026">
-              <img src="assets/images/eYellow-Card-2-e1787431293225-420x347.jpg" alt="Yellow Card Nigeria Guide"
-                loading="lazy" />
-            </a>
-          </div>
-          <div class="journal-card-body">
-            <div class="journal-meta">
-              <span><i class="fa-regular fa-calendar"></i> Aug 22, 2026</span>
-              <span><i class="fa-regular fa-clock"></i> 9 min read</span>
-            </div>
-            <h3 class="journal-title">
-              <a href="/blog/how-to-get-yellow-card-in-nigeria-2026">How to Get a Yellow Card in Nigeria in 2026: A
-                Simple Travel Guide</a>
-            </h3>
-            <p class="journal-excerpt">A complete walkthrough of the Port Health Services process, online payment
-              portal, vaccination centres, and border clearance verification.</p>
-            <a href="/blog/how-to-get-yellow-card-in-nigeria-2026" class="btn-text-link">Read More <i
-                class="fa-solid fa-arrow-right-long"></i></a>
-          </div>
-        </article>
-
-        <!-- Article 2 -->
-        <article class="journal-card">
-          <div class="journal-img-wrap">
-            <a href="/blog/what-it-feels-like-to-stand-at-point-of-no-return">
-              <img src="assets/images/Point-of-No-Return-420x347.jpg" alt="Point of No Return Badagry" loading="lazy" />
-            </a>
-          </div>
-          <div class="journal-card-body">
-            <div class="journal-meta">
-              <span><i class="fa-regular fa-calendar"></i> Mar 27, 2026</span>
-              <span><i class="fa-regular fa-clock"></i> 7 min read</span>
-            </div>
-            <h3 class="journal-title">
-              <a href="/blog/what-it-feels-like-to-stand-at-point-of-no-return">What It Feels Like to Stand at the Point
-                of No Return</a>
-            </h3>
-            <p class="journal-excerpt">Personal reflection on walking the somber path through the Gberefu peninsula
-              toward the Atlantic shore where millions took their last steps on native soil.</p>
-            <a href="/blog/what-it-feels-like-to-stand-at-point-of-no-return" class="btn-text-link">Read More <i
-                class="fa-solid fa-arrow-right-long"></i></a>
-          </div>
-        </article>
-
-        <!-- Article 3 -->
-        <article class="journal-card">
-          <div class="journal-img-wrap">
-            <a href="/blog/how-to-get-from-central-lagos-to-badagry-2026">
-              <img src="assets/images/Central-Lagos-to-Badagry-Map-420x347.jpg" alt="Central Lagos to Badagry Map"
-                loading="lazy" />
-            </a>
-          </div>
-          <div class="journal-card-body">
-            <div class="journal-meta">
-              <span><i class="fa-regular fa-calendar"></i> Mar 26, 2026</span>
-              <span><i class="fa-regular fa-clock"></i> 6 min read</span>
-            </div>
-            <h3 class="journal-title">
-              <a href="/blog/how-to-get-from-central-lagos-to-badagry-2026">How to Get from Central Lagos to Badagry in
-                2026</a>
-            </h3>
-            <p class="journal-excerpt">Comparing road options, the Lagos-Badagry Expressway progress, water transit via
-              CMS jetty, and private escorted transfers for tourists.</p>
-            <a href="/blog/how-to-get-from-central-lagos-to-badagry-2026" class="btn-text-link">Read More <i
-                class="fa-solid fa-arrow-right-long"></i></a>
-          </div>
-        </article>
-
-        <!-- Article 4 -->
-        <article class="journal-card">
-          <div class="journal-img-wrap">
-            <a href="/blog/complete-badagry-travel-guide-2026">
-              <img src="assets/images/Badagry-Heritage-Museum-1-420x347.jpg" alt="Badagry Heritage Museum"
-                loading="lazy" />
-            </a>
-          </div>
-          <div class="journal-card-body">
-            <div class="journal-meta">
-              <span><i class="fa-regular fa-calendar"></i> Mar 26, 2026</span>
-              <span><i class="fa-regular fa-clock"></i> 7 min read</span>
-            </div>
-            <h3 class="journal-title">
-              <a href="/blog/complete-badagry-travel-guide-2026">Your Complete Badagry Travel Guide for 2026</a>
-            </h3>
-            <p class="journal-excerpt">Where to stay, authentic local dishes to savor, museum opening hours, photo
-              etiquette, and essential regional tips for first-time visitors.</p>
-            <a href="/blog/complete-badagry-travel-guide-2026" class="btn-text-link">Read More <i
-                class="fa-solid fa-arrow-right-long"></i></a>
-          </div>
-        </article>
+        <?php if (!empty($topPosts)): ?>
+          <?php foreach ($topPosts as $post): ?>
+            <?php
+              $postSlug = $post['slug'] ?? '';
+              $postUrl = '/blog/' . urlencode($postSlug);
+              $postImg = !empty($post['featured_image']) ? $post['featured_image'] : 'assets/images/Point-of-No-Return-420x347.jpg';
+              $isVid = (bool) preg_match('/\.(mp4|webm|ogg|mov|m4v)$/i', $postImg);
+              $mediaSrc = preg_match('#^https?://#i', $postImg) ? htmlspecialchars($postImg) : '/' . ltrim(htmlspecialchars($postImg), '/');
+              $pubDate = !empty($post['published_at']) ? date('M d, Y', strtotime($post['published_at'])) : date('M d, Y');
+              $readTime = !empty($post['read_time']) ? htmlspecialchars($post['read_time']) : '5 min read';
+              $postTitle = htmlspecialchars($post['title'] ?? '');
+              $postExcerpt = htmlspecialchars($post['excerpt'] ?? '');
+            ?>
+            <!-- Article <?= (int)($post['id'] ?? 0) ?> -->
+            <article class="journal-card">
+              <div class="journal-img-wrap">
+                <a href="<?= $postUrl ?>">
+                  <?php if ($isVid): ?>
+                    <video src="<?= $mediaSrc ?>#t=0.5" muted playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                  <?php else: ?>
+                    <img src="<?= $mediaSrc ?>" alt="<?= $postTitle ?>" loading="lazy" />
+                  <?php endif; ?>
+                </a>
+              </div>
+              <div class="journal-card-body">
+                <div class="journal-meta">
+                  <span><i class="fa-regular fa-calendar"></i> <?= $pubDate ?></span>
+                  <span><i class="fa-regular fa-clock"></i> <?= $readTime ?></span>
+                </div>
+                <h3 class="journal-title">
+                  <a href="<?= $postUrl ?>"><?= $postTitle ?></a>
+                </h3>
+                <p class="journal-excerpt"><?= $postExcerpt ?></p>
+                <a href="<?= $postUrl ?>" class="btn-text-link">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
+              </div>
+            </article>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p class="text-muted" style="grid-column: 1 / -1; text-align: center; padding: 2rem 0;">No articles published yet. Check back soon!</p>
+        <?php endif; ?>
       </div>
     </div>
   </section>
