@@ -11,6 +11,8 @@ $allRawVideos = getAllProjectVideos();
 $excludedPatterns = [
     '-420x347', 'logo.jpg', 'Chukwuemeka-Eze', 'Claire-Dubois', 'James-Sutton',
     'Kemi-Adeyemi', 'Nkechi-Okafor-Williams', 'Yetunde-Fashola', 'eYellow-Card',
+    'Ade-Sofola', 'Adedoyin-Dosunmu-Ogunbi', 'Ashola-Moyinoluwa', 'SEGUN-OPAYELE',
+    'Tutor-Saheed', 'Olayinka-Oyeku',
     'benin', 'togo', 'ouidah', 'cotonou', 'porto-novo', 'lome', 'amazone', 'ganvie',
     'pendjari', 'babs-dock', 'prince-lorenzo', 'grand-marche'
 ];
