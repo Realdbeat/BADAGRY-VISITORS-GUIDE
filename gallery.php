@@ -166,7 +166,7 @@ foreach ($galleryItems as $item) {
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="/style.css?v=3.00" />
+  <link rel="stylesheet" href="/style.css?v=3.01" />
 
   <!-- Schema.org Breadcrumbs structured data -->
   <script type="application/ld+json">
