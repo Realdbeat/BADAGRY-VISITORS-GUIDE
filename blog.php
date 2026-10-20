@@ -415,6 +415,13 @@ $totalPosts = count($posts);
               <i class="fa-solid fa-phone"></i>
               <div>
                 <span class="item-label">Phone &amp; WhatsApp</span>
+                <a href="http://wa.me/+2348025937044?text=from+google+map+or+site" target="_blank" rel="noopener">+234 802 593 7044</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <span class="item-label">Phone &amp; WhatsApp</span>
                 <a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener">+234 705 698 9224</a>
               </div>
             </div>
