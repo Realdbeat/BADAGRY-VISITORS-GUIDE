@@ -583,7 +583,7 @@ try {
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="/style.css?v=3.00" />
+  <link rel="stylesheet" href="/style.css?v=3.01" />
 </head>
 
 <body>
@@ -760,7 +760,7 @@ try {
       <!-- Slide 4 -->
       <div class="hero-slide" data-slide="3">
         <div class="hero-bg"
-          style="background-image: linear-gradient(rgba(17, 24, 39, 0.52), rgba(17, 24, 39, 0.65)), url('assets/images/Seriki-Williams-Abass-Baracoon.jpg');">
+          style="background-image: linear-gradient(rgba(17, 24, 39, 0.52), rgba(17, 24, 39, 0.65)), url('assets/images/Seriki-Williams-Abass-Baracoon.jpg?v=1.0');">
         </div>
         <div class="site-container hero-content">
           <span class="hero-badge animate-up">Preserved Slave Relics &amp; Barracoons</span>
