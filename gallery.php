@@ -43,7 +43,7 @@ function getMediaCategory(string $filename, string $title, string $geo): array {
         $catName = 'Slave Route & Memorials';
         $country = 'Badagry, Lagos';
         $countryFlag = '🔗';
-    } elseif (strpos($combined, 'group') !== false || strpos($combined, 'team') !== false || strpos($combined, 'school') !== false || strpos($combined, 'client') !== false || strpos($combined, 'private') !== false || strpos($combined, 'corporate') !== false) {
+    } elseif (strpos($combined, 'group') !== false || strpos($combined, 'team') !== false || strpos($combined, 'school') !== false || strpos($combined, 'client') !== false || strpos($combined, 'private') !== false || strpos($combined, 'corporate') !== false || strpos($combined, 'zangbeto') !== false || strpos($combined, 'festival') !== false) {
         $catSlug = 'tours';
         $catName = 'Tour Groups & Excursions';
         $country = 'Badagry, Lagos';

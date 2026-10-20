@@ -468,6 +468,31 @@ try {
       }
     },
     {
+      "@type": "TouristTrip",
+      "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-zangbeto-festival",
+      "name": "Zangbeto Festival Tour",
+      "description": "Witness the mystical Zangbeto masquerade — the traditional guardian of the night. Featuring authentic Ogu drumming, folklore, and sacred performances. Zangbeto remains an important symbol of Badagry’s cultural identity and a living heritage.",
+      "touristType": [
+        "African Diaspora",
+        "Cultural Tourist",
+        "Heritage Pilgrim",
+        "Traditional Heritage"
+      ],
+      "image": [
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Zangbeto-Festival-Tour.jpg"
+      ],
+      "provider": {
+        "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "95",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://badagryvisitorsguide.rav.com.ng/#tours"
+      }
+    },
+    {
       "@type": "TouristAttraction",
       "@id": "https://badagryvisitorsguide.rav.com.ng/#attraction-point-no-return",
       "name": "Point of No Return Badagry (Gberefu Peninsula)",
@@ -1109,7 +1134,7 @@ try {
 
       <!-- Quick Category Filter Tabs -->
       <div class="tour-tabs" id="tourTabs">
-        <button class="tour-tab-btn active" data-filter="all">All Tours (10)</button>
+        <button class="tour-tab-btn active" data-filter="all">All Tours (11)</button>
         <button class="tour-tab-btn" data-filter="day">Day Trips</button>
         <button class="tour-tab-btn" data-filter="weekend">Weekend Getaways</button>
         <button class="tour-tab-btn" data-filter="educational">Educational &amp; Groups</button>
@@ -1348,6 +1373,29 @@ try {
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Badagry Diaspora Roots Pilgrimage"
                 data-price="$550">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tour 11 -->
+        <article class="tour-card" data-category="diaspora" data-duration="1" data-price="95" data-corridor="Badagry">
+          <div class="tour-card-img">
+            <img src="assets/images/Zangbeto-Festival-Tour.jpg"
+              alt="Zangbeto Festival Tour - Traditional Masquerade and Cultural Heritage Badagry" loading="lazy" />
+            <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 1 Day</span>
+          </div>
+          <div class="tour-card-body">
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <h3 class="tour-title">Zangbeto Festival Tour</h3>
+            <p class="tour-summary">Experience the mystical Zangbeto masquerade — the traditional guardian of the night. Featuring energetic Ogu drumming, traditional chants, and sacred dances. Zangbeto remains an important symbol of Badagry’s cultural identity and a living heritage.</p>
+            <div class="tour-card-footer">
+              <div class="tour-price">
+                <span class="price-prefix">Starting at</span>
+                <span class="price-amount">$95</span>
+                <span class="price-suffix">/Person</span>
+              </div>
+              <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Zangbeto Festival Tour"
+                data-price="$95">Book Now</button>
             </div>
           </div>
         </article>

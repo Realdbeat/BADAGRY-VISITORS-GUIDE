@@ -111,6 +111,11 @@ function getKnownImageMetadata(): array {
             'title' => 'Badagry Heritage Museum & Complete Badagry Guide',
             'caption' => 'Visitor advice, top landmarks, opening hours, admission, and local customs in Badagry.',
             'geo' => 'Badagry, Lagos, Nigeria'
+        ],
+        'Zangbeto-Festival-Tour.jpg' => [
+            'title' => 'Zangbeto Festival Tour & Living Cultural Heritage',
+            'caption' => 'Zangbeto festival masquerade performance and cultural heritage tour experience in Badagry.',
+            'geo' => 'Badagry, Lagos, Nigeria'
         ]
     ];
 }
@@ -278,7 +283,8 @@ function generateSitemaps(): array {
         'Corporate-Team-Heritage-Weekend.jpg',
         'Private-Group-Badagry-Heritage-Day-Tour.jpg',
         'Badagry-Heritage-Beach-Weekend.jpg',
-        'Heritage-Tours-Badagry-Slave-Trade.jpg'
+        'Heritage-Tours-Badagry-Slave-Trade.jpg',
+        'Zangbeto-Festival-Tour.jpg'
     ];
 
     foreach ($priorityHomeImages as $imgName) {

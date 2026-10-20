@@ -357,6 +357,31 @@
       }
     },
     {
+      "@type": "TouristTrip",
+      "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-zangbeto-festival",
+      "name": "Zangbeto Festival Tour",
+      "description": "Witness the mystical Zangbeto masquerade — the traditional guardian of the night. Featuring authentic Ogu drumming, folklore, and sacred performances. Zangbeto remains an important symbol of Badagry’s cultural identity and a living heritage.",
+      "touristType": [
+        "African Diaspora",
+        "Cultural Tourist",
+        "Heritage Pilgrim",
+        "Traditional Heritage"
+      ],
+      "image": [
+        "https://badagryvisitorsguide.rav.com.ng/assets/images/Zangbeto-Festival-Tour.jpg"
+      ],
+      "provider": {
+        "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "95",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://badagryvisitorsguide.rav.com.ng/#tours"
+      }
+    },
+    {
       "@type": "TouristAttraction",
       "@id": "https://badagryvisitorsguide.rav.com.ng/#attraction-point-no-return",
       "name": "Point of No Return Badagry (Gberefu Peninsula)",
