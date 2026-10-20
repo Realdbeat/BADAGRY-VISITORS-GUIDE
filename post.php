@@ -46,8 +46,8 @@ if ($post) {
 
 // Clean Pretty URL for Google SEO & Social Sharing
 $cleanSlug = $post['slug'] ?? '';
-$pageUrl = "https://badagryvisitorsguide.rav.com.ng/blog/" . urlencode($cleanSlug);
-$imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'] ?? 'assets/images/Point-of-No-Return-420x347.jpg');
+$pageUrl = "https://badagryvisitorsguide.com.ng/blog/" . urlencode($cleanSlug);
+$imageUrl = "https://badagryvisitorsguide.com.ng/" . ($post['featured_image'] ?? 'assets/images/Point-of-No-Return-420x347.jpg');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +65,7 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
     <meta name="google-site-verification" content="google1c708dda37599c2a" />
 
     <!-- RSS Feed Discovery -->
-    <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed" href="https://badagryvisitorsguide.rav.com.ng/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed" href="https://badagryvisitorsguide.com.ng/feed.xml" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
@@ -94,13 +94,13 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://badagryvisitorsguide.rav.com.ng/"
+          "item": "https://badagryvisitorsguide.com.ng/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Journal",
-          "item": "https://badagryvisitorsguide.rav.com.ng/blog/"
+          "item": "https://badagryvisitorsguide.com.ng/blog/"
         },
         {
           "@type": "ListItem",
@@ -125,15 +125,15 @@ $imageUrl = "https://badagryvisitorsguide.rav.com.ng/" . ($post['featured_image'
       "author": {
         "@type": "Organization",
         "name": <?= json_encode($post['author']) ?>,
-        "url": "https://badagryvisitorsguide.rav.com.ng/"
+        "url": "https://badagryvisitorsguide.com.ng/"
       },
       "publisher": {
         "@type": "Organization",
         "name": "Badagry Visitors Guide",
-        "url": "https://badagryvisitorsguide.rav.com.ng/",
+        "url": "https://badagryvisitorsguide.com.ng/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg"
+          "url": "https://badagryvisitorsguide.com.ng/assets/logo.jpg"
         }
       },
       "mainEntityOfPage": {

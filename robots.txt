@@ -1,5 +1,5 @@
 # Badagry Visitors Guide - robots.txt
-# https://badagryvisitorsguide.rav.com.ng/
+# https://badagryvisitorsguide.com.ng/
 
 # Google Web Search Crawler
 User-agent: Googlebot
@@ -33,5 +33,5 @@ Disallow: /admin/
 Disallow: /database/
 
 # XML Sitemaps
-Sitemap: https://badagryvisitorsguide.rav.com.ng/sitemap.xml
-Sitemap: https://badagryvisitorsguide.rav.com.ng/image-sitemap.xml
+Sitemap: https://badagryvisitorsguide.com.ng/sitemap.xml
+Sitemap: https://badagryvisitorsguide.com.ng/image-sitemap.xml

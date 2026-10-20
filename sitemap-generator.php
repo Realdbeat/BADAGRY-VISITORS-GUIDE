@@ -16,7 +16,7 @@
 
 require_once __DIR__ . '/db.php';
 
-define('SITE_BASE_URL', 'https://badagryvisitorsguide.rav.com.ng');
+define('SITE_BASE_URL', 'https://badagryvisitorsguide.com.ng');
 define('IMAGES_DIR', __DIR__ . '/assets/images');
 define('SITEMAP_MAIN_FILE', __DIR__ . '/sitemap.xml');
 define('SITEMAP_IMAGE_FILE', __DIR__ . '/image-sitemap.xml');

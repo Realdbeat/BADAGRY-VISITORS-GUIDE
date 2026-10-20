@@ -25,7 +25,7 @@ try {
   <meta name="author" content="Badagry Visitors Guide" />
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://badagryvisitorsguide.rav.com.ng/" />
+  <link rel="canonical" href="https://badagryvisitorsguide.com.ng/" />
 
   <!-- Google Search & Crawler Directives: Enable Large Image Previews in SERP -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -35,11 +35,11 @@ try {
 
   <!-- RSS Feed Discovery -->
   <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed"
-    href="https://badagryvisitorsguide.rav.com.ng/feed.xml" />
+    href="https://badagryvisitorsguide.com.ng/feed.xml" />
 
   <!-- Google Mobile & Desktop Search Image Thumbnail -->
   <meta name="thumbnail"
-    content="https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg" />
+    content="https://badagryvisitorsguide.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg" />
 
   <!-- Geo & Regional Tags -->
   <meta name="geo.region" content="NG-LA" />
@@ -55,32 +55,32 @@ try {
     content="Badagry Heritage &amp; Cultural Tours - Historical Slave Routes &amp; Landmarks | Badagry Visitors Guide" />
   <meta property="og:description"
     content="Experience Badagry's rich history and coastal serenity with expert local historians. Guided tours to the First Storey Building, Point of No Return, slave barracoons, and boat cruises." />
-  <meta property="og:url" content="https://badagryvisitorsguide.rav.com.ng/" />
+  <meta property="og:url" content="https://badagryvisitorsguide.com.ng/" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Primary Tour Experience Images for Google & Social Snippets -->
   <meta property="og:image"
-    content="https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg" />
+    content="https://badagryvisitorsguide.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg" />
   <meta property="og:image:secure_url"
-    content="https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg" />
+    content="https://badagryvisitorsguide.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
   <meta property="og:image:alt" content="Badagry Slave Memorial Statue and Historical Heritage Monument" />
 
   <meta property="og:image"
-    content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
+    content="https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
   <meta property="og:image:secure_url"
-    content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
+    content="https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
   <meta property="og:image:alt" content="Point of No Return Ocean Monument on Gberefu Island Badagry" />
 
   <meta property="og:image"
-    content="https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg" />
+    content="https://badagryvisitorsguide.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg" />
   <meta property="og:image:secure_url"
-    content="https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg" />
+    content="https://badagryvisitorsguide.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
@@ -94,7 +94,7 @@ try {
   <meta name="twitter:description"
     content="Guided historical expeditions through Badagry slave routes, First Storey Building, and coastal creek boat tours. See client tour photos and budget packages." />
   <meta name="twitter:image"
-    content="https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg" />
+    content="https://badagryvisitorsguide.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg" />
   <meta name="twitter:image:alt" content="Badagry Tours with Badagry Visitors Guide" />
 
   <!-- Icons -->
@@ -105,7 +105,7 @@ try {
   <!-- ===========================================================================================
        3. CANONICAL URL (SUPER IMPORTANT for Google) ✅
        =========================================================================================== -->
-  <link rel="canonical" href="https://badagryvisitorsguide.rav.com.ng/" />
+  <link rel="canonical" href="https://badagryvisitorsguide.com.ng/" />
 
   <!-- Schema.org JSON-LD Structured Data for Google Search Rich Snippets & Image Carousels -->
   <script type="application/ld+json">
@@ -114,32 +114,32 @@ try {
   "@graph": [
     {
       "@type": "TravelAgency",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency",
+      "@id": "https://badagryvisitorsguide.com.ng/#travelagency",
       "name": "Badagry Visitors Guide",
       "alternateName": [
         "Badagry Visitors Guide",
         "Badagry Heritage & Cultural Tours"
       ],
-      "url": "https://badagryvisitorsguide.rav.com.ng/",
+      "url": "https://badagryvisitorsguide.com.ng/",
       "logo": {
         "@type": "ImageObject",
-        "@id": "https://badagryvisitorsguide.rav.com.ng/#logo",
-        "url": "https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg",
-        "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg",
+        "@id": "https://badagryvisitorsguide.com.ng/#logo",
+        "url": "https://badagryvisitorsguide.com.ng/assets/logo.jpg",
+        "contentUrl": "https://badagryvisitorsguide.com.ng/assets/logo.jpg",
         "caption": "Badagry Visitors Guide Logo",
         "width": "500",
         "height": "500"
       },
       "image": [
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Day-Tour.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Museum.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Beach-Creek-Leisure-Day.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Beach-Weekend.jpg"
+        "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Heritage-Day-Tour.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Route-to-Unknown-Destination.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Heritage-Museum.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Beach-Creek-Leisure-Day.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Heritage-Beach-Weekend.jpg"
       ],
       "description": "Authentic heritage and coastal tour operator providing personalized budget-friendly journeys across Badagry, Lagos State, Nigeria led by indigenous historians.",
       "telephone": "+2347056989224",
@@ -280,28 +280,28 @@ try {
     },
     {
       "@type": "WebSite",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#website",
-      "url": "https://badagryvisitorsguide.rav.com.ng/",
+      "@id": "https://badagryvisitorsguide.com.ng/#website",
+      "url": "https://badagryvisitorsguide.com.ng/",
       "name": "Badagry Visitors Guide",
       "description": "Discover Badagry's most powerful heritage, slave route landmarks, and coastal experiences in Lagos State, Nigeria.",
       "publisher": {
-        "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency"
+        "@id": "https://badagryvisitorsguide.com.ng/#travelagency"
       },
       "inLanguage": "en-US"
     },
     {
       "@type": "ImageGallery",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-gallery",
+      "@id": "https://badagryvisitorsguide.com.ng/#tour-gallery",
       "name": "Past Tour Moments & Client Experiences - Badagry Heritage Tours",
       "description": "Authentic photography captured during guided heritage, cultural, and coastal tours for clients across Badagry, Lagos State, Nigeria.",
-      "url": "https://badagryvisitorsguide.rav.com.ng/#gallery",
+      "url": "https://badagryvisitorsguide.com.ng/#gallery",
       "associatedMedia": [
         {
           "@type": "ImageObject",
           "name": "Badagry Heritage Museum & Slave Relics Tour",
           "caption": "Visitors and tour clients viewing historical slave trade records and artifacts at the Badagry Heritage Museum.",
           "description": "Educational heritage tour session inside the Badagry Heritage Museum established in 1863.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Museum.jpg",
+          "contentUrl": "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Heritage-Museum.jpg",
           "representativeOfPage": true,
           "contentLocation": "Badagry, Lagos, Nigeria"
         },
@@ -310,7 +310,7 @@ try {
           "name": "First Storey Building in Nigeria, Badagry",
           "caption": "Tour clients at the historic First Storey Building in Nigeria constructed in 1845 by CMS missionaries.",
           "description": "Historic mission home where Bishop Samuel Ajayi Crowther translated the English Bible into Yoruba.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
+          "contentUrl": "https://badagryvisitorsguide.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
           "contentLocation": "Badagry, Lagos, Nigeria"
         },
         {
@@ -318,7 +318,7 @@ try {
           "name": "Seriki Williams Abass Brazilian Barracoon",
           "caption": "Tour clients examining preserved 19th-century slave cells and iron relic chains in Badagry.",
           "description": "Historical 1840 Brazilian-style barracoon with 40 slave rooms built by Chief Seriki Williams Abass.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
+          "contentUrl": "https://badagryvisitorsguide.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
           "contentLocation": "Badagry, Lagos, Nigeria"
         },
         {
@@ -326,7 +326,7 @@ try {
           "name": "Point of No Return Trail, Gberefu Peninsula",
           "caption": "Tour group walking the solemn Point of No Return trail on Gberefu Island toward the Atlantic Ocean.",
           "description": "Historical pilgrimage retracing the 1473 slave route steps to the Atlantic coast in Badagry.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg",
+          "contentUrl": "https://badagryvisitorsguide.com.ng/assets/images/Route-to-Unknown-Destination.jpg",
           "contentLocation": "Gberefu Island, Badagry, Nigeria"
         },
         {
@@ -334,7 +334,7 @@ try {
           "name": "Point of No Return Atlantic Memorial Monument",
           "caption": "The solemn Atlantic Ocean memorial monument at the Point of No Return on Gberefu Island.",
           "description": "Historical landmark marking where enslaved Africans departed across the Atlantic Ocean.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg",
+          "contentUrl": "https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg",
           "contentLocation": "Badagry, Lagos, Nigeria"
         },
         {
@@ -342,7 +342,7 @@ try {
           "name": "Badagry Slave Memorial Statue & Heritage Quarter",
           "caption": "Badagry Slave Memorial Statue standing as an enduring tribute in the historic heritage quarter.",
           "description": "Artistic memorial commemorating freedom and honoring the resilience of African ancestors.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg",
+          "contentUrl": "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Slave-Memorial-Statue.jpg",
           "contentLocation": "Badagry, Lagos, Nigeria"
         },
         {
@@ -350,7 +350,7 @@ try {
           "name": "Badagry Beach & Creek Leisure Day Tour",
           "caption": "Tour clients taking a scenic boat ride across the calm Badagry creek toward the coastal peninsula.",
           "description": "Relaxing coastal boat cruise and waterfront eco-tourism experience in Badagry.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Beach-Creek-Leisure-Day.jpg",
+          "contentUrl": "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Beach-Creek-Leisure-Day.jpg",
           "contentLocation": "Badagry, Lagos, Nigeria"
         },
         {
@@ -358,14 +358,14 @@ try {
           "name": "Badagry Heritage Weekend Experience",
           "caption": "Tour clients enjoying an immersive weekend exploring Badagry's coastal charm and historic monuments.",
           "description": "Weekend cultural retreat exploring royal palaces, artisan markets, and colonial landmarks in Badagry.",
-          "contentUrl": "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Beach-Weekend.jpg",
+          "contentUrl": "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Heritage-Beach-Weekend.jpg",
           "contentLocation": "Badagry, Lagos, Nigeria"
         }
       ]
     },
     {
       "@type": "TouristTrip",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-badagry-day",
+      "@id": "https://badagryvisitorsguide.com.ng/#tour-badagry-day",
       "name": "Badagry Heritage Day Tour",
       "description": "Discover the first storey building in Nigeria, slave relics, Mobee museum, and boat ride across the creek to the Point of No Return.",
       "touristType": [
@@ -375,19 +375,19 @@ try {
         "Solo Traveler"
       ],
       "image": [
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Day-Tour.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg"
+        "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Heritage-Day-Tour.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Route-to-Unknown-Destination.jpg"
       ],
       "provider": {
-        "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency"
+        "@id": "https://badagryvisitorsguide.com.ng/#travelagency"
       },
       "offers": {
         "@type": "Offer",
         "price": "75",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
-        "url": "https://badagryvisitorsguide.rav.com.ng/#tours"
+        "url": "https://badagryvisitorsguide.com.ng/#tours"
       },
       "itinerary": {
         "@type": "ItemList",
@@ -417,7 +417,7 @@ try {
     },
     {
       "@type": "TouristTrip",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-badagry-immersion",
+      "@id": "https://badagryvisitorsguide.com.ng/#tour-badagry-immersion",
       "name": "3-Day Badagry Heritage & Coastal Immersion Tour",
       "description": "Comprehensive 3-day Badagry pilgrimage: First Storey Building, Seriki Abass Barracoons, Gberefu Island Point of No Return, Badagry Creek boat cruise, and coastal beach relaxation.",
       "touristType": [
@@ -427,24 +427,24 @@ try {
         "Weekend Traveler"
       ],
       "image": [
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Heritage-Beach-Weekend.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Badagry-Beach-Creek-Leisure-Day.jpg"
+        "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Heritage-Beach-Weekend.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Badagry-Beach-Creek-Leisure-Day.jpg"
       ],
       "provider": {
-        "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency"
+        "@id": "https://badagryvisitorsguide.com.ng/#travelagency"
       },
       "offers": {
         "@type": "Offer",
         "price": "350",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
-        "url": "https://badagryvisitorsguide.rav.com.ng/#tours"
+        "url": "https://badagryvisitorsguide.com.ng/#tours"
       }
     },
     {
       "@type": "TouristTrip",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-diaspora",
+      "@id": "https://badagryvisitorsguide.com.ng/#tour-diaspora",
       "name": "Badagry Diaspora Roots & Homecoming Tour",
       "description": "Emotional pilgrimage for descendants connecting with ancestral roots, traditional Yoruba welcome rites, Badagry heritage quarter visits, and healing dialogues at the Point of No Return.",
       "touristType": [
@@ -453,23 +453,23 @@ try {
         "Genealogy Traveler"
       ],
       "image": [
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg",
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg"
+        "https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg",
+        "https://badagryvisitorsguide.com.ng/assets/images/Route-to-Unknown-Destination.jpg"
       ],
       "provider": {
-        "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency"
+        "@id": "https://badagryvisitorsguide.com.ng/#travelagency"
       },
       "offers": {
         "@type": "Offer",
         "price": "550",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
-        "url": "https://badagryvisitorsguide.rav.com.ng/#tours"
+        "url": "https://badagryvisitorsguide.com.ng/#tours"
       }
     },
     {
       "@type": "TouristTrip",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#tour-zangbeto-festival",
+      "@id": "https://badagryvisitorsguide.com.ng/#tour-zangbeto-festival",
       "name": "Zangbeto Festival Tour",
       "description": "Witness the mystical Zangbeto masquerade — the traditional guardian of the night. Featuring authentic Ogu drumming, folklore, and sacred performances. Zangbeto remains an important symbol of Badagry’s cultural identity and a living heritage.",
       "touristType": [
@@ -479,25 +479,25 @@ try {
         "Traditional Heritage"
       ],
       "image": [
-        "https://badagryvisitorsguide.rav.com.ng/assets/images/Zangbeto-Festival-Tour.jpg"
+        "https://badagryvisitorsguide.com.ng/assets/images/Zangbeto-Festival-Tour.jpg"
       ],
       "provider": {
-        "@id": "https://badagryvisitorsguide.rav.com.ng/#travelagency"
+        "@id": "https://badagryvisitorsguide.com.ng/#travelagency"
       },
       "offers": {
         "@type": "Offer",
         "price": "95",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
-        "url": "https://badagryvisitorsguide.rav.com.ng/#tours"
+        "url": "https://badagryvisitorsguide.com.ng/#tours"
       }
     },
     {
       "@type": "TouristAttraction",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#attraction-point-no-return",
+      "@id": "https://badagryvisitorsguide.com.ng/#attraction-point-no-return",
       "name": "Point of No Return Badagry (Gberefu Peninsula)",
       "description": "Historic Atlantic embarkation point where hundreds of thousands of enslaved Africans departed during the transatlantic slave trade.",
-      "image": "https://badagryvisitorsguide.rav.com.ng/assets/images/Route-to-Unknown-Destination.jpg",
+      "image": "https://badagryvisitorsguide.com.ng/assets/images/Route-to-Unknown-Destination.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Badagry",
@@ -512,10 +512,10 @@ try {
     },
     {
       "@type": "TouristAttraction",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#attraction-first-storey",
+      "@id": "https://badagryvisitorsguide.com.ng/#attraction-first-storey",
       "name": "First Storey Building in Nigeria",
       "description": "Constructed in 1845 by Christian Missionary Society missionaries, the building where the English Bible was translated to Yoruba.",
-      "image": "https://badagryvisitorsguide.rav.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
+      "image": "https://badagryvisitorsguide.com.ng/assets/images/First-Storey-Building-in-Nigeria.jpg",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Marina Badagry",
@@ -526,10 +526,10 @@ try {
     },
     {
       "@type": "TouristAttraction",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#attraction-barracoon",
+      "@id": "https://badagryvisitorsguide.com.ng/#attraction-barracoon",
       "name": "Seriki Williams Abass Brazilian Barracoon",
       "description": "Historical 1840 Brazilian-style slave barracks containing 40 preserved slave cells and historical iron relic chains in Badagry.",
-      "image": "https://badagryvisitorsguide.rav.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
+      "image": "https://badagryvisitorsguide.com.ng/assets/images/Seriki-Williams-Abass-Baracoon.jpg",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Marina Badagry",
@@ -540,31 +540,31 @@ try {
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://badagryvisitorsguide.rav.com.ng/#breadcrumbs",
+      "@id": "https://badagryvisitorsguide.com.ng/#breadcrumbs",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://badagryvisitorsguide.rav.com.ng/"
+          "item": "https://badagryvisitorsguide.com.ng/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Tours & Experiences",
-          "item": "https://badagryvisitorsguide.rav.com.ng/#tours"
+          "item": "https://badagryvisitorsguide.com.ng/#tours"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Past Tour Photo Gallery",
-          "item": "https://badagryvisitorsguide.rav.com.ng/#gallery"
+          "item": "https://badagryvisitorsguide.com.ng/#gallery"
         },
         {
           "@type": "ListItem",
           "position": 4,
           "name": "Client Reviews",
-          "item": "https://badagryvisitorsguide.rav.com.ng/#testimonials"
+          "item": "https://badagryvisitorsguide.com.ng/#testimonials"
         }
       ]
     }

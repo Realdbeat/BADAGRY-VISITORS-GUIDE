@@ -42,28 +42,28 @@ $totalPosts = count($posts);
   <title>Badagry Travel Journal &amp; Blog | Badagry Visitors Guide</title>
   <meta name="description"
     content="Guides, historical perspectives, visitor advice, and local travel stories across ancient Badagry, Lagos State, Nigeria by indigenous historians." />
-  <link rel="canonical" href="https://badagryvisitorsguide.rav.com.ng/blog/" />
+  <link rel="canonical" href="https://badagryvisitorsguide.com.ng/blog/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="google-site-verification" content="google1c708dda37599c2a" />
 
   <!-- RSS Feed Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed" href="https://badagryvisitorsguide.rav.com.ng/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed" href="https://badagryvisitorsguide.com.ng/feed.xml" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="blog" />
   <meta property="og:site_name" content="Badagry Visitors Guide" />
   <meta property="og:title" content="Badagry Travel Journal &amp; Blog | Badagry Visitors Guide" />
   <meta property="og:description" content="Authentic historical accounts, travel guides, and insider tips for visiting Badagry, Lagos State, Nigeria." />
-  <meta property="og:url" content="https://badagryvisitorsguide.rav.com.ng/blog/" />
-  <meta property="og:image" content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-420x347.jpg" />
+  <meta property="og:url" content="https://badagryvisitorsguide.com.ng/blog/" />
+  <meta property="og:image" content="https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-420x347.jpg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Badagry Travel Journal &amp; Blog | Badagry Visitors Guide" />
   <meta name="twitter:description" content="Authentic historical accounts, travel guides, and insider tips for visiting Badagry, Lagos State, Nigeria." />
-  <meta name="twitter:image" content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-420x347.jpg" />
+  <meta name="twitter:image" content="https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-420x347.jpg" />
 
   <link rel="icon" type="image/jpeg" href="/assets/logo.jpg" />
 
@@ -89,13 +89,13 @@ $totalPosts = count($posts);
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://badagryvisitorsguide.rav.com.ng/"
+        "item": "https://badagryvisitorsguide.com.ng/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Journal",
-        "item": "https://badagryvisitorsguide.rav.com.ng/blog/"
+        "item": "https://badagryvisitorsguide.com.ng/blog/"
       }
     ]
   }
@@ -108,14 +108,14 @@ $totalPosts = count($posts);
     "@type": "Blog",
     "name": "Badagry Travel Journal",
     "description": "Guides, visitor tips, and heritage reflections on ancient Badagry, Lagos State, Nigeria.",
-    "url": "https://badagryvisitorsguide.rav.com.ng/blog/",
+    "url": "https://badagryvisitorsguide.com.ng/blog/",
     "publisher": {
       "@type": "Organization",
       "name": "Badagry Visitors Guide",
-      "url": "https://badagryvisitorsguide.rav.com.ng/",
+      "url": "https://badagryvisitorsguide.com.ng/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg"
+        "url": "https://badagryvisitorsguide.com.ng/assets/logo.jpg"
       }
     },
     "blogPost": [
@@ -126,9 +126,9 @@ $totalPosts = count($posts);
               '@type' => 'BlogPosting',
               'headline' => $p['title'],
               'description' => $p['excerpt'],
-              'url' => 'https://badagryvisitorsguide.rav.com.ng/blog/' . $p['slug'],
+              'url' => 'https://badagryvisitorsguide.com.ng/blog/' . $p['slug'],
               'datePublished' => date('c', strtotime($p['published_at'])),
-              'image' => 'https://badagryvisitorsguide.rav.com.ng/' . ltrim($p['featured_image'], '/')
+              'image' => 'https://badagryvisitorsguide.com.ng/' . ltrim($p['featured_image'], '/')
           ], JSON_UNESCAPED_SLASHES);
       }
       echo implode(",\n      ", $postSchemas);

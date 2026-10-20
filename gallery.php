@@ -134,7 +134,7 @@ foreach ($galleryItems as $item) {
   <title>Photo &amp; Video Gallery | Badagry Heritage &amp; Cultural Tours</title>
   <meta name="description"
     content="Browse high-resolution photographs and tour videos of Badagry slave trade landmarks, First Storey Building, Point of No Return, Seriki Williams Abass Barracoon, and real guided tour experiences." />
-  <link rel="canonical" href="https://badagryvisitorsguide.rav.com.ng/gallery/" />
+  <link rel="canonical" href="https://badagryvisitorsguide.com.ng/gallery/" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -145,14 +145,14 @@ foreach ($galleryItems as $item) {
   <meta property="og:site_name" content="Badagry Visitors Guide" />
   <meta property="og:title" content="Photo &amp; Video Gallery | Badagry Heritage &amp; Cultural Tours" />
   <meta property="og:description" content="Real places, real people. Explore 50+ authentic photographs and videos from our guided Badagry heritage and coastal tours." />
-  <meta property="og:url" content="https://badagryvisitorsguide.rav.com.ng/gallery/" />
-  <meta property="og:image" content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
+  <meta property="og:url" content="https://badagryvisitorsguide.com.ng/gallery/" />
+  <meta property="og:image" content="https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Photo &amp; Video Gallery | Badagry Visitors Guide" />
   <meta name="twitter:description" content="Discover authentic heritage monuments, slave route memorials, and creek boat tours across Badagry, Lagos State, Nigeria." />
-  <meta name="twitter:image" content="https://badagryvisitorsguide.rav.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
+  <meta name="twitter:image" content="https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
 
   <link rel="icon" type="image/jpeg" href="/assets/logo.jpg" />
 
@@ -178,13 +178,13 @@ foreach ($galleryItems as $item) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://badagryvisitorsguide.rav.com.ng/"
+        "item": "https://badagryvisitorsguide.com.ng/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Media Gallery",
-        "item": "https://badagryvisitorsguide.rav.com.ng/gallery/"
+        "item": "https://badagryvisitorsguide.com.ng/gallery/"
       }
     ]
   }
@@ -197,14 +197,14 @@ foreach ($galleryItems as $item) {
     "@type": "ImageGallery",
     "name": "Badagry Heritage Tour Photo & Video Gallery",
     "description": "Authentic photography and tour documentation from Badagry, Lagos State, Nigeria.",
-    "url": "https://badagryvisitorsguide.rav.com.ng/gallery/",
+    "url": "https://badagryvisitorsguide.com.ng/gallery/",
     "publisher": {
       "@type": "Organization",
       "name": "Badagry Visitors Guide",
-      "url": "https://badagryvisitorsguide.rav.com.ng/",
+      "url": "https://badagryvisitorsguide.com.ng/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://badagryvisitorsguide.rav.com.ng/assets/logo.jpg"
+        "url": "https://badagryvisitorsguide.com.ng/assets/logo.jpg"
       }
     },
     "image": [
