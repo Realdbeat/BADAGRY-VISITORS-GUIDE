@@ -74,7 +74,7 @@
     </image:image>
   </url>
 
-  <!-- Blog / Travel Journal Catalog -->
+  <!-- Blog / Badagry Heritage Chronicle Catalog -->
   <url>
     <loc>https://badagryvisitorsguide.com.ng/blog/</loc>
     <lastmod>2026-10-20</lastmod>
@@ -90,7 +90,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Published Travel Journal Posts -->
+  <!-- Published Badagry Heritage Chronicle Posts -->
   <url>
     <loc>https://badagryvisitorsguide.com.ng/blog/badagry-the-intersection-of-history-culture-and-coastal-heritage</loc>
     <lastmod>2026-10-17</lastmod>

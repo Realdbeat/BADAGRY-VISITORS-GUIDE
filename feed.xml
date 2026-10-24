@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Badagry Visitors Guide - Travel Journal</title>
+    <title>Badagry Visitors Guide - Heritage Chronicle</title>
     <link>https://badagryvisitorsguide.com.ng/blog/</link>
     <description>Guides, historical perspectives, visitor advice, and local travel stories across ancient Badagry, Lagos State, Nigeria by indigenous historians.</description>
     <language>en-us</language>
@@ -9,7 +9,7 @@
     <atom:link href="https://badagryvisitorsguide.com.ng/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://badagryvisitorsguide.com.ng/assets/logo.jpg</url>
-      <title>Badagry Visitors Guide - Travel Journal</title>
+      <title>Badagry Visitors Guide - Heritage Chronicle</title>
       <link>https://badagryvisitorsguide.com.ng/blog/</link>
     </image>
     <item>

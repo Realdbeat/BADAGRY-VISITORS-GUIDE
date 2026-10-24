@@ -144,7 +144,7 @@ foreach ($galleryItems as $item) {
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Badagry Visitors Guide" />
   <meta property="og:title" content="Photo &amp; Video Gallery | Badagry Heritage &amp; Cultural Tours" />
-  <meta property="og:description" content="Real places, real people. Explore 50+ authentic photographs and videos from our guided Badagry heritage and coastal tours." />
+  <meta property="og:description" content="Explore authentic photographs, archival landmarks, and video chronicles from our guided Badagry heritage and coastal expeditions." />
   <meta property="og:url" content="https://badagryvisitorsguide.com.ng/gallery/" />
   <meta property="og:image" content="https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-Monument-Badagry.jpg" />
 
@@ -340,7 +340,7 @@ foreach ($galleryItems as $item) {
       </div>
       <h1 class="gallery-hero-title">Badagry Photo &amp; Video Gallery</h1>
       <p class="gallery-hero-subtitle">
-        Real places, real people, sacred monuments, and unforgettable journeys across Badagry, Lagos State, Nigeria.
+        Authentic archival moments, living sacred monuments, and unforgettable journeys across Badagry, Lagos State, Nigeria.
       </p>
 
       <!-- Key Stats Bar -->
@@ -601,7 +601,7 @@ foreach ($galleryItems as $item) {
             <li><a href="/#categories">Services</a></li>
             <li><a href="/#tours">Our Tours</a></li>
             <li><a href="/gallery/">Photo Gallery</a></li>
-            <li><a href="/blog/">Travel Journal</a></li>
+            <li><a href="/blog/">Heritage Chronicle</a></li>
             <li><a href="/admin">Upload Media</a></li>
             <li><a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener">Contact Us</a></li>
           </ul>
@@ -660,7 +660,7 @@ foreach ($galleryItems as $item) {
         <div class="footer-bottom-links">
           <a href="/#faq">FAQs</a>
           <a href="/gallery/">Media Gallery</a>
-          <a href="/blog/">Travel Journal</a>
+          <a href="/blog/">Heritage Chronicle</a>
           <a href="/admin">Portal Login</a>
         </div>
       </div>

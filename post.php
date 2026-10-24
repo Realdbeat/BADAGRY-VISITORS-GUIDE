@@ -65,7 +65,7 @@ $imageUrl = "https://badagryvisitorsguide.com.ng/" . ($post['featured_image'] ??
     <meta name="google-site-verification" content="google1c708dda37599c2a" />
 
     <!-- RSS Feed Discovery -->
-    <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed" href="https://badagryvisitorsguide.com.ng/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Heritage Chronicle RSS Feed" href="https://badagryvisitorsguide.com.ng/feed.xml" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
@@ -259,7 +259,7 @@ $imageUrl = "https://badagryvisitorsguide.com.ng/" . ($post['featured_image'] ??
           <i class="fa-solid fa-circle-question empty-icon"></i>
           <h2>Article Not Found</h2>
           <p>The travel article you are looking for does not exist or has been moved.</p>
-          <a href="/blog/" class="btn btn-primary mt-3"><i class="fa-solid fa-arrow-left"></i> Return to Travel Journal</a>
+          <a href="/blog/" class="btn btn-primary mt-3"><i class="fa-solid fa-arrow-left"></i> Return to Heritage Chronicle</a>
         </div>
       </div>
     </section>
@@ -270,7 +270,7 @@ $imageUrl = "https://badagryvisitorsguide.com.ng/" . ($post['featured_image'] ??
         <nav class="breadcrumb-nav">
           <a href="/">Home</a>
           <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
-          <a href="/blog/">Travel Journal</a>
+          <a href="/blog/">Heritage Chronicle</a>
           <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
           <span class="current"><?= htmlspecialchars($post['title']) ?></span>
         </nav>
@@ -423,7 +423,7 @@ $imageUrl = "https://badagryvisitorsguide.com.ng/" . ($post['featured_image'] ??
             <li><a href="/#about">About Us</a></li>
             <li><a href="/#tours">Our Tours</a></li>
             <li><a href="/gallery/">Photo Gallery</a></li>
-            <li><a href="/blog/">Our Journal</a></li>
+            <li><a href="/blog/">Heritage Chronicle</a></li>
             <li><a href="/admin">Author Login</a></li>
           </ul>
         </div>

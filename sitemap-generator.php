@@ -300,7 +300,7 @@ function generateSitemaps(): array {
     $mainXml .= "  </url>\n\n";
 
     // Blog Catalog
-    $mainXml .= "  <!-- Blog / Travel Journal Catalog -->\n";
+    $mainXml .= "  <!-- Blog / Badagry Heritage Chronicle Catalog -->\n";
     $mainXml .= "  <url>\n";
     $mainXml .= "    <loc>" . xmlEscape(SITE_BASE_URL . '/blog/') . "</loc>\n";
     $mainXml .= "    <lastmod>{$now}</lastmod>\n";
@@ -318,7 +318,7 @@ function generateSitemaps(): array {
     $mainXml .= "  </url>\n\n";
 
     // Individual Blog Posts
-    $mainXml .= "  <!-- Published Travel Journal Posts -->\n";
+    $mainXml .= "  <!-- Published Badagry Heritage Chronicle Posts -->\n";
     foreach ($posts as $post) {
         $postDate = !empty($post['published_at']) ? date('Y-m-d', strtotime($post['published_at'])) : $now;
         $postUrl = SITE_BASE_URL . '/blog/' . $post['slug'];
@@ -374,7 +374,7 @@ function generateSitemaps(): array {
     }
     $imgXml .= "  </url>\n\n";
 
-    // Travel Journal & Individual Posts
+    // Heritage Chronicle & Individual Posts
     $imgXml .= "  <url>\n";
     $imgXml .= "    <loc>" . xmlEscape(SITE_BASE_URL . '/blog/') . "</loc>\n";
     $imgXml .= "    <lastmod>{$now}</lastmod>\n";
@@ -385,7 +385,7 @@ function generateSitemaps(): array {
         $imgXml .= "    <image:image>\n";
         $imgXml .= "      <image:loc>" . xmlEscape($mImg['url']) . "</image:loc>\n";
         $imgXml .= "      <image:title>" . xmlEscape($mImg['title']) . "</image:title>\n";
-        $imgXml .= "      <image:caption>Badagry Visitors Guide Travel Journal &amp; Articles</image:caption>\n";
+        $imgXml .= "      <image:caption>Badagry Visitors Guide Heritage Chronicle &amp; Articles</image:caption>\n";
         $imgXml .= "    </image:image>\n";
     }
     $imgXml .= "  </url>\n\n";
@@ -423,7 +423,7 @@ function generateSitemaps(): array {
     $feedXml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
     $feedXml .= '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">' . "\n";
     $feedXml .= "  <channel>\n";
-    $feedXml .= "    <title>Badagry Visitors Guide - Travel Journal</title>\n";
+    $feedXml .= "    <title>Badagry Visitors Guide - Heritage Chronicle</title>\n";
     $feedXml .= "    <link>" . xmlEscape(SITE_BASE_URL . '/blog/') . "</link>\n";
     $feedXml .= "    <description>Guides, historical perspectives, visitor advice, and local travel stories across ancient Badagry, Lagos State, Nigeria by indigenous historians.</description>\n";
     $feedXml .= "    <language>en-us</language>\n";
@@ -431,7 +431,7 @@ function generateSitemaps(): array {
     $feedXml .= '    <atom:link href="' . xmlEscape(SITE_BASE_URL . '/feed.xml') . '" rel="self" type="application/rss+xml" />' . "\n";
     $feedXml .= "    <image>\n";
     $feedXml .= "      <url>" . xmlEscape(SITE_BASE_URL . '/assets/logo.jpg') . "</url>\n";
-    $feedXml .= "      <title>Badagry Visitors Guide - Travel Journal</title>\n";
+    $feedXml .= "      <title>Badagry Visitors Guide - Heritage Chronicle</title>\n";
     $feedXml .= "      <link>" . xmlEscape(SITE_BASE_URL . '/blog/') . "</link>\n";
     $feedXml .= "    </image>\n";
 

@@ -64,7 +64,7 @@ http_response_code(404);
   <div>
     <h1 style="font-size:3rem;margin-bottom:12px;color:#0F172A;">404</h1>
     <p style="font-size:1.2rem;color:#526071;margin-bottom:24px;">The page you are looking for does not exist.</p>
-    <a href="/blog/" class="btn btn-primary" style="display:inline-block;padding:12px 24px;background:#0D5C3A;color:#fff;text-decoration:none;border-radius:10px;font-weight:600;">Go to Travel Journal</a>
+    <a href="/blog/" class="btn btn-primary" style="display:inline-block;padding:12px 24px;background:#0D5C3A;color:#fff;text-decoration:none;border-radius:10px;font-weight:600;">Explore Heritage Chronicle</a>
   </div>
 </body>
 </html>

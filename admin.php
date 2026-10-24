@@ -831,7 +831,7 @@ if ($isLoggedIn) {
               <nav class="breadcrumb-nav">
                 <a href="/" onclick="return false;">Home</a>
                 <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
-                <a href="/blog/" onclick="return false;">Travel Journal</a>
+                <a href="/blog/" onclick="return false;">Heritage Chronicle</a>
                 <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
                 <span class="current" id="previewBreadcrumbTitle">Article Title</span>
               </nav>
@@ -1715,7 +1715,7 @@ if ($isLoggedIn) {
       <nav class="breadcrumb-nav">
         <a href="/">Home</a>
         <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
-        <a href="/blog/">Travel Journal</a>
+        <a href="/blog/">Heritage Chronicle</a>
         <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
         <span class="current">${escapeHtml(titleVal)}</span>
       </nav>

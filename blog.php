@@ -39,7 +39,7 @@ $totalPosts = count($posts);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Badagry Travel Journal &amp; Blog | Badagry Visitors Guide</title>
+  <title>Badagry Heritage Chronicle &amp; Blog | Badagry Visitors Guide</title>
   <meta name="description"
     content="Guides, historical perspectives, visitor advice, and local travel stories across ancient Badagry, Lagos State, Nigeria by indigenous historians." />
   <link rel="canonical" href="https://badagryvisitorsguide.com.ng/blog/" />
@@ -49,19 +49,19 @@ $totalPosts = count($posts);
   <meta name="google-site-verification" content="google1c708dda37599c2a" />
 
   <!-- RSS Feed Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed" href="https://badagryvisitorsguide.com.ng/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Heritage Chronicle RSS Feed" href="https://badagryvisitorsguide.com.ng/feed.xml" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="blog" />
   <meta property="og:site_name" content="Badagry Visitors Guide" />
-  <meta property="og:title" content="Badagry Travel Journal &amp; Blog | Badagry Visitors Guide" />
+  <meta property="og:title" content="Badagry Heritage Chronicle &amp; Blog | Badagry Visitors Guide" />
   <meta property="og:description" content="Authentic historical accounts, travel guides, and insider tips for visiting Badagry, Lagos State, Nigeria." />
   <meta property="og:url" content="https://badagryvisitorsguide.com.ng/blog/" />
   <meta property="og:image" content="https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-420x347.jpg" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Badagry Travel Journal &amp; Blog | Badagry Visitors Guide" />
+  <meta name="twitter:title" content="Badagry Heritage Chronicle &amp; Blog | Badagry Visitors Guide" />
   <meta name="twitter:description" content="Authentic historical accounts, travel guides, and insider tips for visiting Badagry, Lagos State, Nigeria." />
   <meta name="twitter:image" content="https://badagryvisitorsguide.com.ng/assets/images/Point-of-No-Return-420x347.jpg" />
 
@@ -106,7 +106,7 @@ $totalPosts = count($posts);
   {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "Badagry Travel Journal",
+    "name": "Badagry Heritage Chronicle",
     "description": "Guides, visitor tips, and heritage reflections on ancient Badagry, Lagos State, Nigeria.",
     "url": "https://badagryvisitorsguide.com.ng/blog/",
     "publisher": {
@@ -241,7 +241,7 @@ $totalPosts = count($posts);
   <!-- Blog Page Hero Banner -->
   <section class="blog-hero-section">
     <div class="site-container text-center">
-      <span class="hero-badge animate-up">Badagry Travel Journal</span>
+      <span class="hero-badge animate-up">Badagry Heritage Chronicle</span>
       <h1 class="blog-page-title animate-up delay-1">Stories, Guides &amp; Cultural Heritage</h1>
       <p class="blog-page-lead animate-up delay-2">
         Insider tips, travel walkthroughs, and poignant historical accounts curated by our local guides across ancient Badagry, Lagos State.
@@ -403,7 +403,7 @@ $totalPosts = count($posts);
             <li><a href="/#about">About Us</a></li>
             <li><a href="/#tours">Our Tours</a></li>
             <li><a href="/gallery/">Photo Gallery</a></li>
-            <li><a href="/blog/">Our Journal</a></li>
+            <li><a href="/blog/">Heritage Chronicle</a></li>
             <li><a href="/admin">Author Login</a></li>
           </ul>
         </div>

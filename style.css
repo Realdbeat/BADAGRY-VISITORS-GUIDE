@@ -762,415 +762,338 @@ textarea {
 }
 
 /* ========================================================
-   Interactive Search / Filter Bar
+   1. Expedition Explorer Console (Independent UX)
 ======================================================== */
-.search-filter-section {
+.expedition-finder-section {
   position: relative;
-  z-index: 20;
-  margin-top: -50px;
+  z-index: 25;
+  margin-top: -65px;
+  padding: 0 16px;
 }
 
-.search-filter-card {
-  background-color: #ffffff;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
-  padding: 24px 32px;
-  border: 1px solid var(--border-color);
+.finder-console-card {
+  background: linear-gradient(135deg, #091c13 0%, #0d2f1f 50%, #081710 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  padding: 28px 36px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
 }
 
-.search-filter-form {
+.finder-console-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #D97706 0%, #238843 50%, #C85A32 100%);
+}
+
+.finder-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   flex-wrap: wrap;
+  gap: 12px;
 }
 
-.filter-field {
-  flex: 1;
-  min-width: 220px;
+.finder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(35, 136, 67, 0.25);
+  border: 1px solid rgba(35, 136, 67, 0.5);
+  color: #7ee09e;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 9999px;
+}
+
+.finder-tagline {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.finder-form {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.1fr auto;
+  gap: 20px;
+  align-items: end;
+}
+
+.finder-col {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
-.filter-field label {
+.finder-label {
   font-family: var(--font-heading);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--navy);
+  letter-spacing: 0.75px;
+  color: rgba(255, 255, 255, 0.85);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.filter-field label i {
-  color: var(--primary);
-  font-size: 1rem;
-}
-
-.form-select,
-.form-input,
-.form-textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  background-color: #fafbfc;
-  color: var(--text-dark);
+.finder-label i {
+  color: #ff9d54;
   font-size: 0.95rem;
-  outline: none;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-
-#postContent {
-  height: 100vh;
-}
-
-.form-select:focus,
-.form-input:focus,
-.form-textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-glow);
-  background-color: #ffffff;
-}
-
-.filter-divider {
-  width: 1px;
-  height: 48px;
-  background-color: var(--border-color);
-  display: block;
-}
-
-.filter-btn-wrap {
-  display: flex;
-  align-items: flex-end;
-}
-
-.filter-submit-btn {
-  padding: 14px 30px;
-  height: 50px;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
-  color: #ffffff;
-  box-shadow: 0 6px 18px var(--primary-glow);
-}
-
-/* ========================================================
-   Categories Carousel Section
-======================================================== */
-.categories-slider-wrapper {
-  overflow-x: auto;
-  padding-bottom: 20px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary) #e2e8f0;
-}
-
-.categories-slider-wrapper::-webkit-scrollbar {
-  height: 6px;
-}
-
-.categories-slider-wrapper::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
-  border-radius: 4px;
-}
-
-.categories-grid {
-  display: flex;
-  gap: 20px;
-  min-width: max-content;
-}
-
-.category-card {
-  width: 220px;
-  background-color: #ffffff;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
-  transition: all var(--transition-normal);
-  display: flex;
-  flex-direction: column;
-}
-
-.category-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px var(--primary-glow);
-  border-color: var(--primary);
-}
-
-.category-img-box {
-  position: relative;
-  height: 170px;
-  overflow: hidden;
-}
-
-.category-img-box img {
+.finder-select {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+  padding: 13px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 500;
+  outline: none;
+  transition: all var(--transition-fast);
 }
 
-.category-card:hover .category-img-box img {
-  transform: scale(1.08);
+.finder-select option {
+  background-color: #0d2f1f;
+  color: #ffffff;
 }
 
-.category-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(17, 24, 39, 0.6) 0%, transparent 60%);
+.finder-select:focus {
+  border-color: #38bdf8;
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
 }
 
-.category-body {
-  padding: 18px 16px;
-  text-align: center;
-}
-
-.category-title {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
+.finder-submit-btn {
+  padding: 14px 28px;
+  height: 50px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #238843 0%, #15622e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 8px;
-}
-
-.category-link {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--primary);
+  font-size: 0.92rem;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  transition: gap var(--transition-fast);
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(35, 136, 67, 0.35);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
-.category-link:hover {
-  gap: 10px;
+.finder-submit-btn:hover {
+  background: linear-gradient(135deg, #2ea354 0%, #1e7d3c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(35, 136, 67, 0.45);
+}
+
+@media (max-width: 991px) {
+  .finder-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .finder-submit-btn {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .finder-form {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ========================================================
-   Destination Corridor Section
+   2. Landmark Dossier Cards (Chronological & Architectural)
 ======================================================== */
-.corridor-grid {
+.dossier-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
 }
 
-.corridor-card {
-  background-color: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+.dossier-card {
+  background: #ffffff;
+  border-radius: 18px;
   border: 1px solid var(--border-color);
-  transition: all var(--transition-normal);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
   display: flex;
   flex-direction: column;
-}
-
-.corridor-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
-  border-color: var(--primary);
-}
-
-.corridor-img-wrap {
-  position: relative;
-  height: 200px;
   overflow: hidden;
-  margin: 10px 10px 0 10px;
-  border-radius: 14px;
+  transition: all var(--transition-normal);
 }
 
-.corridor-img-wrap img {
+.dossier-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: 0 18px 40px rgba(13, 92, 58, 0.12);
+}
+
+.dossier-img-box {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.dossier-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.corridor-card:hover .corridor-img-wrap img {
+.dossier-card:hover .dossier-img-box img {
   transform: scale(1.08);
 }
 
-.corridor-badge {
+.dossier-era-pill {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: linear-gradient(135deg, var(--secondary) 0%, #A94522 100%);
-  color: #fff;
+  top: 14px;
+  left: 14px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(8px);
+  color: #f1f5f9;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.75px;
   padding: 5px 12px;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 4px 10px rgba(200, 90, 50, 0.3);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.corridor-info {
-  padding: 20px;
+.dossier-body {
+  padding: 24px;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-.corridor-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 10px;
-}
-
-.corridor-name {
+.dossier-title {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 800;
   color: var(--navy);
+  margin-bottom: 6px;
+  line-height: 1.3;
 }
 
-.experience-count {
-  font-size: 0.78rem;
+.dossier-designation {
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--primary);
-  background-color: var(--primary-light);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
 }
 
-.corridor-desc {
-  font-size: 0.9rem;
+.dossier-desc {
+  font-size: 0.92rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 18px;
   flex: 1;
 }
 
-/* ========================================================
-   Budget Travel Feature Section
-======================================================== */
-.feature-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 50px;
-  align-items: center;
-}
-
-.feature-collage {
-  position: relative;
-  height: 480px;
-}
-
-.collage-main-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 72%;
-  height: 340px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-}
-
-.collage-main-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.collage-sub-img1 {
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-  width: 52%;
-  height: 200px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 4px solid #ffffff;
-}
-
-.collage-sub-img1 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.collage-sub-img2 {
-  position: absolute;
-  top: 18%;
-  right: 0;
-  width: 44%;
-  height: 240px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 4px solid #ffffff;
-}
-
-.collage-sub-img2 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.collage-badge {
-  position: absolute;
-  bottom: 30px;
-  right: 8%;
-  background: var(--primary);
-  color: #ffffff;
-  padding: 14px 20px;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 10px 24px var(--primary-glow);
+.dossier-relic-tags {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 5;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
 }
 
-.badge-icon {
-  font-size: 1.6rem;
+.relic-tag {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
 }
 
-.badge-text {
+.dossier-link {
   font-family: var(--font-heading);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.sec-lead {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--text-dark);
-  margin-bottom: 28px;
-}
-
-.sec-lead strong {
   color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
+  transition: gap var(--transition-fast);
 }
 
-.feature-items-list {
+.dossier-link:hover {
+  gap: 12px;
+  color: var(--primary-hover);
+}
+
+/* ========================================================
+   3. Native Guidance & Heritage Stewardship (Replaces Budget Section)
+======================================================== */
+.stewardship-section {
+  background: linear-gradient(180deg, #FAF8F5 0%, #FFFFFF 100%);
+  padding: 90px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stewardship-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.stewardship-narrative h2 {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.stewardship-lead {
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.stewardship-pillars-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 34px;
 }
 
-.feature-item {
+.pillar-item {
   display: flex;
   gap: 18px;
   align-items: flex-start;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
 }
 
-.feature-icon {
+.pillar-icon-box {
   width: 50px;
   height: 50px;
   border-radius: 12px;
@@ -1179,30 +1102,216 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   flex-shrink: 0;
 }
 
-.feature-text h4 {
+.pillar-content h4 {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
-.feature-text p {
-  font-size: 0.92rem;
+.pillar-content p {
+  font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.5;
 }
 
-.feature-cta {
+.stewardship-assurance-card {
+  background: linear-gradient(145deg, #0f172a 0%, #17281f 100%);
+  border-radius: 24px;
+  padding: 40px;
+  color: #ffffff;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.assurance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(35, 136, 67, 0.25);
+  border: 1px solid rgba(35, 136, 67, 0.5);
+  color: #4ade80;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  align-self: flex-start;
+}
+
+.assurance-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.metric-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+}
+
+.metric-number {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #4ade80;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.assurance-cta-box {
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 991px) {
+  .stewardship-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================================
+   4. Expedition Travel Styles (Replaces Categories)
+======================================================== */
+.travel-styles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.travel-style-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.travel-style-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.travel-style-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary);
+  box-shadow: 0 16px 36px var(--primary-glow);
+}
+
+.travel-style-card:hover::before {
+  opacity: 1;
+}
+
+.style-icon-wrap {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--primary-light);
+  color: var(--primary);
   display: flex;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
+
+.style-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.style-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.style-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+}
+
+.style-duration-chip {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--secondary);
+  background: var(--secondary-light);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.style-explore-btn {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Tour Card Amenities Chips */
+.tour-perks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.tour-perk-item {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  background-color: var(--primary-light);
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 
 /* ========================================================
    Handpicked Tours Section
@@ -1586,7 +1695,7 @@ textarea {
 }
 
 /* ========================================================
-   Travel Journal (Blog) Section
+   Badagry Heritage Chronicle Section
 ======================================================== */
 .journal-header-wrap {
   display: flex;
@@ -1683,30 +1792,33 @@ textarea {
 }
 
 /* ========================================================
-   Newsletter Section
+   Newsletter / Badagry Heritage Dispatch Club
 ======================================================== */
 .newsletter-section {
-  background: linear-gradient(135deg, var(--primary) 0%, #ff802b 100%);
-  padding: 60px 0;
+  background: linear-gradient(135deg, #091c13 0%, #0d3823 60%, #15271d 100%);
+  padding: 65px 0;
   color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
-.nes {
+.newsletter-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 100%;
-  min-width: 100%;
-  overflow: hidden;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-content: center;
+  height: 2px;
+  background: linear-gradient(90deg, #D97706 0%, #238843 50%, #C85A32 100%);
 }
 
 .newsletter-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 36px;
   flex-wrap: wrap;
 }
 
@@ -1714,32 +1826,45 @@ textarea {
   display: flex;
   align-items: center;
   gap: 22px;
-  max-width: 540px;
+  max-width: 580px;
 }
 
 .newsletter-icon {
   width: 64px;
   height: 64px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  background: rgba(35, 136, 67, 0.25);
+  border: 1px solid rgba(35, 136, 67, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
+  color: #4ade80;
   flex-shrink: 0;
+}
+
+.newsletter-badge {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ff9d54;
+  margin-bottom: 4px;
 }
 
 .newsletter-title {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 800;
   line-height: 1.2;
 }
 
 .newsletter-desc {
   font-size: 0.95rem;
-  opacity: 0.9;
-  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 6px;
+  line-height: 1.55;
 }
 
 .newsletter-form {
@@ -1747,22 +1872,51 @@ textarea {
   align-items: center;
   gap: 12px;
   flex: 1;
-  max-width: 480px;
+  max-width: 500px;
   min-width: 300px;
 }
 
 .newsletter-input {
   flex: 1;
-  padding: 16px 20px;
-  border-radius: var(--radius-full);
-  border: none;
+  padding: 16px 22px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
   font-size: 0.95rem;
   outline: none;
+  transition: all var(--transition-fast);
+}
+
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-input:focus {
+  border-color: #4ade80;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.25);
 }
 
 .newsletter-btn {
   padding: 16px 28px;
   flex-shrink: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #238843 0%, #15622e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.newsletter-btn:hover {
+  background: linear-gradient(135deg, #2ea354 0%, #1e7d3c 100%);
+  transform: translateY(-2px);
 }
 
 /* ========================================================
@@ -2544,7 +2698,7 @@ textarea {
 }
 
 /* ========================================================
-   Blog & Travel Journal Pages
+   Badagry Heritage Chronicle Pages
 ======================================================== */
 .blog-hero-section {
   background: linear-gradient(135deg, rgba(23, 37, 84, 0.95), rgba(15, 23, 42, 0.95)),

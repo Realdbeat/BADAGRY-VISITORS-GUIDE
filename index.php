@@ -34,7 +34,7 @@ try {
   <meta name="google-site-verification" content="google1c708dda37599c2a" />
 
   <!-- RSS Feed Discovery -->
-  <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Travel Journal RSS Feed"
+  <link rel="alternate" type="application/rss+xml" title="Badagry Visitors Guide - Heritage Chronicle RSS Feed"
     href="https://badagryvisitorsguide.com.ng/feed.xml" />
 
   <!-- Google Mobile & Desktop Search Image Thumbnail -->
@@ -604,11 +604,12 @@ try {
       <ul class="mobile-nav-list">
         <li><a href="#hero" class="mobile-nav-link active">Home</a></li>
         <li><a href="#about" class="mobile-nav-link">About Us</a></li>
-        <li><a href="#categories" class="mobile-nav-link">Services</a></li>
-        <li><a href="#tours" class="mobile-nav-link">Tours</a></li>
+        <li><a href="#tours" class="mobile-nav-link">Expeditions</a></li>
         <li><a href="#landmarks" class="mobile-nav-link">Landmarks</a></li>
-        <li><a href="/gallery/" class="mobile-nav-link">Gallery</a></li>
-        <li><a href="/blog/" class="mobile-nav-link">Journal</a></li>
+        <li><a href="#stewardship" class="mobile-nav-link">Our Philosophy</a></li>
+        <li><a href="#styles" class="mobile-nav-link">Travel Styles</a></li>
+        <li><a href="/gallery/" class="mobile-nav-link">Visual Archive</a></li>
+        <li><a href="/blog/" class="mobile-nav-link">Chronicle</a></li>
         <li><a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener"
             class="mobile-nav-link">Contact Us</a></li>
       </ul>
@@ -679,14 +680,14 @@ try {
 
         <ul class="nav-menu">
           <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
-          <li class="nav-item"><a href="#categories" class="nav-link">Services</a></li>
-          <li class="nav-item"><a href="#tours" class="nav-link">Tours</a></li>
+          <li class="nav-item"><a href="#tours" class="nav-link">Expeditions</a></li>
           <li class="nav-item"><a href="#landmarks" class="nav-link">Landmarks</a></li>
-          <li class="nav-item"><a href="/gallery/" class="nav-link">Gallery</a></li>
-          <li class="nav-item"><a href="/blog/" class="nav-link">Journal</a></li>
+          <li class="nav-item"><a href="#stewardship" class="nav-link">Our Philosophy</a></li>
+          <li class="nav-item"><a href="#styles" class="nav-link">Travel Styles</a></li>
+          <li class="nav-item"><a href="/gallery/" class="nav-link">Archive</a></li>
+          <li class="nav-item"><a href="/blog/" class="nav-link">Chronicle</a></li>
           <li class="nav-item"><a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank"
-              rel="noopener" class="nav-link">Contact Us</a></li>
+              rel="noopener" class="nav-link">Contact</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -712,12 +713,12 @@ try {
           style="background-image: linear-gradient(rgba(17, 24, 39, 0.52), rgba(17, 24, 39, 0.65)), url('assets/images/Badagry-Slave-Memorial-Statue.jpg');">
         </div>
         <div class="site-container hero-content">
-          <span class="hero-badge animate-up">Your Budget. Our Expertise. One Unforgettable Journey.</span>
+          <span class="hero-badge animate-up">Indigenous Historians • Curated Heritage &amp; Coastal Circuits</span>
           <h1 class="hero-title animate-up delay-1">Discover Badagry's Timeless Heritage.</h1>
           <p class="hero-desc animate-up delay-2">Unmatched historical expeditions through Badagry slave routes, 1845 missionary landmarks, serene creeks, and coastal getaways with dedicated local historians.</p>
           <div class="hero-btn-group animate-up delay-3">
-            <a href="#tours" class="btn btn-primary">Explore Our Tours <i class="fa-solid fa-compass"></i></a>
-            <a href="#about" class="btn btn-outline-white">How It Works <i class="fa-solid fa-play"></i></a>
+            <a href="#tours" class="btn btn-primary">Explore Expeditions <i class="fa-solid fa-compass"></i></a>
+            <a href="#stewardship" class="btn btn-outline-white">Our Philosophy <i class="fa-solid fa-shield-halved"></i></a>
           </div>
         </div>
       </div>
@@ -793,348 +794,78 @@ try {
     </div>
   </section>
 
-  <!-- Interactive Search / Filter Bar -->
-  <section class="search-filter-section">
+<!-- Interactive Expedition Explorer Console (Independent Architecture) -->
+  <section class="expedition-finder-section" id="search">
     <div class="site-container">
-      <div class="search-filter-card">
-        <form id="tripSearchForm" class="search-filter-form">
-          <div class="filter-field">
-            <label for="durationSelect">
-              <i class="fa-regular fa-clock"></i> Duration
+      <div class="finder-console-card">
+        <div class="finder-header">
+          <div class="finder-badge">
+            <i class="fa-solid fa-compass"></i> Expedition Explorer Console
+          </div>
+          <span class="finder-tagline">Filter verified Badagry routes by duration, investment tier, and cultural focus</span>
+        </div>
+        <form id="tripSearchForm" class="finder-form">
+          <div class="finder-col">
+            <label for="destinationSelect" class="finder-label">
+              <i class="fa-solid fa-landmark"></i> Journey Focus
             </label>
-            <select id="durationSelect" class="form-select">
-              <option value="all">How many days? (Any Duration)</option>
-              <option value="1">1 Day Tour</option>
-              <option value="2">2 Days Tour (Weekend)</option>
-              <option value="3">3 Days Tour (Immersion)</option>
+            <select id="destinationSelect" class="finder-select">
+              <option value="all">All Heritage &amp; Coastal Circuits</option>
+              <option value="Badagry">Transatlantic Slave Route &amp; Relics</option>
+              <option value="day">Single-Day Cultural Excursions</option>
+              <option value="weekend">Coastal Lagoon &amp; Beach Weekends</option>
+              <option value="educational">Educational &amp; Student Delegations</option>
+              <option value="diaspora">Diaspora Roots &amp; Sacred Masquerade</option>
             </select>
           </div>
 
-          <div class="filter-divider"></div>
-
-          <div class="filter-field">
-            <label for="budgetSelect">
-              <i class="fa-solid fa-naira-sign"></i> Your Budget (NGN / USD)
+          <div class="finder-col">
+            <label for="durationSelect" class="finder-label">
+              <i class="fa-regular fa-clock"></i> Time Commitment
             </label>
-            <select id="budgetSelect" class="form-select">
-              <option value="all">Your Budget (All Price Ranges)</option>
-              <option value="budget">Budget Friendly (Under $100 / #150k)</option>
-              <option value="moderate">Moderate ($100 - $350 / #150k - #500k)</option>
-              <option value="premium">Premium Experience ($350+ / #500k+)</option>
+            <select id="durationSelect" class="finder-select">
+              <option value="all">Any Tour Duration</option>
+              <option value="1">1 Day Guided Circuit</option>
+              <option value="2">2 Days Weekend Getaway</option>
+              <option value="3">3 Days Deep Cultural Immersion</option>
             </select>
           </div>
 
-          <div class="filter-divider"></div>
-
-          <div class="filter-field">
-            <label for="destinationSelect">
-              <i class="fa-solid fa-landmark"></i> Experience Type
+          <div class="finder-col">
+            <label for="budgetSelect" class="finder-label">
+              <i class="fa-solid fa-naira-sign"></i> Transparent Price Band
             </label>
-            <select id="destinationSelect" class="form-select">
-              <option value="all">All Experiences (Badagry Wide)</option>
-              <option value="Badagry">Badagry Historical &amp; Heritage Sites</option>
-              <option value="day">Day Heritage Excursions</option>
-              <option value="weekend">Weekend Coastal Getaways</option>
-              <option value="educational">Educational &amp; Student Groups</option>
+            <select id="budgetSelect" class="finder-select">
+              <option value="all">All Price Bands (NGN / USD)</option>
+              <option value="budget">Community Standard (Under $100 / #150k)</option>
+              <option value="moderate">Guided Immersion ($100 - $350 / #150k - #500k)</option>
+              <option value="premium">Private VIP &amp; Diaspora ($350+ / #500k+)</option>
             </select>
           </div>
 
-          <div class="filter-btn-wrap">
-            <button type="submit" class="btn btn-primary filter-submit-btn">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <span>Find My Tour</span>
-            </button>
-          </div>
+          <button type="submit" class="finder-submit-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Filter Expeditions</span>
+          </button>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Categories Showcase Section -->
-  <section class="categories-section section-padding" id="categories">
-    <div class="site-container">
-      <div class="section-title-wrap text-center">
-        <span class="sub-title">Curated for Every Kind of Traveller</span>
-        <h2 class="sec-title">Find the Badagry Experience That Calls to You</h2>
-      </div>
-
-      <div class="categories-slider-wrapper">
-        <div class="categories-grid" id="categoriesGrid">
-          <!-- Item 1 -->
-          <div class="category-card">
-            <div class="category-img-box">
-              <img src="assets/images/Heritage-Tours-Badagry-Slave-Trade.jpg" alt="Heritage Tours - Badagry Slave Trade"
-                loading="lazy" />
-              <div class="category-overlay"></div>
-            </div>
-            <div class="category-body">
-              <h3 class="category-title">Heritage Tours</h3>
-              <a href="#tours" class="category-link">See Tours <i class="fa-solid fa-arrow-right-long"></i></a>
-            </div>
-          </div>
-
-          <!-- Item 2 -->
-          <div class="category-card">
-            <div class="category-img-box">
-              <img src="assets/images/Badagry-Heritage-Day-Tour.jpg" alt="Badagry Heritage Day Excursions"
-                loading="lazy" />
-              <div class="category-overlay"></div>
-            </div>
-            <div class="category-body">
-              <h3 class="category-title">Day Excursions</h3>
-              <a href="#tours" class="category-link">See Tours <i class="fa-solid fa-arrow-right-long"></i></a>
-            </div>
-          </div>
-
-          <!-- Item 3 -->
-          <div class="category-card">
-            <div class="category-img-box">
-              <img src="assets/images/Point-of-No-Return-Monument-Badagry.jpg" alt="Badagry Slave Route and Point of No Return"
-                loading="lazy" />
-              <div class="category-overlay"></div>
-            </div>
-            <div class="category-body">
-              <h3 class="category-title">Slave Route Pilgrimage</h3>
-              <a href="#tours" class="category-link">See Tours <i class="fa-solid fa-arrow-right-long"></i></a>
-            </div>
-          </div>
-
-          <!-- Item 4 -->
-          <div class="category-card">
-            <div class="category-img-box">
-              <img src="assets/images/Badagry-Heritage-Beach-Weekend.jpg" alt="Weekend Getaway in Badagry"
-                loading="lazy" />
-              <div class="category-overlay"></div>
-            </div>
-            <div class="category-body">
-              <h3 class="category-title">Weekend Getaway</h3>
-              <a href="#tours" class="category-link">See Tours <i class="fa-solid fa-arrow-right-long"></i></a>
-            </div>
-          </div>
-
-          <!-- Item 5 -->
-          <div class="category-card">
-            <div class="category-img-box">
-              <img src="assets/images/Badagry-Beach-Creek-Leisure-Day.jpg" alt="Explore the Beach &amp; Coast of Badagry"
-                loading="lazy" />
-              <div class="category-overlay"></div>
-            </div>
-            <div class="category-body">
-              <h3 class="category-title">Beach &amp; Coastal</h3>
-              <a href="#tours" class="category-link">See Tours <i class="fa-solid fa-arrow-right-long"></i></a>
-            </div>
-          </div>
-
-          <!-- Item 6 -->
-          <div class="category-card">
-            <div class="category-img-box">
-              <img src="assets/images/Badagry-for-Schools-and-Student-Groups.jpg"
-                alt="School &amp; Group Trips to Badagry" loading="lazy" />
-              <div class="category-overlay"></div>
-            </div>
-            <div class="category-body">
-              <h3 class="category-title">School &amp; Groups</h3>
-              <a href="#tours" class="category-link">See Tours <i class="fa-solid fa-arrow-right-long"></i></a>
-            </div>
-          </div>
-
-          <!-- Item 7 -->
-          <div class="category-card">
-            <div class="category-img-box">
-              <img src="assets/images/Corporate-Team-Heritage-Weekend.jpg" alt="Corporate Team Heritage Weekend in Badagry"
-                loading="lazy" />
-              <div class="category-overlay"></div>
-            </div>
-            <div class="category-body">
-              <h3 class="category-title">Corporate Retreats</h3>
-              <a href="#tours" class="category-link">See Tours <i class="fa-solid fa-arrow-right-long"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Badagry Historical Landmarks Section -->
-  <section class="corridor-section section-padding bg-light" id="landmarks">
-    <div class="site-container">
-      <div class="section-title-wrap text-center">
-        <span class="sub-title">Badagry Historical Landmarks</span>
-        <h2 class="sec-title">Landmarks That Shaped African History</h2>
-        <p class="section-lead-text">Discover the monumental shrines, 19th-century missionary quarters, slave barracoons,
-          and serene coastal waterways of Badagry with accredited local historians.</p>
-      </div>
-
-      <div class="corridor-grid">
-        <!-- Landmark 1: Point of No Return & Gberefu Island -->
-        <div class="corridor-card">
-          <div class="corridor-img-wrap">
-            <img src="assets/images/Point-of-No-Return-Monument-Badagry.jpg" alt="Point of No Return Badagry" loading="lazy" />
-            <div class="corridor-badge">Gberefu Peninsula</div>
-          </div>
-          <div class="corridor-info">
-            <div class="corridor-header">
-              <h3 class="corridor-name">Point of No Return</h3>
-              <span class="experience-count"><i class="fa-solid fa-compass"></i> Atlantic Memorial</span>
-            </div>
-            <p class="corridor-desc">Walk the historic slave trail across Gberefu Island to the Atlantic shore, visiting the Attenuation Well and the eternal departure gateway.</p>
-            <a href="#tours" class="btn btn-outline-primary w-100">Explore Tours</a>
-          </div>
-        </div>
-
-        <!-- Landmark 2: First Storey Building -->
-        <div class="corridor-card">
-          <div class="corridor-img-wrap">
-            <img src="assets/images/First-Storey-Building-in-Nigeria.jpg" alt="First Storey Building in Nigeria" loading="lazy" />
-            <div class="corridor-badge">Built 1845</div>
-          </div>
-          <div class="corridor-info">
-            <div class="corridor-header">
-              <h3 class="corridor-name">First Storey Building</h3>
-              <span class="experience-count"><i class="fa-solid fa-compass"></i> CMS Mission Landmark</span>
-            </div>
-            <p class="corridor-desc">Nigeria's earliest multi-storey architecture, housing Bishop Samuel Ajayi Crowther's original 1845 Yoruba translated Bible and missionary relics.</p>
-            <a href="#tours" class="btn btn-outline-primary w-100">Explore Tours</a>
-          </div>
-        </div>
-
-        <!-- Landmark 3: Seriki Williams Abass Barracoon -->
-        <div class="corridor-card">
-          <div class="corridor-img-wrap">
-            <img src="assets/images/Seriki-Williams-Abass-Baracoon.jpg" alt="Seriki Williams Abass Baracoon" loading="lazy" />
-            <div class="corridor-badge">Brazilian Barracoon</div>
-          </div>
-          <div class="corridor-info">
-            <div class="corridor-header">
-              <h3 class="corridor-name">Seriki Abass Barracoon</h3>
-              <span class="experience-count"><i class="fa-solid fa-compass"></i> 40 Slave Cells</span>
-            </div>
-            <p class="corridor-desc">Preserved 1840 Brazilian-style barracoon compound containing authentic slave chambers, neck shackles, and 19th-century trade records.</p>
-            <a href="#tours" class="btn btn-outline-primary w-100">Explore Tours</a>
-          </div>
-        </div>
-
-        <!-- Landmark 4: Badagry Heritage Museum -->
-        <div class="corridor-card">
-          <div class="corridor-img-wrap">
-            <img src="assets/images/Badagry-Heritage-Museum.jpg" alt="Badagry Heritage Museum" loading="lazy" />
-            <div class="corridor-badge">District Quarter</div>
-          </div>
-          <div class="corridor-info">
-            <div class="corridor-header">
-              <h3 class="corridor-name">Heritage Museum</h3>
-              <span class="experience-count"><i class="fa-solid fa-compass"></i> 100+ Slave Relics</span>
-            </div>
-            <p class="corridor-desc">Housed in the former 1863 British District Officer's building, showcasing eight distinct exhibition galleries tracing transatlantic heritage.</p>
-            <a href="#tours" class="btn btn-outline-primary w-100">Explore Tours</a>
-          </div>
-        </div>
-
-        <!-- Landmark 5: Badagry Marina & Whispering Creeks -->
-        <div class="corridor-card">
-          <div class="corridor-img-wrap">
-            <img src="assets/images/Badagry-Beach-Creek-Leisure-Day.jpg" alt="Badagry Marina and Creek" loading="lazy" />
-            <div class="corridor-badge">Coastal Lagoon</div>
-          </div>
-          <div class="corridor-info">
-            <div class="corridor-header">
-              <h3 class="corridor-name">Badagry Marina &amp; Creeks</h3>
-              <span class="experience-count"><i class="fa-solid fa-compass"></i> Scenic Boat Tours</span>
-            </div>
-            <p class="corridor-desc">Tranquil inland waterways, traditional fishermen docks, and scenic canoe routes leading across the lagoon toward Atlantic beach resorts.</p>
-            <a href="#tours" class="btn btn-outline-primary w-100">Explore Tours</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Budget Travel Feature Section -->
-  <section class="budget-feature-section section-padding" id="about">
-    <div class="site-container">
-      <div class="feature-grid">
-        <!-- Image collage side -->
-        <div class="feature-collage">
-          <div class="collage-main-img">
-            <img src="assets/images/Badagry-Heritage-Museum.jpg" alt="Badagry Heritage Museum" loading="lazy" />
-          </div>
-          <div class="collage-sub-img1">
-            <img src="assets/images/First-Storey-Building-Badagry.jpg" alt="First Storey Building Badagry" loading="lazy" />
-          </div>
-          <div class="collage-sub-img2">
-            <img src="assets/images/Point-of-No-Return-Monument-Badagry.jpg" alt="Point of No Return Badagry" loading="lazy" />
-          </div>
-          <div class="collage-badge">
-            <div class="badge-icon"><i class="fa-solid fa-suitcase-rolling"></i></div>
-            <span class="badge-text">Pack your bags</span>
-          </div>
-        </div>
-
-        <!-- Text content side -->
-        <div class="feature-content">
-          <span class="sub-title">Budget Travel</span>
-          <h2 class="sec-title">Your Budget Sets the Experience</h2>
-          <p class="sec-lead">
-            Every <strong>Badagry Visitors Guide</strong> tour starts with a simple question: <em>what can you
-              afford?</em> Whether you have <strong>#70,000</strong> for a day trip or <strong>#250,000</strong> for a
-            complete weekend heritage retreat, we build a tour around your budget, not the other way around. No one is
-            priced out.
-          </p>
-
-          <div class="feature-items-list">
-            <div class="feature-item">
-              <div class="feature-icon">
-                <i class="fa-solid fa-hand-holding-dollar"></i>
-              </div>
-              <div class="feature-text">
-                <h4>Every Budget Welcome</h4>
-                <p>You tell us your budget. We make sure we deliver a genuine, memorable experience with high safety
-                  standards and full transparency.</p>
-              </div>
-            </div>
-
-            <div class="feature-item">
-              <div class="feature-icon">
-                <i class="fa-solid fa-person-chalkboard"></i>
-              </div>
-              <div class="feature-text">
-                <h4>Accredited Badagry Historians</h4>
-                <p>Every tour is led by an indigenous guide who knows Badagry's landmarks, royal lineages, languages, and
-                  historical archives from the inside.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="feature-cta">
-            <a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener"
-              class="btn btn-primary open-booking-btn">
-              Plan My Tour <i class="fa-solid fa-arrow-right"></i>
-            </a>
-            <a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener"
-              class="btn btn-outline-dark">
-              Ask Us a Question <i class="fa-solid fa-comments"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Handpicked Experiences / Tours Section -->
+  <!-- Section 1: Signature Guided Expeditions (Moved upfront for distinct sequence) -->
   <section class="tours-catalog-section section-padding bg-light" id="tours">
     <div class="site-container">
       <div class="section-title-wrap text-center">
-        <span class="sub-title">Handpicked Experiences</span>
-        <h2 class="sec-title">Badagry Tours We Are Proud to Run</h2>
+        <span class="sub-title">Flagship Routes</span>
+        <h2 class="sec-title">Signature Guided Expeditions</h2>
         <p class="section-lead-text">
-          From a single-day heritage walk to an immersive 3-day coastal retreat across Badagry —
-          every tour is led by a licensed local historian, managed end-to-end, and priced to fit your budget.
+          Managed end-to-end by licensed native Badagry historians. All admission passes, boat crossings, and logistics are fully coordinated.
         </p>
       </div>
 
       <!-- Quick Category Filter Tabs -->
       <div class="tour-tabs" id="tourTabs">
-        <button class="tour-tab-btn active" data-filter="all">All Tours (11)</button>
+        <button class="tour-tab-btn active" data-filter="all">All Expeditions (11)</button>
         <button class="tour-tab-btn" data-filter="day">Day Trips</button>
         <button class="tour-tab-btn" data-filter="weekend">Weekend Getaways</button>
         <button class="tour-tab-btn" data-filter="educational">Educational &amp; Groups</button>
@@ -1149,18 +880,23 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 1 Day</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry Historic District</div>
             <h3 class="tour-title">Badagry Heritage Day Tour</h3>
             <p class="tour-summary">Discover the first storey building in Nigeria, slave relics, Mobee museum, and boat
               ride across the creek to the Point of No Return.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-sailboat"></i> Boat Cruise</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-ticket"></i> All Passes</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-user-tie"></i> Native Guide</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$75</span>
                 <span class="price-suffix">/Person</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Badagry Heritage Day Tour"
-                data-price="$75">Book Now</button>
+                data-price="$75">Reserve Expedition</button>
             </div>
           </div>
         </article>
@@ -1173,18 +909,23 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 1 Day</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry Marina &amp; Creeks</div>
             <h3 class="tour-title">Badagry Beach &amp; Creek Leisure Day</h3>
             <p class="tour-summary">A relaxed coastal day featuring canoe cruising along serene creeks, coconut groves,
               seafood lunch, and Atlantic shore relaxation.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-water"></i> Lagoon Canoe</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-umbrella-beach"></i> Beach Access</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-fish"></i> Fresh Seafood</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$55</span>
                 <span class="price-suffix">/Person</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Badagry Beach &amp; Creek Leisure Day"
-                data-price="$55">Book Now</button>
+                data-price="$55">Reserve Expedition</button>
             </div>
           </div>
         </article>
@@ -1197,18 +938,23 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 1 Day</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Educational Heritage Circuit</div>
             <h3 class="tour-title">Badagry for Schools &amp; Student Groups</h3>
             <p class="tour-summary">Curriculum-aligned educational excursion offering young learners real engagement
               with Nigerian and West African historical milestones.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-book-open"></i> Study Materials</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-bus"></i> Escorted Transit</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-chalkboard-user"></i> Certified Docent</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$45</span>
-                <span class="price-suffix">/Person</span>
+                <span class="price-suffix">/Student</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn"
-                data-tour="Badagry for Schools &amp; Student Groups" data-price="$45">Book Now</button>
+                data-tour="Badagry for Schools &amp; Student Groups" data-price="$45">Reserve Group</button>
             </div>
           </div>
         </article>
@@ -1221,18 +967,23 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 1 Day</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Exclusive Private Charter</div>
             <h3 class="tour-title">Private Group Badagry Day Tour</h3>
             <p class="tour-summary">Customized itinerary for families, associations, or private circles with dedicated
               luxury transport and personalized private historian.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-car"></i> Private Van</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-crown"></i> VIP Fast-Track</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-camera"></i> Tour Photos</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$180</span>
                 <span class="price-suffix">/Group</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Private Group Badagry Day Tour"
-                data-price="$180">Book Now</button>
+                data-price="$180">Reserve Private</button>
             </div>
           </div>
         </article>
@@ -1245,18 +996,23 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 2 Days</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Beach Resort &amp; Museums</div>
             <h3 class="tour-title">Badagry Heritage &amp; Beach Weekend</h3>
             <p class="tour-summary">Overnight stay at a scenic beach resort in Badagry coupled with deep museum
               explorations, bonfire storytelling, and fresh ocean dining.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-bed"></i> Resort Lodging</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-fire"></i> Evening Bonfire</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-utensils"></i> Meals Covered</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$195</span>
                 <span class="price-suffix">/Person</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Badagry Heritage &amp; Beach Weekend"
-                data-price="$195">Book Now</button>
+                data-price="$195">Reserve Weekend</button>
             </div>
           </div>
         </article>
@@ -1269,17 +1025,22 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 1 Day</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Brazilian Compound &amp; Vlekete</div>
             <h3 class="tour-title">Seriki Abass Barracoon &amp; Relics Tour</h3>
             <p class="tour-summary">In-depth exploration of the 1840 Brazilian-style slave barracks, Chief Seriki Abass's tomb, authentic shackles, and the ancient Vlekete Slave Market.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-door-open"></i> 40 Cells Access</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-link"></i> Authentic Shackles</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-landmark"></i> Vlekete Market</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$85</span>
                 <span class="price-suffix">/Person</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Seriki Abass Barracoon &amp; Relics Tour"
-                data-price="$85">Book Now</button>
+                data-price="$85">Reserve Tour</button>
             </div>
           </div>
         </article>
@@ -1292,17 +1053,22 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 2 Days</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Whispering Palms Waterfront</div>
             <h3 class="tour-title">Whispering Palms &amp; Marina Escape</h3>
             <p class="tour-summary">Relaxing 2-day waterfront getaway at Whispering Palms Resort with calm Badagry creek boat cruise, coconut palms, and authentic Lagos coastal cuisine.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-hotel"></i> Waterfront Stay</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-ship"></i> Creek Cruise</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-cocktail"></i> Coconut Lounge</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$220</span>
                 <span class="price-suffix">/Person</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Whispering Palms &amp; Marina Escape"
-                data-price="$220">Book Now</button>
+                data-price="$220">Reserve Escape</button>
             </div>
           </div>
         </article>
@@ -1315,18 +1081,23 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 2 Days</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Executive Retreat Logistics</div>
             <h3 class="tour-title">Corporate Team Heritage Retreat</h3>
             <p class="tour-summary">Curated executive retreat combining team bonding, cultural enlightenment, premium
               coastal accommodation, and smooth VIP logistics across Badagry.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-users-gear"></i> Team Workshop</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-shield"></i> Security Escort</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-champagne-glasses"></i> Executive Dining</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$380</span>
                 <span class="price-suffix">/Person</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Corporate Team Heritage Retreat"
-                data-price="$380">Book Now</button>
+                data-price="$380">Reserve Retreat</button>
             </div>
           </div>
         </article>
@@ -1339,17 +1110,22 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 3 Days</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Comprehensive All-Circuit Pass</div>
             <h3 class="tour-title">3-Day Badagry Heritage Immersion</h3>
             <p class="tour-summary">The ultimate Badagry circuit: 1845 First Storey Building, Gberefu Point of No Return, Seriki Abass Barracoons, Mobee Museum, and beachside relaxation.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-compass"></i> Complete Circuit</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-hotel"></i> 2 Nights Hotel</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-utensils"></i> All Meals</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$350</span>
                 <span class="price-suffix">/Person</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn"
-                data-tour="3-Day Badagry Heritage Immersion" data-price="$350">Book Now</button>
+                data-tour="3-Day Badagry Heritage Immersion" data-price="$350">Reserve 3-Day</button>
             </div>
           </div>
         </article>
@@ -1362,17 +1138,22 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 3 Days</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Diaspora Ancestral Homecoming</div>
             <h3 class="tour-title">Badagry Diaspora Roots Pilgrimage</h3>
             <p class="tour-summary">Sacred pilgrimage for African diaspora descendants connecting with ancestral roots, traditional welcome rites, ancestral reflection, and Atlantic healing sessions.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-hand-holding-heart"></i> Ancestral Rites</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-dove"></i> Atlantic Healing</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-certificate"></i> Roots Certificate</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$550</span>
                 <span class="price-suffix">/Person</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Badagry Diaspora Roots Pilgrimage"
-                data-price="$550">Book Now</button>
+                data-price="$550">Inquire Pilgrimage</button>
             </div>
           </div>
         </article>
@@ -1385,17 +1166,22 @@ try {
             <span class="tour-duration-tag"><i class="fa-regular fa-clock"></i> 1 Day</span>
           </div>
           <div class="tour-card-body">
-            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Badagry, Lagos</div>
+            <div class="tour-location"><i class="fa-solid fa-location-dot"></i> Ogu Living Cultural Heritage</div>
             <h3 class="tour-title">Zangbeto Festival Tour</h3>
-            <p class="tour-summary">Experience the mystical Zangbeto masquerade — the traditional guardian of the night. Featuring energetic Ogu drumming, traditional chants, and sacred dances. Zangbeto remains an important symbol of Badagry’s cultural identity and a living heritage.</p>
+            <p class="tour-summary">Experience the mystical Zangbeto masquerade - the traditional guardian of the night. Featuring energetic Ogu drumming, traditional chants, and sacred dances.</p>
+            <div class="tour-perks">
+              <span class="tour-perk-item"><i class="fa-solid fa-drum"></i> Ogu Drumming</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-masks-theater"></i> Sacred Rites</span>
+              <span class="tour-perk-item"><i class="fa-solid fa-circle-nodes"></i> Native Elder Docent</span>
+            </div>
             <div class="tour-card-footer">
               <div class="tour-price">
-                <span class="price-prefix">Starting at</span>
+                <span class="price-prefix">From</span>
                 <span class="price-amount">$95</span>
                 <span class="price-suffix">/Person</span>
               </div>
               <button class="btn btn-sm btn-primary open-booking-btn" data-tour="Zangbeto Festival Tour"
-                data-price="$95">Book Now</button>
+                data-price="$95">Reserve Festival</button>
             </div>
           </div>
         </article>
@@ -1409,15 +1195,371 @@ try {
     </div>
   </section>
 
-  <!-- Photo Gallery Section (Real Places. Real People) -->
+  <!-- Section 2: Badagry Historical Corridors & Landmark Dossiers -->
+  <section class="corridor-section section-padding" id="landmarks">
+    <div class="site-container">
+      <div class="section-title-wrap text-center">
+        <span class="sub-title">Monuments of Global Memory</span>
+        <h2 class="sec-title">Badagry Historical Corridors</h2>
+        <p class="section-lead-text">
+          Explore the monumental landmarks that define West African heritage, missionary history, and transatlantic memory, led by accredited native custodians.
+        </p>
+      </div>
+
+      <div class="dossier-grid">
+        <!-- Landmark 1: Point of No Return & Gberefu Island -->
+        <article class="dossier-card">
+          <div class="dossier-img-box">
+            <img src="assets/images/Point-of-No-Return-Monument-Badagry.jpg" alt="Point of No Return Ocean Monument on Gberefu Peninsula" loading="lazy" />
+            <div class="dossier-era-pill">Atlantic Gateway</div>
+          </div>
+          <div class="dossier-body">
+            <h3 class="dossier-title">Point of No Return</h3>
+            <span class="dossier-designation">Gberefu Peninsula Memorial</span>
+            <p class="dossier-desc">
+              Solemn pilgrimage path across the sand peninsula between the calm Badagry lagoon and the roaring Atlantic Ocean, where captive Africans boarded European slave vessels.
+            </p>
+            <div class="dossier-relic-tags">
+              <span class="relic-tag">Attenuation Memory Well</span>
+              <span class="relic-tag">Atlantic Commemorative Arch</span>
+              <span class="relic-tag">Lagoon Canoe Crossing</span>
+            </div>
+            <a href="#tours" class="dossier-link">Explore Expedition Access <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Landmark 2: First Storey Building -->
+        <article class="dossier-card">
+          <div class="dossier-img-box">
+            <img src="assets/images/First-Storey-Building-in-Nigeria.jpg" alt="First Storey Building in Nigeria Badagry Built 1845" loading="lazy" />
+            <div class="dossier-era-pill">Built 1845</div>
+          </div>
+          <div class="dossier-body">
+            <h3 class="dossier-title">First Storey Building</h3>
+            <span class="dossier-designation">CMS Missionary Headquarters</span>
+            <p class="dossier-desc">
+              Nigeria's earliest multi-storey architectural landmark, built by Rev. C.A. Gollmer. Houses Bishop Samuel Ajayi Crowther's original 1845 Yoruba Bible translation.
+            </p>
+            <div class="dossier-relic-tags">
+              <span class="relic-tag">1845 Yoruba Bible</span>
+              <span class="relic-tag">First Western Classroom</span>
+              <span class="relic-tag">19th-Century Safe Vaults</span>
+            </div>
+            <a href="#tours" class="dossier-link">Explore Expedition Access <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Landmark 3: Seriki Williams Abass Barracoon -->
+        <article class="dossier-card">
+          <div class="dossier-img-box">
+            <img src="assets/images/Seriki-Williams-Abass-Baracoon.jpg" alt="Seriki Williams Abass Brazilian Barracoon Badagry" loading="lazy" />
+            <div class="dossier-era-pill">Est. 1840</div>
+          </div>
+          <div class="dossier-body">
+            <h3 class="dossier-title">Seriki Abass Barracoon</h3>
+            <span class="dossier-designation">Brazilian-Style Slave Quarters</span>
+            <p class="dossier-desc">
+              Preserved 19th-century transatlantic slave compound featuring 40 tiny holding cells, personal relics, trade ledgers, and Chief Seriki Williams Abass's historic tomb.
+            </p>
+            <div class="dossier-relic-tags">
+              <span class="relic-tag">40 Original Slave Cells</span>
+              <span class="relic-tag">Iron Neck Chains &amp; Shackles</span>
+              <span class="relic-tag">Ancient Vlekete Market Route</span>
+            </div>
+            <a href="#tours" class="dossier-link">Explore Expedition Access <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Landmark 4: Badagry Heritage Museum -->
+        <article class="dossier-card">
+          <div class="dossier-img-box">
+            <img src="assets/images/Badagry-Heritage-Museum.jpg" alt="Badagry Heritage Museum British District Quarter" loading="lazy" />
+            <div class="dossier-era-pill">Est. 1863</div>
+          </div>
+          <div class="dossier-body">
+            <h3 class="dossier-title">Badagry Heritage Museum</h3>
+            <span class="dossier-designation">District Officer's Colonial Archive</span>
+            <p class="dossier-desc">
+              Housed in the former 1863 British District Officer's administrative complex, showcasing eight thematic galleries tracing pre-colonial trade to the abolition movement.
+            </p>
+            <div class="dossier-relic-tags">
+              <span class="relic-tag">8 Curated Gallery Wings</span>
+              <span class="relic-tag">Colonial Government Vault</span>
+              <span class="relic-tag">Original Trade Manillas</span>
+            </div>
+            <a href="#tours" class="dossier-link">Explore Expedition Access <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Landmark 5: Badagry Marina & Whispering Creeks -->
+        <article class="dossier-card">
+          <div class="dossier-img-box">
+            <img src="assets/images/Badagry-Beach-Creek-Leisure-Day.jpg" alt="Badagry Marina and Coastal Lagoon Waters" loading="lazy" />
+            <div class="dossier-era-pill">Natural Marine Corridor</div>
+          </div>
+          <div class="dossier-body">
+            <h3 class="dossier-title">Badagry Marina &amp; Creeks</h3>
+            <span class="dossier-designation">Inland Waterways &amp; Coastal Palms</span>
+            <p class="dossier-desc">
+              Tranquil mangrove water systems, indigenous canoe wharfs, and peaceful waterfront resorts connecting Badagry with the Gulf of Guinea coastline.
+            </p>
+            <div class="dossier-relic-tags">
+              <span class="relic-tag">Whispering Palms Shore</span>
+              <span class="relic-tag">Traditional Fishing Wharfs</span>
+              <span class="relic-tag">Lagoon Boat Cruises</span>
+            </div>
+            <a href="#tours" class="dossier-link">Explore Expedition Access <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Native Guidance & Heritage Stewardship (Replaces Budget Section) -->
+  <section class="stewardship-section section-padding" id="stewardship">
+    <div class="site-container">
+      <div class="stewardship-grid">
+        <!-- Left: Philosophy & Pillars -->
+        <div class="stewardship-narrative">
+          <span class="sub-title">Our Heritage Stewardship</span>
+          <h2>Authentic Heritage. Honest Stewardship.</h2>
+          <p class="stewardship-lead">
+            We believe Badagry's sacred history and coastal beauty should be experienced with reverence, deep cultural context, and complete financial clarity. Every expedition is guided by native community historians with zero hidden surcharges.
+          </p>
+
+          <div class="stewardship-pillars-list">
+            <div class="pillar-item">
+              <div class="pillar-icon-box">
+                <i class="fa-solid fa-people-roof"></i>
+              </div>
+              <div class="pillar-content">
+                <h4>100% Native Badagry Historians</h4>
+                <p>Born, raised, and certified in Badagry. Our docents carry generations of oral tradition, royal heritage, and historical documentation.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <div class="pillar-icon-box">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+              <div class="pillar-content">
+                <h4>Transparent Tiered Pricing</h4>
+                <p>From single-day student educational walks to comprehensive multi-day diaspora homecomings, our rates are upfront with zero surprise fees.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <div class="pillar-icon-box">
+                <i class="fa-solid fa-hands-holding-circle"></i>
+              </div>
+              <div class="pillar-content">
+                <h4>Community &amp; Site Preservation</h4>
+                <p>A direct portion of every tour package supports local monument preservation, boat operators, and youth docent education in Badagry.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Verified Assurance Panel -->
+        <div class="stewardship-assurance-card">
+          <div class="assurance-badge">
+            <i class="fa-solid fa-shield-halved"></i> Verified Travel Quality
+          </div>
+          <div>
+            <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 8px;">The Visitor Assurance</h3>
+            <p style="font-size: 0.92rem; color: rgba(255,255,255,0.75); line-height: 1.55;">
+              Whether arriving from Lagos Island, Abuja, or traveling across the Atlantic from the African Diaspora, you travel with vetted local custodians.
+            </p>
+          </div>
+
+          <div class="assurance-metrics-grid">
+            <div class="metric-box">
+              <div class="metric-number">100%</div>
+              <div class="metric-label">Native Historians</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-number">11+</div>
+              <div class="metric-label">Verified Routes</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-number">4.9★</div>
+              <div class="metric-label">Visitor Rating</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-number">0</div>
+              <div class="metric-label">Hidden Surcharges</div>
+            </div>
+          </div>
+
+          <div class="assurance-cta-box">
+            <a href="http://wa.me/+2347056989224?text=from+google+map+or+site+-+Inquiring+about+custom+itinerary" target="_blank" rel="noopener" class="btn btn-primary w-100">
+              <i class="fa-brands fa-whatsapp"></i> Speak With an Indigenous Guide
+            </a>
+            <span style="font-size: 0.8rem; text-align: center; color: rgba(255,255,255,0.6);">Direct WhatsApp concierge support 7 days a week</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Curated Travel Styles (Replaces Categories) -->
+  <section class="travel-styles-section section-padding" id="styles">
+    <div class="site-container">
+      <div class="section-title-wrap text-center">
+        <span class="sub-title">Bespoke Travel Formats</span>
+        <h2 class="sec-title">Curated Travel Styles</h2>
+        <p class="section-lead-text">
+          Choose an expedition format that aligns with your party size, pace, and depth of historical inquiry.
+        </p>
+      </div>
+
+      <div class="travel-styles-grid">
+        <!-- Style 1 -->
+        <div class="travel-style-card">
+          <div class="style-icon-wrap">
+            <i class="fa-solid fa-person-walking-luggage"></i>
+          </div>
+          <h3 class="style-title">Historical Pilgrimage</h3>
+          <p class="style-desc">Solemn, reflective exploration of the slave trade corridors, First Storey Building, Seriki Abass barracoons, and the Gberefu Atlantic trail.</p>
+          <div class="style-footer">
+            <span class="style-duration-chip">1 - 3 Days</span>
+            <a href="#tours" class="style-explore-btn">View Expeditions <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Style 2 -->
+        <div class="travel-style-card">
+          <div class="style-icon-wrap">
+            <i class="fa-solid fa-water"></i>
+          </div>
+          <h3 class="style-title">Coastal Leisure &amp; Waterways</h3>
+          <p class="style-desc">Unwind along Badagry's serene lagoon waterways, mangrove channels, coconut shorelines, and waterfront resort sanctuaries.</p>
+          <div class="style-footer">
+            <span class="style-duration-chip">1 - 2 Days</span>
+            <a href="#tours" class="style-explore-btn">View Expeditions <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Style 3 -->
+        <div class="travel-style-card">
+          <div class="style-icon-wrap">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h3 class="style-title">Educational &amp; Student Groups</h3>
+          <p class="style-desc">Curriculum-aligned historical excursions designed for schools, universities, and youth delegations with interactive learning docents.</p>
+          <div class="style-footer">
+            <span class="style-duration-chip">Full Day</span>
+            <a href="#tours" class="style-explore-btn">View Expeditions <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Style 4 -->
+        <div class="travel-style-card">
+          <div class="style-icon-wrap">
+            <i class="fa-solid fa-earth-africa"></i>
+          </div>
+          <h3 class="style-title">Diaspora Roots Homecoming</h3>
+          <p class="style-desc">Deeply personal ancestral pilgrimages featuring traditional welcome rites, genealogical reflection, and Atlantic healing ceremonies.</p>
+          <div class="style-footer">
+            <span class="style-duration-chip">3 - 5 Days</span>
+            <a href="#tours" class="style-explore-btn">View Expeditions <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Style 5 -->
+        <div class="travel-style-card">
+          <div class="style-icon-wrap">
+            <i class="fa-solid fa-briefcase"></i>
+          </div>
+          <h3 class="style-title">Corporate &amp; Executive Retreats</h3>
+          <p class="style-desc">Premium team retreats combining coastal reflection, cultural grounding, VIP transport logistics, and private beachfront venues.</p>
+          <div class="style-footer">
+            <span class="style-duration-chip">2 - 3 Days</span>
+            <a href="#tours" class="style-explore-btn">View Expeditions <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Style 6 -->
+        <div class="travel-style-card">
+          <div class="style-icon-wrap">
+            <i class="fa-solid fa-masks-theater"></i>
+          </div>
+          <h3 class="style-title">Living Traditions &amp; Festivals</h3>
+          <p class="style-desc">Witness living Ogu culture and mystical ceremonies, including the sacred Zangbeto masquerade, traditional drumming, and community dances.</p>
+          <div class="style-footer">
+            <span class="style-duration-chip">Seasonal Excursions</span>
+            <a href="#tours" class="style-explore-btn">View Expeditions <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: The Badagry Heritage Chronicle -->
+  <section class="journal-section section-padding bg-light" id="chronicle">
+    <div class="site-container">
+      <div class="journal-header-wrap">
+        <div>
+          <span class="sub-title">Research &amp; Field Guides</span>
+          <h2 class="sec-title">The Badagry Heritage Chronicle</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">Authentic historical perspectives, transit walkthroughs, and visitor counsel curated by our local guides.</p>
+        </div>
+        <a href="/blog/" class="btn btn-outline-primary">Browse All Chronicle Essays <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="journal-grid">
+        <?php if (!empty($topPosts)): ?>
+          <?php foreach ($topPosts as $post): ?>
+            <?php
+              $postSlug = $post['slug'] ?? '';
+              $postUrl = '/blog/' . urlencode($postSlug);
+              $postImg = !empty($post['featured_image']) ? $post['featured_image'] : 'assets/images/Point-of-No-Return-420x347.jpg';
+              $isVid = (bool) preg_match('/\.(mp4|webm|ogg|mov|m4v)$/i', $postImg);
+              $mediaSrc = preg_match('#^https?://#i', $postImg) ? htmlspecialchars($postImg) : '/' . ltrim(htmlspecialchars($postImg), '/');
+              $pubDate = !empty($post['published_at']) ? date('M d, Y', strtotime($post['published_at'])) : date('M d, Y');
+              $readTime = !empty($post['read_time']) ? htmlspecialchars($post['read_time']) : '5 min read';
+              $postTitle = htmlspecialchars($post['title'] ?? '');
+              $postExcerpt = htmlspecialchars($post['excerpt'] ?? '');
+            ?>
+            <!-- Article <?= (int)($post['id'] ?? 0) ?> -->
+            <article class="journal-card">
+              <div class="journal-img-wrap">
+                <a href="<?= $postUrl ?>">
+                  <?php if ($isVid): ?>
+                    <video src="<?= $mediaSrc ?>#t=0.5" muted playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
+                  <?php else: ?>
+                    <img src="<?= $mediaSrc ?>" alt="<?= $postTitle ?>" loading="lazy" />
+                  <?php endif; ?>
+                </a>
+              </div>
+              <div class="journal-card-body">
+                <div class="journal-meta">
+                  <span><i class="fa-regular fa-calendar"></i> <?= $pubDate ?></span>
+                  <span><i class="fa-regular fa-clock"></i> <?= $readTime ?></span>
+                </div>
+                <h3 class="journal-title">
+                  <a href="<?= $postUrl ?>"><?= $postTitle ?></a>
+                </h3>
+                <p class="journal-excerpt"><?= $postExcerpt ?></p>
+                <a href="<?= $postUrl ?>" class="btn-text-link">Read Chronicle Essay <i class="fa-solid fa-arrow-right-long"></i></a>
+              </div>
+            </article>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p class="text-muted" style="grid-column: 1 / -1; text-align: center; padding: 2rem 0;">No articles published yet. Check back soon!</p>
+        <?php endif; ?>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Field Moments: Badagry Visual Archive (Replaces Gallery) -->
   <section class="gallery-section section-padding" id="gallery">
     <div class="site-container">
       <div class="section-title-wrap text-center">
-        <span class="sub-title">See It Before You Experience It</span>
-        <h2 class="sec-title">From Our Tours. Real Places. Real People.</h2>
+        <span class="sub-title">Living Documentation</span>
+        <h2 class="sec-title">Field Moments: Badagry Visual Archive</h2>
         <p class="sec-intro text-muted" style="max-width: 680px; margin: 12px auto 0;">
-          A curated sample from our guided Badagry heritage expeditions. Click any photo below to enter our full photo
-          and video gallery.
+          Authentic moments captured across our guided heritage routes, sacred memorials, mangrove waterways, and cultural celebrations.
         </p>
       </div>
 
@@ -1426,11 +1568,11 @@ try {
           <div class="preview-img-wrap">
             <img src="assets/images/Badagry-Slave-Memorial-Statue.jpg" alt="Badagry Slave Memorial and Freedom Statue"
               loading="lazy" />
-            <span class="preview-country-badge">🇳🇬 Badagry</span>
+            <span class="preview-country-badge">Memorial Monument</span>
             <div class="preview-hover-overlay">
               <span class="preview-zoom-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               <span class="preview-overlay-title">Badagry Slave Memorial</span>
-              <span class="preview-overlay-action">Open Full Gallery <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="preview-overlay-action">Open Visual Archive <i class="fa-solid fa-arrow-right"></i></span>
             </div>
           </div>
         </a>
@@ -1439,11 +1581,11 @@ try {
           <div class="preview-img-wrap">
             <img src="assets/images/First-Storey-Building-Badagry.jpg" alt="First Storey Building in Nigeria (1845)"
               loading="lazy" />
-            <span class="preview-country-badge">🇳🇬 Marina Badagry</span>
+            <span class="preview-country-badge">Built 1845</span>
             <div class="preview-hover-overlay">
               <span class="preview-zoom-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               <span class="preview-overlay-title">First Storey Building</span>
-              <span class="preview-overlay-action">Open Full Gallery <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="preview-overlay-action">Open Visual Archive <i class="fa-solid fa-arrow-right"></i></span>
             </div>
           </div>
         </a>
@@ -1452,11 +1594,11 @@ try {
           <div class="preview-img-wrap">
             <img src="assets/images/Point-of-No-Return-Monument-Badagry.jpg"
               alt="Point of No Return Monument on Gberefu Peninsula" loading="lazy" />
-            <span class="preview-country-badge">🇳🇬 Gberefu Island</span>
+            <span class="preview-country-badge">Gberefu Peninsula</span>
             <div class="preview-hover-overlay">
               <span class="preview-zoom-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               <span class="preview-overlay-title">Point of No Return</span>
-              <span class="preview-overlay-action">Open Full Gallery <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="preview-overlay-action">Open Visual Archive <i class="fa-solid fa-arrow-right"></i></span>
             </div>
           </div>
         </a>
@@ -1465,11 +1607,11 @@ try {
           <div class="preview-img-wrap">
             <img src="assets/images/Seriki-Williams-Abass-Baracoon.jpg"
               alt="Seriki Williams Abass Brazilian Barracoon Badagry" loading="lazy" />
-            <span class="preview-country-badge">🇳🇬 Seriki Barracoon</span>
+            <span class="preview-country-badge">1840 Barracoon</span>
             <div class="preview-hover-overlay">
               <span class="preview-zoom-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               <span class="preview-overlay-title">Seriki Abass Barracoon</span>
-              <span class="preview-overlay-action">Open Full Gallery <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="preview-overlay-action">Open Visual Archive <i class="fa-solid fa-arrow-right"></i></span>
             </div>
           </div>
         </a>
@@ -1478,11 +1620,11 @@ try {
           <div class="preview-img-wrap">
             <img src="assets/images/Badagry-Heritage-Museum.jpg" alt="Badagry Heritage Museum"
               loading="lazy" />
-            <span class="preview-country-badge">🇳🇬 Heritage Museum</span>
+            <span class="preview-country-badge">Heritage Museum</span>
             <div class="preview-hover-overlay">
               <span class="preview-zoom-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               <span class="preview-overlay-title">Badagry Heritage Museum</span>
-              <span class="preview-overlay-action">Open Full Gallery <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="preview-overlay-action">Open Visual Archive <i class="fa-solid fa-arrow-right"></i></span>
             </div>
           </div>
         </a>
@@ -1490,11 +1632,11 @@ try {
         <a href="/gallery/" class="gallery-preview-card" title="Route to Unknown Destination (Slave Trail)">
           <div class="preview-img-wrap">
             <img src="assets/images/Route-to-Unknown-Destination.jpg" alt="Route to Unknown Destination Badagry" loading="lazy" />
-            <span class="preview-country-badge">🇳🇬 Slave Route Trail</span>
+            <span class="preview-country-badge">Slave Trail</span>
             <div class="preview-hover-overlay">
               <span class="preview-zoom-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               <span class="preview-overlay-title">Route to Unknown Destination</span>
-              <span class="preview-overlay-action">Open Full Gallery <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="preview-overlay-action">Open Visual Archive <i class="fa-solid fa-arrow-right"></i></span>
             </div>
           </div>
         </a>
@@ -1503,11 +1645,11 @@ try {
           <div class="preview-img-wrap">
             <img src="assets/images/Badagry-Beach-Creek-Leisure-Day.jpg" alt="Badagry Beach and Creek Boat Cruise"
               loading="lazy" />
-            <span class="preview-country-badge">🇳🇬 Coastal Marina</span>
+            <span class="preview-country-badge">Coastal Marina</span>
             <div class="preview-hover-overlay">
               <span class="preview-zoom-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               <span class="preview-overlay-title">Beach &amp; Creek Leisure</span>
-              <span class="preview-overlay-action">Open Full Gallery <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="preview-overlay-action">Open Visual Archive <i class="fa-solid fa-arrow-right"></i></span>
             </div>
           </div>
         </a>
@@ -1516,11 +1658,11 @@ try {
           <div class="preview-img-wrap">
             <img src="assets/images/Private-Group-Badagry-Heritage-Day-Tour.jpg"
               alt="Private Group Tour on Badagry Heritage Route" loading="lazy" />
-            <span class="preview-country-badge">👥 Tour Group</span>
+            <span class="preview-country-badge">Guided Group</span>
             <div class="preview-hover-overlay">
               <span class="preview-zoom-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               <span class="preview-overlay-title">Private Group Tour</span>
-              <span class="preview-overlay-action">Open Full Gallery <i class="fa-solid fa-arrow-right"></i></span>
+              <span class="preview-overlay-action">Open Visual Archive <i class="fa-solid fa-arrow-right"></i></span>
             </div>
           </div>
         </a>
@@ -1529,14 +1671,14 @@ try {
       <!-- Gallery CTA to View All -->
       <div class="gallery-view-more-cta text-center" style="margin-top: 40px;">
         <a href="/gallery/" class="btn btn-primary btn-lg">
-          <span>Explore All 50+ Photos &amp; Videos in Full Gallery</span>
+          <span>Explore All 50+ Photos &amp; Videos in Full Archive</span>
           <i class="fa-solid fa-arrow-right"></i>
         </a>
         <div class="gallery-preview-badges"
           style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
           <span class="gallery-badge-pill"><i class="fa-solid fa-images"></i> 50+ High-Resolution Photos</span>
-          <span class="gallery-badge-pill"><i class="fa-solid fa-video"></i> Tour Highlights</span>
-          <span class="gallery-badge-pill"><i class="fa-solid fa-landmark"></i> Badagry Historical Sites</span>
+          <span class="gallery-badge-pill"><i class="fa-solid fa-video"></i> Video Highlights</span>
+          <span class="gallery-badge-pill"><i class="fa-solid fa-landmark"></i> Historical Archives</span>
         </div>
       </div>
     </div>
@@ -1551,12 +1693,15 @@ try {
     </div>
   </div>
 
-  <!-- Testimonials Section -->
+  <!-- Section 7: Traveler Perspectives & Field Dispatches (Replaces Testimonials) -->
   <section class="testimonials-section section-padding bg-light" id="testimonials">
     <div class="site-container">
       <div class="section-title-wrap text-center">
-        <span class="sub-title">Testimonials</span>
-        <h2 class="sec-title">Real Trips. Real Stories. Real People.</h2>
+        <span class="sub-title">Traveler Dispatches</span>
+        <h2 class="sec-title">Traveler Perspectives &amp; Field Dispatches</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">
+          Unfiltered reflections and verified reviews from visitors who walked Badagry's coastal routes and historical trails with us.
+        </p>
       </div>
 
       <div class="testimonials-slider-wrap">
@@ -1615,7 +1760,7 @@ try {
                   loading="lazy" />
                 <div class="testi-meta">
                   <h3 class="testi-name">Ashola Moyinoluwa</h3>
-                  <span class="testi-location">Atlanta, Georgia, USA (African Diaspora)</span>
+                  <span class="testi-location">Atlanta, USA (African Diaspora)</span>
                 </div>
               </div>
               <div class="testi-stars">
@@ -1660,7 +1805,7 @@ try {
                 <img src="assets/images/Tutor-Saheed.png" alt="Tutor Saheed" class="testi-avatar" loading="lazy" />
                 <div class="testi-meta">
                   <h3 class="testi-name">Tutor Saheed</h3>
-                  <span class="testi-location">Victoria Island, Lagos, Nigeria</span>
+                  <span class="testi-location">Victoria Island, Lagos</span>
                 </div>
               </div>
               <div class="testi-stars">
@@ -1704,64 +1849,8 @@ try {
     </div>
   </section>
 
-  <!-- Travel Journal (Blog) Section -->
-  <section class="journal-section section-padding" id="journal">
-    <div class="site-container">
-      <div class="journal-header-wrap">
-        <div>
-          <span class="sub-title">Stories, Guides &amp; History</span>
-          <h2 class="sec-title">The West Africa Travel Journal</h2>
-        </div>
-        <a href="/blog/" class="btn btn-outline-primary">Read All Articles <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-
-      <div class="journal-grid">
-        <?php if (!empty($topPosts)): ?>
-          <?php foreach ($topPosts as $post): ?>
-            <?php
-              $postSlug = $post['slug'] ?? '';
-              $postUrl = '/blog/' . urlencode($postSlug);
-              $postImg = !empty($post['featured_image']) ? $post['featured_image'] : 'assets/images/Point-of-No-Return-420x347.jpg';
-              $isVid = (bool) preg_match('/\.(mp4|webm|ogg|mov|m4v)$/i', $postImg);
-              $mediaSrc = preg_match('#^https?://#i', $postImg) ? htmlspecialchars($postImg) : '/' . ltrim(htmlspecialchars($postImg), '/');
-              $pubDate = !empty($post['published_at']) ? date('M d, Y', strtotime($post['published_at'])) : date('M d, Y');
-              $readTime = !empty($post['read_time']) ? htmlspecialchars($post['read_time']) : '5 min read';
-              $postTitle = htmlspecialchars($post['title'] ?? '');
-              $postExcerpt = htmlspecialchars($post['excerpt'] ?? '');
-            ?>
-            <!-- Article <?= (int)($post['id'] ?? 0) ?> -->
-            <article class="journal-card">
-              <div class="journal-img-wrap">
-                <a href="<?= $postUrl ?>">
-                  <?php if ($isVid): ?>
-                    <video src="<?= $mediaSrc ?>#t=0.5" muted playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover;"></video>
-                  <?php else: ?>
-                    <img src="<?= $mediaSrc ?>" alt="<?= $postTitle ?>" loading="lazy" />
-                  <?php endif; ?>
-                </a>
-              </div>
-              <div class="journal-card-body">
-                <div class="journal-meta">
-                  <span><i class="fa-regular fa-calendar"></i> <?= $pubDate ?></span>
-                  <span><i class="fa-regular fa-clock"></i> <?= $readTime ?></span>
-                </div>
-                <h3 class="journal-title">
-                  <a href="<?= $postUrl ?>"><?= $postTitle ?></a>
-                </h3>
-                <p class="journal-excerpt"><?= $postExcerpt ?></p>
-                <a href="<?= $postUrl ?>" class="btn-text-link">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
-              </div>
-            </article>
-          <?php endforeach; ?>
-        <?php else: ?>
-          <p class="text-muted" style="grid-column: 1 / -1; text-align: center; padding: 2rem 0;">No articles published yet. Check back soon!</p>
-        <?php endif; ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter Section -->
-  <section class="newsletter-section">
+  <!-- Section 8: The Badagry Heritage Dispatch (Replaces Newsletter) -->
+  <section class="newsletter-section" id="newsletter">
     <div class="site-container">
       <div class="newsletter-box">
         <div class="newsletter-left">
@@ -1769,15 +1858,17 @@ try {
             <i class="fa-regular fa-envelope-open"></i>
           </div>
           <div>
-            <h2 class="newsletter-title">Discounts in your Mailbox</h2>
-            <p class="newsletter-desc">Subscribe to receive seasonal deals, new Badagry tour schedules, and historical
-              insights.</p>
+            <span class="newsletter-badge">Cultural Circle &amp; Guides</span>
+            <h2 class="newsletter-title">The Badagry Heritage Dispatch</h2>
+            <p class="newsletter-desc">
+              Subscribe to receive new historical research, festival announcements (including Zangbeto &amp; Gboyo), and seasonal expedition dates.
+            </p>
           </div>
         </div>
         <form class="newsletter-form" id="newsletterForm">
-          <input type="email" placeholder="Enter your Email" class="newsletter-input" required />
+          <input type="email" placeholder="Enter your email address" class="newsletter-input" required />
           <button type="submit" class="btn btn-dark newsletter-btn">
-            <span>Subscribe Now</span>
+            <span>Join Dispatch Circle</span>
             <i class="fa-solid fa-paper-plane"></i>
           </button>
         </form>
@@ -1785,19 +1876,18 @@ try {
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Section 9: Independent Bespoke Footer -->
   <footer class="footer-wrapper" id="contact">
     <div class="site-container">
       <div class="footer-grid">
-        <!-- Col 1: About -->
+        <!-- Col 1: Identity & Stewardship -->
         <div class="footer-col footer-col-about">
           <a href="#" class="footer-logo">
             <img src="assets/logo.jpg" alt="Badagry Visitors Guide" class="footer-logo-img" />
             <div class="footer-logo-text">BADAGRY <strong>VISITORS GUIDE</strong></div>
           </a>
           <p class="footer-about-text">
-            Official Badagry Visitors Guide. Discover Culture, Heritage &amp; Coastal Experiences across Badagry, Lagos
-            State, Nigeria. Crafted to fit your budget with trusted local guides.
+            Independent tourism and cultural heritage guide dedicated to preserving and sharing the living memory of Badagry, Lagos State, Nigeria. Guided by indigenous historians.
           </p>
           <div class="footer-social-links">
             <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener"
@@ -1815,93 +1905,75 @@ try {
           </div>
         </div>
 
-        <!-- Col 2: Quick Links -->
+        <!-- Col 2: Historical Corridors & Sites -->
         <div class="footer-col">
-          <h3 class="footer-title">Quick Links</h3>
+          <h3 class="footer-title">Historical Corridors</h3>
           <ul class="footer-menu">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#categories">Services</a></li>
-            <li><a href="#tours">Our Tours</a></li>
-            <li><a href="/gallery/">Photo Gallery</a></li>
-            <li><a href="/blog/">Our Journal</a></li>
-            <li><a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank"
-                rel="noopener">Contact Us</a></li>
-            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#landmarks">Point of No Return &amp; Gberefu</a></li>
+            <li><a href="#landmarks">First Storey Building (1845)</a></li>
+            <li><a href="#landmarks">Seriki Abass Slave Barracoon</a></li>
+            <li><a href="#landmarks">Badagry Heritage Museum</a></li>
+            <li><a href="#landmarks">Vlekete Slave Market Route</a></li>
+            <li><a href="#landmarks">Badagry Marina &amp; Creeks</a></li>
           </ul>
         </div>
 
-        <!-- Col 3: Get In Touch -->
+        <!-- Col 3: Expedition Styles -->
         <div class="footer-col">
-          <h3 class="footer-title">Get In Touch</h3>
+          <h3 class="footer-title">Expedition Portfolios</h3>
+          <ul class="footer-menu">
+            <li><a href="#tours">Single-Day Cultural Circuits</a></li>
+            <li><a href="#tours">Coastal &amp; Beach Weekends</a></li>
+            <li><a href="#tours">Educational &amp; School Groups</a></li>
+            <li><a href="#tours">Diaspora Roots Pilgrimages</a></li>
+            <li><a href="#tours">Executive &amp; Corporate Retreats</a></li>
+            <li><a href="/gallery/">Visual Archive &amp; Media</a></li>
+            <li><a href="/blog/">Heritage Chronicle</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Badagry Tourism Desk -->
+        <div class="footer-col">
+          <h3 class="footer-title">Badagry Tourism Desk</h3>
           <div class="footer-contact-items">
             <div class="contact-item">
               <i class="fa-solid fa-phone"></i>
               <div>
-                <span class="item-label">Phone &amp; WhatsApp</span>
-                <a href="http://wa.me/+2348025937044?text=from+google+map+or+site" target="_blank" rel="noopener">+234
-                  802 593 7044</a>
+                <span class="item-label">Direct Concierge Line</span>
+                <a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener">+234 705 698 9224</a>
               </div>
             </div>
             <div class="contact-item">
               <i class="fa-solid fa-phone"></i>
               <div>
-                <span class="item-label">Phone &amp; WhatsApp</span>
-                <a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener">+234
-                  705 698 9224</a>
+                <span class="item-label">Tour Operations Support</span>
+                <a href="http://wa.me/+2348025937044?text=from+google+map+or+site" target="_blank" rel="noopener">+234 802 593 7044</a>
               </div>
             </div>
             <div class="contact-item">
               <i class="fa-solid fa-envelope"></i>
               <div>
-                <span class="item-label">Email Inquiries</span>
+                <span class="item-label">Inquiry Desk</span>
                 <a href="mailto:info@badagryvisitorsguide.com">info@badagryvisitorsguide.com</a>
               </div>
             </div>
             <div class="contact-item">
               <i class="fa-solid fa-location-dot"></i>
               <div>
-                <span class="item-label">Head Office</span>
-                <p>Badagry Roundabout, Badagry, Lagos, Nigeria.</p>
+                <span class="item-label">Badagry Information Office</span>
+                <p>Badagry Roundabout, Badagry, Lagos State, Nigeria.</p>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Col 4: Instagram Feed -->
-        <div class="footer-col">
-          <h3 class="footer-title">Instagram Updates</h3>
-          <div class="footer-insta-grid">
-            <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" class="insta-thumb">
-              <img src="assets/images/Route-to-Unknown-Destination.jpg" alt="Instagram 1" loading="lazy" />
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" class="insta-thumb">
-              <img src="assets/images/Badagry-Heritage-Museum.jpg" alt="Instagram 2" loading="lazy" />
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" class="insta-thumb">
-              <img src="assets/images/Beach-Coastal.jpg" alt="Instagram 3" loading="lazy" />
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" class="insta-thumb">
-              <img src="assets/images/Weekend-Getaway.jpg" alt="Instagram 4" loading="lazy" />
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" class="insta-thumb">
-              <img src="assets/images/Badagry-Heritage-Beach-Weekend.jpg" alt="Instagram 5" loading="lazy" />
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener" class="insta-thumb">
-              <img src="assets/images/Badagry-for-Schools-and-Student-Groups.jpg" alt="Instagram 6" loading="lazy" />
-              <i class="fa-brands fa-instagram"></i>
-            </a>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p class="copyright-text">&copy; Copyright 2026 <a href="#">Badagry Visitors Guide Ltd</a>. All Rights Reserved.
+        <p class="copyright-text">
+          &copy; Copyright 2026 <strong>Badagry Visitors Guide Ltd</strong>. All Rights Reserved.
+          <span style="display: block; font-size: 0.78rem; color: #64748b; margin-top: 4px;">
+            Badagry Visitors Guide is an independent tourism and cultural heritage operator. All packages, original historical texts, and multimedia assets are independently owned and operated.
+          </span>
         </p>
         <div class="payment-badges">
           <span class="badge-pay"><i class="fa-brands fa-cc-visa"></i> Visa</span>
@@ -1913,7 +1985,7 @@ try {
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Click-To-Chat Widget -->
+    <!-- Floating WhatsApp Click-To-Chat Widget -->
   <div class="whatsapp-floating-widget" id="whatsappWidget">
     <div class="wa-chat-box" id="waChatBox">
       <div class="wa-chat-header">
