@@ -784,10 +784,10 @@ textarea {
 .finder-console-card::before {
   content: '';
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 10px;
   background: linear-gradient(90deg, #D97706 0%, #238843 50%, #C85A32 100%);
 }
 
@@ -809,7 +809,7 @@ textarea {
   background: rgba(35, 136, 67, 0.25);
   border: 1px solid rgba(35, 136, 67, 0.5);
   color: #7ee09e;
-  font-size: 0.78rem;
+  font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -905,6 +905,7 @@ textarea {
   .finder-form {
     grid-template-columns: 1fr 1fr;
   }
+
   .finder-submit-btn {
     grid-column: 1 / -1;
     justify-content: center;
@@ -1190,6 +1191,92 @@ textarea {
 @media (max-width: 991px) {
   .stewardship-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .stewardship-section {
+    padding: 60px 0;
+  }
+
+  .stewardship-narrative h2 {
+    font-size: 1.85rem;
+  }
+
+  .stewardship-lead {
+    font-size: 0.97rem;
+  }
+
+  .stewardship-assurance-card {
+    padding: 28px 20px;
+    gap: 22px;
+  }
+
+  .assurance-metrics-grid {
+    gap: 14px;
+  }
+
+  .metric-number {
+    font-size: 1.8rem;
+  }
+
+  .metric-box {
+    padding: 14px 10px;
+  }
+
+  .pillar-item {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .pillar-icon-box {
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stewardship-narrative h2 {
+    font-size: 1.55rem;
+  }
+
+  .stewardship-assurance-card {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .assurance-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .metric-number {
+    font-size: 1.55rem;
+  }
+
+  .metric-box {
+    padding: 12px 8px;
+  }
+
+  .metric-label {
+    font-size: 0.7rem;
+  }
+
+  .pillar-item {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .pillar-icon-box {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .pillar-content h4 {
+    font-size: 1rem;
   }
 }
 
@@ -1604,23 +1691,55 @@ textarea {
 }
 
 /* ========================================================
-   Testimonials Section
+   Testimonials Section — Infinite Auto-Scroll Marquee
 ======================================================== */
+
+/* Outer mask: fades the left & right edges for depth */
 .testimonials-slider-wrap {
-  overflow-x: auto;
-  padding-bottom: 24px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary) #e2e8f0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 24px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  user-select: none;
 }
 
+/* The scrolling track */
 .testimonials-grid {
   display: flex;
   gap: 24px;
-  min-width: max-content;
+  flex-shrink: 0;
+  animation: testiMarquee 42s linear infinite;
+  will-change: transform;
+}
+
+/* Pause the whole strip when the user hovers over it or taps */
+.testimonials-slider-wrap:hover .testimonials-grid,
+.testimonials-slider-wrap:active .testimonials-grid {
+  animation-play-state: paused;
+}
+
+@keyframes testiMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% - 24px)); }
 }
 
 .testi-card {
   width: 360px;
+  flex-shrink: 0;
   background-color: #ffffff;
   border-radius: var(--radius-md);
   padding: 30px;
@@ -1629,6 +1748,13 @@ textarea {
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Individual card lifts on hover (only while marquee is paused) */
+.testimonials-slider-wrap:hover .testi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .testi-header {
@@ -1692,6 +1818,27 @@ textarea {
   color: var(--primary);
   opacity: 0.25;
   font-size: 2rem;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-grid {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .testimonials-grid-clone {
+    display: none;
+  }
+  .testimonials-slider-wrap {
+    -webkit-mask-image: none;
+    mask-image: none;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .testi-card { width: 300px; padding: 22px; }
 }
 
 /* ========================================================
@@ -2581,8 +2728,17 @@ textarea {
 }
 
 @media (max-width: 768px) {
+
   .top-bar {
     display: none;
+  }
+
+  .logo-main {
+    width: 70%;
+  }
+
+  .expedition-finder-section {
+    margin-top: -20px;
   }
 
   .nav-menu,

@@ -31,6 +31,12 @@ if ($trimmedUri === 'gallery') {
     exit;
 }
 
+// Expedition Tours: /tours or /tours/
+if ($trimmedUri === 'tours') {
+    require __DIR__ . '/tours.php';
+    exit;
+}
+
 // Single Blog Post: /blog/{slug}
 if (preg_match('#^blog/([a-zA-Z0-9_-]+)$#', $trimmedUri, $matches)) {
     $_GET['slug'] = $matches[1];

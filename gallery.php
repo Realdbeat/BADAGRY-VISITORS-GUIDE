@@ -166,7 +166,7 @@ foreach ($galleryItems as $item) {
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="/style.css?v=3.01" />
+  <link rel="stylesheet" href="/style.css?v=3.04" />
 
   <!-- Schema.org Breadcrumbs structured data -->
   <script type="application/ld+json">
@@ -263,6 +263,7 @@ foreach ($galleryItems as $item) {
       <div class="drawer-contact-info">
         <p><i class="fa-solid fa-location-dot"></i> Badagry, Lagos, Nigeria</p>
         <p><i class="fa-solid fa-phone"></i> +234 705 698 9224</p>
+        <p><i class="fa-solid fa-phone"></i> +234 802 593 7044</p>
         <p><i class="fa-solid fa-envelope"></i> info@badagryvisitorsguide.com</p>
       </div>
     </div>
@@ -667,12 +668,45 @@ foreach ($galleryItems as $item) {
     </div>
   </footer>
 
-  <!-- WhatsApp Floating Button -->
-  <div class="wa-floating-btn" id="waFloatingBtn">
-    <a href="http://wa.me/+2347056989224?text=Hello+Badagry+Visitors+Guide!+I+would+like+to+inquire+about+your+tours."
-      target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="wa-btn-pulse">
+  <!-- Floating WhatsApp Click-To-Chat Widget -->
+  <div class="whatsapp-floating-widget" id="whatsappWidget">
+    <div class="wa-chat-box" id="waChatBox">
+      <div class="wa-chat-header">
+        <div class="wa-avatar-wrap">
+          <div class="wa-avatar">
+            <img src="/assets/logo.jpg" alt="Badagry Visitors Guide" class="wa-avatar-img" />
+          </div>
+          <span class="wa-online-dot"></span>
+        </div>
+        <div class="wa-header-info">
+          <h4>Badagry Visitors Guide</h4>
+          <p>Typically replies within minutes</p>
+        </div>
+        <button class="wa-close-btn" id="waCloseBtn" aria-label="Close WhatsApp chat">&times;</button>
+      </div>
+      <div class="wa-chat-body">
+        <div class="wa-bubble received">
+          <p>Hi there! Welcome to <strong>Badagry Visitors Guide</strong>!</p>
+          <p>Planning a trip to Badagry? Click below to chat directly with our local tour guides on WhatsApp.</p>
+          <a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener"
+            class="btn btn-sm btn-primary w-100" style="margin-top: 10px;">
+            <i class="fa-brands fa-whatsapp"></i> Chat On WhatsApp Now
+          </a>
+          <span class="wa-time">Just now</span>
+        </div>
+      </div>
+      <div class="wa-chat-footer">
+        <input type="text" id="waInput" placeholder="Type a message..." />
+        <button id="waSendBtn" class="wa-send-btn" aria-label="Send WhatsApp message">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+
+    <button class="wa-toggle-btn" id="waToggleBtn" aria-label="Chat on WhatsApp">
       <i class="fa-brands fa-whatsapp"></i>
-    </a>
+      <span class="wa-tooltip">Chat with us!</span>
+    </button>
   </div>
 
   <!-- Interactive Gallery JavaScript -->
@@ -685,14 +719,44 @@ foreach ($galleryItems as $item) {
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
     function openMobileDrawer() {
-      if (mobileMenuDrawer) mobileMenuDrawer.classList.add('open');
-      if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open');
+      if (mobileMenuDrawer) mobileMenuDrawer.classList.add('active');
+      if (mobileMenuOverlay) mobileMenuOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
     function closeMobileDrawer() {
-      if (mobileMenuDrawer) mobileMenuDrawer.classList.remove('open');
-      if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open');
+      if (mobileMenuDrawer) mobileMenuDrawer.classList.remove('active');
+      if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('active');
       document.body.style.overflow = '';
+    }
+
+    // WhatsApp Floating Widget
+    const waToggleBtn = document.getElementById('waToggleBtn');
+    const waChatBox  = document.getElementById('waChatBox');
+    const waCloseBtn = document.getElementById('waCloseBtn');
+    const waInput    = document.getElementById('waInput');
+    const waSendBtn  = document.getElementById('waSendBtn');
+
+    if (waToggleBtn && waChatBox) {
+      waToggleBtn.addEventListener('click', () => {
+        waChatBox.classList.toggle('active');
+      });
+      if (waCloseBtn) {
+        waCloseBtn.addEventListener('click', () => waChatBox.classList.remove('active'));
+      }
+      function sendWaMessage() {
+        const text = waInput ? waInput.value.trim() : '';
+        const url = text
+          ? `http://wa.me/+2347056989224?text=${encodeURIComponent('from gallery: ' + text)}`
+          : 'http://wa.me/+2347056989224?text=from+gallery';
+        window.open(url, '_blank');
+        if (waInput) waInput.value = '';
+      }
+      if (waSendBtn) waSendBtn.addEventListener('click', sendWaMessage);
+      if (waInput) {
+        waInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') { e.preventDefault(); sendWaMessage(); }
+        });
+      }
     }
 
     if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', openMobileDrawer);

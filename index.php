@@ -583,7 +583,7 @@ try {
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="/style.css?v=3.01" />
+  <link rel="stylesheet" href="/style.css?v=3.04" />
 </head>
 
 <body>
@@ -608,8 +608,8 @@ try {
         <li><a href="#landmarks" class="mobile-nav-link">Landmarks</a></li>
         <li><a href="#stewardship" class="mobile-nav-link">Our Philosophy</a></li>
         <li><a href="#styles" class="mobile-nav-link">Travel Styles</a></li>
-        <li><a href="/gallery/" class="mobile-nav-link">Visual Archive</a></li>
-        <li><a href="/blog/" class="mobile-nav-link">Chronicle</a></li>
+        <li><a href="/gallery/" class="mobile-nav-link">Gallery</a></li>
+        <li><a href="/blog/" class="mobile-nav-link">Blog</a></li>
         <li><a href="http://wa.me/+2347056989224?text=from+google+map+or+site" target="_blank" rel="noopener"
             class="mobile-nav-link">Contact Us</a></li>
       </ul>
@@ -620,6 +620,7 @@ try {
       <div class="drawer-contact-info">
         <p><i class="fa-solid fa-location-dot"></i> Badagry, Lagos, Nigeria</p>
         <p><i class="fa-solid fa-phone"></i> +234 705 698 9224</p>
+        <p><i class="fa-solid fa-phone"></i> +234 802 593 7044</p>
         <p><i class="fa-solid fa-envelope"></i> info@badagryvisitorsguide.com</p>
         <div class="drawer-social-links">
           <a href="https://www.instagram.com/badagryvisitorsguide" target="_blank" rel="noopener"
@@ -804,12 +805,12 @@ try {
           </div>
           <span class="finder-tagline">Filter verified Badagry routes by duration, investment tier, and cultural focus</span>
         </div>
-        <form id="tripSearchForm" class="finder-form">
+        <form id="tripSearchForm" class="finder-form" method="GET" action="/tours/">
           <div class="finder-col">
             <label for="destinationSelect" class="finder-label">
               <i class="fa-solid fa-landmark"></i> Journey Focus
             </label>
-            <select id="destinationSelect" class="finder-select">
+            <select id="destinationSelect" name="destination" class="finder-select">
               <option value="all">All Heritage &amp; Coastal Circuits</option>
               <option value="Badagry">Transatlantic Slave Route &amp; Relics</option>
               <option value="day">Single-Day Cultural Excursions</option>
@@ -823,7 +824,7 @@ try {
             <label for="durationSelect" class="finder-label">
               <i class="fa-regular fa-clock"></i> Time Commitment
             </label>
-            <select id="durationSelect" class="finder-select">
+            <select id="durationSelect" name="duration" class="finder-select">
               <option value="all">Any Tour Duration</option>
               <option value="1">1 Day Guided Circuit</option>
               <option value="2">2 Days Weekend Getaway</option>
@@ -835,17 +836,17 @@ try {
             <label for="budgetSelect" class="finder-label">
               <i class="fa-solid fa-naira-sign"></i> Transparent Price Band
             </label>
-            <select id="budgetSelect" class="finder-select">
+            <select id="budgetSelect" name="budget" class="finder-select">
               <option value="all">All Price Bands (NGN / USD)</option>
-              <option value="budget">Community Standard (Under $100 / #150k)</option>
-              <option value="moderate">Guided Immersion ($100 - $350 / #150k - #500k)</option>
-              <option value="premium">Private VIP &amp; Diaspora ($350+ / #500k+)</option>
+              <option value="budget">Community Standard (Under $100 / &#8358;150k)</option>
+              <option value="moderate">Guided Immersion ($100 - $350 / &#8358;150k - &#8358;500k)</option>
+              <option value="premium">Private VIP &amp; Diaspora ($350+ / &#8358;500k+)</option>
             </select>
           </div>
 
           <button type="submit" class="finder-submit-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <span>Filter Expeditions</span>
+            <span>Find Expeditions</span>
           </button>
         </form>
       </div>
@@ -1835,6 +1836,137 @@ try {
               <div class="testi-stars">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                   class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="testi-quote">
+              "I travelled from Abuja specifically to connect with Badagry's coastal slave routes and relics. Our guide's
+              storytelling brought the 19th-century barracoons and heritage artifacts alive with incredible historical depth.
+              Professional, safe, and worth every kilometer travelled."
+            </p>
+            <div class="testi-icon-mark"><i class="fa-solid fa-quote-right"></i></div>
+          </div>
+        </div>
+
+        <!-- Cloned track for seamless infinite auto-scroll loop (hidden from assistive tech) -->
+        <div class="testimonials-grid testimonials-grid-clone" aria-hidden="true">
+          <!-- Testimonial 1 Clone -->
+          <div class="testi-card">
+            <div class="testi-header">
+              <div class="testi-profile">
+                <img src="assets/images/Olayinka-Oyeku.jpg" alt="Olayinka Oyeku" class="testi-avatar" loading="lazy" />
+                <div class="testi-meta">
+                  <span class="testi-name">Olayinka Oyeku</span>
+                  <span class="testi-location">Lagos, Nigeria</span>
+                </div>
+              </div>
+              <div class="testi-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="testi-quote">
+              "Taking the Badagry Heritage Day Tour opened my eyes to history in a way books never could. Walking through
+              the 1845 First Storey Building and taking the boat across the creek to Gberefu Island was deeply touching.
+              Our guide was patient, knowledgeable, and treated our heritage with the utmost reverence."
+            </p>
+            <div class="testi-icon-mark"><i class="fa-solid fa-quote-right"></i></div>
+          </div>
+
+          <!-- Testimonial 2 Clone -->
+          <div class="testi-card">
+            <div class="testi-header">
+              <div class="testi-profile">
+                <img src="assets/images/Adedoyin-Dosunmu-Ogunbi.jpg" alt="Adedoyin Dosunmu-Ogunbi" class="testi-avatar" loading="lazy" />
+                <div class="testi-meta">
+                  <span class="testi-name">Adedoyin Dosunmu-Ogunbi</span>
+                  <span class="testi-location">Lagos, Nigeria</span>
+                </div>
+              </div>
+              <div class="testi-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="testi-quote">
+              "Taking the 3-day Badagry Heritage immersion tour was an extraordinary educational experience. Walking the solemn slave route across Gberefu Island to the Point of No Return and examining the preserved relics in the Brazilian Barracoons gave me profound historical insight. Flawless organization from pickup to drop-off."
+            </p>
+            <div class="testi-icon-mark"><i class="fa-solid fa-quote-right"></i></div>
+          </div>
+
+          <!-- Testimonial 3 Clone -->
+          <div class="testi-card">
+            <div class="testi-header">
+              <div class="testi-profile">
+                <img src="assets/images/Ashola-Moyinoluwa.jpg" alt="Ashola Moyinoluwa" class="testi-avatar" loading="lazy" />
+                <div class="testi-meta">
+                  <span class="testi-name">Ashola Moyinoluwa</span>
+                  <span class="testi-location">Atlanta, USA (African Diaspora)</span>
+                </div>
+              </div>
+              <div class="testi-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="testi-quote">
+              "As an African-American walking the path toward the Point of No Return, words truly fail me. Badagry Visitors
+              Guide provided not just an itinerary, but a sacred, respectful homecoming space for reflection. The local
+              historians answered every question with honesty, grace, and deep cultural warmth."
+            </p>
+            <div class="testi-icon-mark"><i class="fa-solid fa-quote-right"></i></div>
+          </div>
+
+          <!-- Testimonial 4 Clone -->
+          <div class="testi-card">
+            <div class="testi-header">
+              <div class="testi-profile">
+                <img src="assets/images/Ade-Sofola.jpg" alt="Ade Sofola" class="testi-avatar" loading="lazy" />
+                <div class="testi-meta">
+                  <span class="testi-name">Ade Sofola</span>
+                  <span class="testi-location">Lagos, Nigeria</span>
+                </div>
+              </div>
+              <div class="testi-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="testi-quote">
+              "Our weekend getaway to Badagry exceeded every expectation! The peaceful Badagry creek boat cruise, the 1845 First Storey Building tour, and relaxing along the coastal waterfront made this the highlight of our visit to Nigeria. Outstanding local guides and warm hospitality throughout."
+            </p>
+            <div class="testi-icon-mark"><i class="fa-solid fa-quote-right"></i></div>
+          </div>
+
+          <!-- Testimonial 5 Clone -->
+          <div class="testi-card">
+            <div class="testi-header">
+              <div class="testi-profile">
+                <img src="assets/images/Tutor-Saheed.png" alt="Tutor Saheed" class="testi-avatar" loading="lazy" />
+                <div class="testi-meta">
+                  <span class="testi-name">Tutor Saheed</span>
+                  <span class="testi-location">Victoria Island, Lagos</span>
+                </div>
+              </div>
+              <div class="testi-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="testi-quote">
+              "I coordinated a corporate retreat for 16 colleagues and Badagry Visitors Guide built our itinerary around our
+              exact budget and schedule. Every logistics checkpoint, meal, and guided stop ran like clockwork. Our entire
+              management team came back inspired and energized."
+            </p>
+            <div class="testi-icon-mark"><i class="fa-solid fa-quote-right"></i></div>
+          </div>
+
+          <!-- Testimonial 6 Clone -->
+          <div class="testi-card">
+            <div class="testi-header">
+              <div class="testi-profile">
+                <img src="assets/images/SEGUN-OPAYELE.png" alt="Segun Opayele" class="testi-avatar" loading="lazy" />
+                <div class="testi-meta">
+                  <span class="testi-name">Segun Opayele</span>
+                  <span class="testi-location">Abuja, FCT, Nigeria</span>
+                </div>
+              </div>
+              <div class="testi-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
               </div>
             </div>
             <p class="testi-quote">

@@ -77,7 +77,7 @@ $totalPosts = count($posts);
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <link rel="stylesheet" href="/style.css?v=3.03" />
+  <link rel="stylesheet" href="/style.css?v=3.04" />
 
   <!-- Schema.org Breadcrumbs structured data -->
   <script type="application/ld+json">
@@ -172,6 +172,7 @@ $totalPosts = count($posts);
       <div class="drawer-contact-info">
         <p><i class="fa-solid fa-location-dot"></i> Badagry, Lagos, Nigeria</p>
         <p><i class="fa-solid fa-phone"></i> +234 705 698 9224</p>
+        <p><i class="fa-solid fa-phone"></i> +234 802 593 7044</p>
         <p><i class="fa-solid fa-envelope"></i> info@badagryvisitorsguide.com</p>
       </div>
     </div>

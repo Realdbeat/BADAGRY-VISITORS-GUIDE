@@ -106,60 +106,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ========================================================
-     3. Search / Filter Form Logic
+     3. Expedition Finder Form Submit Handler
   ======================================================== */
   const tripSearchForm = document.getElementById('tripSearchForm');
-  const durationSelect = document.getElementById('durationSelect');
-  const budgetSelect = document.getElementById('budgetSelect');
-  const destinationSelect = document.getElementById('destinationSelect');
-  const tourCards = document.querySelectorAll('.tour-card');
 
   if (tripSearchForm) {
-    tripSearchForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const durationVal = durationSelect.value;
-      const budgetVal = budgetSelect.value;
-      const destinationVal = destinationSelect.value;
-
-      let matchedCount = 0;
-
-      tourCards.forEach(card => {
-        const cardDuration = card.dataset.duration;
-        const cardPrice = parseInt(card.dataset.price, 10);
-        const cardCorridor = card.dataset.corridor;
-
-        let matchDestination = (destinationVal === 'all' || cardCorridor.includes(destinationVal) || card.dataset.category === destinationVal);
-        
-        let matchBudget = true;
-        if (budgetVal === 'budget') {
-          matchBudget = cardPrice <= 100;
-        } else if (budgetVal === 'moderate') {
-          matchBudget = cardPrice > 100 && cardPrice <= 350;
-        } else if (budgetVal === 'premium') {
-          matchBudget = cardPrice > 350;
-        }
-
-        if (matchDuration && matchBudget && matchDestination) {
-          card.style.display = 'flex';
-          card.style.animation = 'fadeIn 0.4s ease forwards';
-          matchedCount++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      // Scroll smoothly to tours section
-      const toursSec = document.getElementById('tours');
-      if (toursSec) {
-        toursSec.scrollIntoView({ behavior: 'smooth' });
+    tripSearchForm.addEventListener('submit', () => {
+      const submitBtn = tripSearchForm.querySelector('.finder-submit-btn');
+      if (submitBtn) {
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Searching Expeditions...</span>';
+        submitBtn.style.opacity = '0.9';
       }
-
-      // If no match found, alert user gently
-      if (matchedCount === 0) {
-        alert("No exact tour found for this specific filter combination. Showing all custom tour options!");
-        tourCards.forEach(c => c.style.display = 'flex');
-      }
+      // Form natively submits via GET to /tours/ with destination, duration, and budget params
     });
   }
 

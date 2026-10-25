@@ -18,6 +18,10 @@
   RewriteCond %{THE_REQUEST} \s/gallery\.php[?\s] [NC]
   RewriteRule ^gallery\.php$ /gallery/ [R=301,L]
 
+  # 2c. Canonical Redirect: Direct access to /tours.php -> clean /tours/
+  RewriteCond %{THE_REQUEST} \s/tours\.php[?\s] [NC]
+  RewriteRule ^tours\.php$ /tours/ [R=301,L]
+
   # 3. Canonical Redirect: Direct access to /post.php?slug={slug} -> clean /blog/{slug}
   RewriteCond %{THE_REQUEST} \s/post\.php\?slug=([a-zA-Z0-9_-]+) [NC]
   RewriteRule ^post\.php$ /blog/%1? [R=301,L]
@@ -27,6 +31,9 @@
 
   # 4b. Canonical Redirect: Enforce trailing slash for Gallery (/gallery -> /gallery/)
   RewriteRule ^gallery$ /gallery/ [R=301,L]
+
+  # 4c. Canonical Redirect: Enforce trailing slash for Tours (/tours -> /tours/)
+  RewriteRule ^tours$ /tours/ [R=301,L]
 
   # 5. Canonical Redirect: Strip trailing slash for Blog Posts (/blog/{slug}/ -> /blog/{slug})
   RewriteRule ^blog/([a-zA-Z0-9_-]+)/+$ /blog/$1 [R=301,L]
@@ -39,6 +46,9 @@
 
   # 7b. Internal Rewrite: Photo & Video Gallery /gallery/ -> gallery.php
   RewriteRule ^gallery/$ gallery.php [L,QSA]
+
+  # 7c. Internal Rewrite: Expedition Results /tours/ -> tours.php
+  RewriteRule ^tours/$ tours.php [L,QSA]
 
   # 8. Internal Rewrite: Blog Post /blog/{slug} -> post.php?slug={slug}
   RewriteRule ^blog/([a-zA-Z0-9_-]+)$ post.php?slug=$1 [L,QSA]
